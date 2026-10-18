@@ -1,0 +1,1367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marko Simić · Accountant, AP/AR & Payments</title>
+<meta name="description" content="Accountant with 5+ years of hands-on AP/AR, payments and reconciliation work. I do the daily work myself and automate what is repetitive. Kruševac, Serbia · open to remote (CET).">
+<meta property="og:title" content="Marko Simić · Accurate books. Reliable processes.">
+<meta property="og:description" content="Hands-on accountant (AP/AR, payments, reconciliations) who makes repetitive finance work faster and safer.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://markosimicks.github.io/photo.jpg">
+<meta property="og:url" content="https://markosimicks.github.io/">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230b1620'/><path d='M12 44 L24 32 L33 38 L52 18' stroke='%2322c38e' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b1620;
+    --ink-2: #102230;
+    --ink-3: #17303f;
+    --paper: #f5f3ee;
+    --card: #ffffff;
+    --text: #15202a;
+    --muted: #5e6c78;
+    --muted-dark: #9fb1bf;
+    --line: #e2dfd8;
+    --line-dark: rgba(255,255,255,.10);
+    --green: #22c38e;
+    --green-2: #7ff0c4;
+    --green-soft: rgba(34,195,142,.14);
+    --amber: #f2b544;
+    --red: #ef6b5b;
+    --radius: 20px;
+    --head: "Space Grotesk", "Segoe UI", sans-serif;
+    --body: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --mono: "JetBrains Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: var(--head); letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
+
+  /* Scroll progress */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--green), var(--green-2)); z-index: 60; }
+
+  /* Nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .3s, box-shadow .3s; }
+  nav.scrolled { background: rgba(11,22,32,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line-dark); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; white-space: nowrap; color: #fff; text-decoration: none; font-family: var(--head); font-weight: 700; font-size: 18px; }
+  .logo svg { width: 30px; height: 30px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: #cfdae3; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.work { color: var(--green-2); }
+  .nav-links a .short { display: none; }
+  .lang { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+  .lang button { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: #cfdae3; font: 600 13px/1 var(--body); letter-spacing: .04em; cursor: pointer; transition: background .2s, color .2s; }
+  .lang button:hover { color: #fff; }
+  .lang button.on { background: var(--green); color: var(--ink); }
+  .lang .flag { display: block; flex: none; width: 21px; height: 14px; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.3); }
+  .lang .flag svg { display: block; width: 100%; height: 100%; }
+
+  /* Hero */
+  .hero { position: relative; background: radial-gradient(1200px 600px at 80% -10%, #1b4152 0%, transparent 60%), var(--ink); color: #fff; padding: 130px 0 0; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+  .hero-bg svg { position: absolute; left: 0; bottom: 52px; width: 100%; height: 62%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 35%, #000 70%); mask-image: linear-gradient(90deg, transparent 0%, transparent 35%, #000 70%); }
+  .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; padding-bottom: 90px; }
+  .hero-role { margin: 0; font-size: 17px; font-weight: 600; color: var(--green-2); }
+  .hero h1 { font-size: clamp(40px, 4.3vw, 58px); margin: 14px 0 22px; }
+  .grad { background: linear-gradient(90deg, var(--green) 0%, var(--green-2) 60%, #d6fff0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.sub { font-size: 20px; color: #c7d4de; max-width: 600px; margin: 0 0 30px; }
+  .hero p.sub b { color: #fff; font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 600; font-size: 15.5px; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-green { background: var(--green); color: var(--ink); box-shadow: 0 10px 30px -10px rgba(34,195,142,.7); }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,.25); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.06); }
+  .meta { display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 8px 36px; margin-top: 34px; font-size: 14.5px; color: var(--muted-dark); }
+  .meta span::before { content: "▸ "; color: var(--green); }
+
+  .portrait { position: relative; flex: 0 0 290px; width: 290px; height: 290px; }
+  .portrait .ring { position: absolute; inset: -14px; border-radius: 36px; background: conic-gradient(from 0deg, var(--green), transparent 30%, var(--green-2) 55%, transparent 80%, var(--green)); opacity: .55; filter: blur(18px); animation: spin 14s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .portrait img { position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 30px; border: 1px solid rgba(255,255,255,.18); }
+  .portrait-wrap { position: relative; display: flex; align-items: stretch; gap: 20px; justify-self: end; }
+  .checklist { position: relative; display: flex; flex-direction: column; flex: 0 0 272px; width: 272px; height: 290px; background: rgba(16,34,48,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line-dark); border-radius: 18px; padding: 14px 16px 14px; box-shadow: 0 30px 60px -24px rgba(0,0,0,.85); }
+  .cl-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-dark); }
+  .cl-head b { color: #fff; }
+  .checklist ul { list-style: none; margin: 0; padding: 0; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .checklist li { display: flex; align-items: center; gap: 10px; padding: 2px 0; font-size: 13.5px; color: var(--muted-dark); transition: color .3s; }
+  .checklist .box { position: relative; flex: 0 0 18px; height: 18px; border-radius: 5px; border: 1.5px solid rgba(255,255,255,.28); transition: background .25s, border-color .25s; }
+  .checklist .box::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--ink); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) scale(0); transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+  .checklist li .day { margin-left: auto; font-family: var(--mono); font-size: 10.5px; color: var(--muted-dark); opacity: .7; }
+  .checklist li.done { color: #fff; }
+  .checklist li.done .box { background: var(--green); border-color: var(--green); }
+  .checklist li.done .box::after { transform: rotate(45deg) scale(1); }
+  .cl-bar { height: 5px; border-radius: 99px; background: rgba(255,255,255,.08); margin-top: 10px; overflow: hidden; }
+  .cl-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--green), var(--green-2)); transition: width .45s ease; }
+  .cl-status { margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--green-2); opacity: 0; transition: opacity .3s; }
+  .cl-status.show { opacity: 1; }
+
+  /* Ticker */
+  .ticker { position: relative; border-top: 1px solid var(--line-dark); background: rgba(0,0,0,.25); overflow: hidden; white-space: nowrap; font-family: var(--mono); font-size: 14px; }
+  .ticker-track { display: inline-flex; animation: tick 45s linear infinite; }
+  .ticker span { padding: 14px 26px; color: #cfdae3; border-right: 1px solid var(--line-dark); }
+  .ticker b { color: #fff; margin-right: 8px; font-weight: 700; }
+  .ticker .up { color: var(--green); }
+  @keyframes tick { to { transform: translateX(-50%); } }
+
+  /* Stats */
+  .stats { background: var(--ink); color: #fff; padding: 70px 0 90px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .stat { background: linear-gradient(180deg, var(--ink-2), var(--ink)); border: 1px solid var(--line-dark); border-radius: var(--radius); padding: 26px 24px; position: relative; overflow: hidden; }
+  .stat::after { content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(34,195,142,.22), transparent 70%); }
+  .stat .num { font-family: var(--head); font-weight: 700; font-size: 46px; line-height: 1; color: #fff; }
+  .stat .num em { font-style: normal; color: var(--green); }
+  .stat p { margin: 12px 0 0; color: var(--muted-dark); font-size: 15px; line-height: 1.45; }
+  .stat small { display: block; margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--green-2); text-transform: uppercase; letter-spacing: .06em; }
+
+  /* Section headings */
+  .sec { padding: 110px 0; }
+  .sec-head { max-width: 760px; margin-bottom: 60px; }
+  .kicker { font-family: var(--mono); font-size: 13px; color: var(--green); letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+  .sec-head h2 { font-size: clamp(34px, 4.6vw, 54px); margin: 12px 0 16px; }
+  .sec-head p { color: var(--muted); font-size: 19px; margin: 0; }
+
+  /* Case studies */
+  .case { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 120px; }
+  .case > * { min-width: 0; }
+  .case:last-of-type { margin-bottom: 80px; }
+  .case.flip .case-visual { order: -1; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 5px 10px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); color: var(--muted); }
+  .tag.co { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .case h3 { font-size: clamp(28px, 3.2vw, 38px); margin-bottom: 22px; }
+  .step-text { display: grid; grid-template-columns: 26px 1fr; gap: 4px 12px; margin-bottom: 14px; }
+  .step-text .n { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--muted); padding-top: 4px; }
+  .step-text p { margin: 0; }
+  .step-text p b { font-weight: 600; }
+  .result { margin-top: 22px; padding: 18px 20px; border-radius: 14px; background: var(--green-soft); border-left: 4px solid var(--green); font-weight: 500; }
+  .result strong { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #128a63; display: block; margin-bottom: 4px; }
+
+  .panel { position: relative; background: radial-gradient(500px 260px at 100% 0%, rgba(34,195,142,.16), transparent 70%), var(--ink); color: #e6eef3; border-radius: 26px; padding: 28px; box-shadow: 0 40px 80px -40px rgba(11,22,32,.55); overflow: hidden; }
+  .panel-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+  .panel-label { font-family: var(--mono); font-size: 12px; color: var(--muted-dark); letter-spacing: .08em; text-transform: uppercase; }
+
+  /* Pipeline */
+  .pipe { display: flex; align-items: center; }
+  .node { flex: 0 1 118px; min-width: 0; width: 118px; text-align: center; background: var(--ink-2); border: 1px solid var(--line-dark); border-radius: 16px; padding: 16px 8px 12px; }
+  .node .ico { display: grid; place-items: center; width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 12px; background: var(--ink-3); color: var(--green); font-family: var(--mono); font-weight: 700; font-size: 13px; }
+  .node .ico svg { width: 24px; height: 24px; }
+  .node b { display: block; font-size: 14.5px; color: #fff; font-weight: 600; line-height: 1.2; }
+  .node small { display: block; font-size: 12px; color: var(--muted-dark); margin-top: 3px; line-height: 1.3; }
+  .node.hl { border-color: rgba(34,195,142,.6); box-shadow: 0 0 0 4px rgba(34,195,142,.10); }
+  .wire { position: relative; flex: 1; min-width: 22px; height: 2px; margin: 0 4px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 6px, transparent 6px 12px); }
+  .wire i { position: absolute; top: -3px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: flow 2.4s linear infinite; opacity: 0; }
+  .wire i:nth-child(2) { animation-delay: .8s; }
+  .wire i:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes flow { 0% { left: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; } }
+
+  .vol { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line-dark); }
+  .vol-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .vol-head span { font-size: 14px; color: var(--muted-dark); }
+  .vol-head b { font-family: var(--head); font-size: 34px; color: #fff; }
+  .bar-row { display: grid; grid-template-columns: 150px 1fr 60px; gap: 12px; align-items: center; margin-bottom: 10px; font-size: 13.5px; color: #cfdae3; }
+  .bar { height: 12px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--green), var(--green-2)); transition: width 1.4s cubic-bezier(.2,.7,.2,1); }
+  .in .bar i { width: var(--w); }
+  .bar-row .v { font-family: var(--mono); text-align: right; color: #fff; }
+  .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .ba { border-radius: 14px; padding: 12px 14px; font-size: 13.5px; line-height: 1.4; border: 1px solid var(--line-dark); background: var(--ink-2); }
+  .ba b { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+  .ba.before b { color: var(--red); }
+  .ba.after { border-color: rgba(34,195,142,.45); }
+  .ba.after b { color: var(--green); }
+  .ba .people { font-size: 18px; letter-spacing: 2px; }
+
+  /* Chart */
+  .toggle { display: inline-flex; background: var(--ink-2); border: 1px solid var(--line-dark); border-radius: 999px; padding: 4px; }
+  .toggle button { font: 600 13px var(--body); color: var(--muted-dark); background: transparent; border: 0; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: background .25s, color .25s; }
+  .toggle button.on { background: var(--green); color: var(--ink); }
+  .toggle button.hint { animation: hint 1.6s ease-in-out infinite; }
+  @keyframes hint { 0%,100% { box-shadow: 0 0 0 0 rgba(34,195,142,0); color: var(--muted-dark); } 50% { box-shadow: 0 0 0 4px rgba(34,195,142,.35); color: #fff; } }
+  .chart { position: relative; height: 270px; }
+  .chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .spin-flag { position: absolute; top: 0; transform: translateX(-50%); font-family: var(--mono); font-size: 11.5px; color: var(--amber); background: rgba(242,181,68,.12); border: 1px solid rgba(242,181,68,.4); padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+  .chart-note { position: absolute; left: 0; bottom: 6px; font-size: 13.5px; padding: 8px 12px; border-radius: 10px; background: rgba(16,34,48,.9); border: 1px solid var(--line-dark); max-width: 75%; transition: color .3s, border-color .3s; }
+  .chart-note.bad { color: #ffb4aa; border-color: rgba(239,107,91,.5); }
+  .chart-note.good { color: var(--green-2); border-color: rgba(34,195,142,.5); }
+  .timeline-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .tchip { border-radius: 14px; padding: 12px 14px; background: var(--ink-2); border: 1px solid var(--line-dark); font-size: 13.5px; line-height: 1.4; }
+  .tchip b { display: block; font-family: var(--head); font-size: 22px; margin-bottom: 2px; }
+  .tchip.us b { color: var(--green); }
+  .tchip.them b { color: var(--amber); }
+  .illus { margin-top: 14px; font-size: 11.5px; color: var(--muted-dark); font-family: var(--mono); }
+
+  .strike { font-size: 12.5px; color: #ffb4aa; text-decoration: line-through; text-decoration-color: rgba(239,107,91,.8); }
+
+
+  /* Orange Trail: live sheet + reconciliation */
+  .sync { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--green-2); background: rgba(34,195,142,.10); border: 1px solid rgba(34,195,142,.35); padding: 4px 10px; border-radius: 999px; }
+  .sync i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  .sheet { border: 1px solid var(--line-dark); border-radius: 12px; overflow: hidden; font-size: 13.5px; background: #0d1c27; }
+  .sh-row { display: grid; grid-template-columns: 30px 1.1fr 1fr 1.15fr; align-items: center; border-top: 1px solid var(--line-dark); }
+  .sh-row:first-child { border-top: 0; }
+  .sh-row > span { padding: 8px 10px; border-left: 1px solid var(--line-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sh-row > span:first-child { border-left: 0; text-align: center; color: var(--muted-dark); font-family: var(--mono); font-size: 11px; background: rgba(255,255,255,.03); }
+  .sh-head { background: rgba(255,255,255,.05); font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--muted-dark); text-transform: uppercase; }
+  .sh-row .num { font-family: var(--mono); text-align: right; color: #fff; }
+  .sh-row .num.loading { color: transparent; background: linear-gradient(90deg, rgba(255,255,255,.04) 0%, rgba(34,195,142,.25) 50%, rgba(255,255,255,.04) 100%); background-size: 200% 100%; animation: shimmer 1s linear infinite; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .sh-row .stat-cell { color: var(--muted-dark); font-size: 12.5px; }
+  .sh-row .stat-cell.ok { color: var(--green-2); }
+  .sh-row .stat-cell em { font-style: normal; }
+  .sh-row.fresh { animation: rowflash 1s ease; }
+  @keyframes rowflash { 0% { background: rgba(34,195,142,.22); } 100% { background: transparent; } }
+  .manual-note { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 12px 0 0; font-size: 13px; color: var(--muted-dark); }
+  .manual-note .strike { font-size: 13px; }
+  .manual-note b { color: var(--green-2); font-weight: 600; }
+  .recon { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line-dark); }
+  .recon-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; gap: 10px; flex-wrap: wrap; }
+  .recon-head b { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #fff; }
+  .recon-rows { display: grid; gap: 10px; }
+  .rrow { display: grid; grid-template-columns: 54px 1fr 26px 1fr 96px; align-items: center; gap: 8px; }
+  .ccy { font-family: var(--mono); font-weight: 700; font-size: 13px; color: var(--ink); background: var(--amber); border-radius: 8px; text-align: center; padding: 6px 0; }
+  .amt { background: var(--ink-2); border: 1px solid var(--line-dark); border-radius: 10px; padding: 7px 10px; line-height: 1.25; }
+  .amt small { display: block; font-size: 10.5px; color: var(--muted-dark); text-transform: uppercase; letter-spacing: .05em; font-family: var(--mono); }
+  .amt span { font-family: var(--mono); font-size: 14px; color: #fff; }
+  .eq { text-align: center; font-family: var(--mono); font-size: 18px; color: var(--muted-dark); transition: color .3s; }
+  .verdict { font-family: var(--mono); font-size: 12px; font-weight: 700; text-align: center; padding: 7px 4px; border-radius: 10px; border: 1px dashed rgba(255,255,255,.25); color: var(--muted-dark); transition: all .35s; }
+  .rrow.matched .eq { color: var(--green); }
+  .rrow.matched .verdict { border: 1px solid var(--green); background: rgba(34,195,142,.16); color: var(--green-2); }
+
+  /* Stepper (REF-T) */
+  .stepper { position: relative; list-style: none; margin: 0; padding: 0 0 0 4px; }
+  .stepper::before { content: ""; position: absolute; left: 21px; top: 22px; bottom: 22px; width: 2px; background: rgba(255,255,255,.12); }
+  .stepper .fill { position: absolute; left: 21px; top: 22px; width: 2px; height: 0; background: linear-gradient(var(--green), var(--green-2)); transition: height 2.2s ease; }
+  .in .stepper .fill { height: calc(100% - 44px); }
+  .stepper .st { position: relative; display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start; padding: 10px 0; }
+  .stepper .dot { position: relative; z-index: 1; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 13px; background: var(--ink-2); border: 2px solid rgba(255,255,255,.2); color: var(--muted-dark); transition: all .4s; }
+  .in .stepper .dot { background: var(--green); border-color: var(--green); color: var(--ink); }
+  .in .stepper .st:nth-child(2) .dot { transition-delay: .1s; }
+  .in .stepper .st:nth-child(3) .dot { transition-delay: .55s; }
+  .in .stepper .st:nth-child(4) .dot { transition-delay: 1s; }
+  .in .stepper .st:nth-child(5) .dot { transition-delay: 1.45s; }
+  .in .stepper .st:nth-child(6) .dot { transition-delay: 1.9s; }
+  .stepper .st b { display: block; color: #fff; font-size: 15.5px; margin-top: 6px; }
+  .stepper .st span { font-size: 13.5px; color: var(--muted-dark); }
+  .stepper .st.final b { color: var(--green-2); }
+
+  /* Smaller wins */
+  .wins { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .win { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; transition: transform .25s, box-shadow .25s; }
+  .win:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(11,22,32,.4); }
+  .win .viz { height: 116px; margin-bottom: 18px; border-radius: 14px; background: var(--ink); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .win h3 { font-family: var(--head); font-size: 19px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .win p { margin: 0; font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+  .win .co { font-family: var(--mono); font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; display: block; }
+  .daybar { position: relative; width: 86%; height: 14px; border-radius: 99px; background: linear-gradient(90deg, var(--green) 0%, var(--green) 45%, var(--amber) 70%, var(--red) 100%); }
+  .daybar .hrs { position: absolute; top: 20px; left: 0; right: 0; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--muted-dark); }
+  .daybar .pin { position: absolute; top: -9px; width: 4px; height: 32px; border-radius: 2px; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,.7); left: 90%; transition: left 1.6s cubic-bezier(.3,.7,.2,1) .3s; }
+  .in .daybar .pin { left: 30%; }
+  .reg { position: absolute; inset: 0; padding: 0 12px; }
+  .reg-head { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: grid; grid-template-columns: 50px 1fr auto; gap: 8px; padding: 7px 12px 5px; white-space: nowrap; font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-dark); background: var(--ink); border-bottom: 1px solid var(--line-dark); }
+  .reg-body { position: absolute; top: 26px; left: 0; right: 0; bottom: 0; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 80%, transparent); mask-image: linear-gradient(transparent, #000 18%, #000 80%, transparent); }
+  .reg-track { animation: regscroll 16s linear infinite; }
+  .reg-row { display: grid; grid-template-columns: 50px 1fr auto; white-space: nowrap; gap: 8px; align-items: center; height: 24px; padding: 0 12px; font-size: 12px; color: #e6eef3; border-bottom: 1px dashed rgba(255,255,255,.06); }
+  .reg-row span { overflow: hidden; text-overflow: ellipsis; }
+  .reg-row .id { font-family: var(--mono); font-size: 10.5px; color: var(--amber); }
+  .reg-row .ok { font-family: var(--mono); font-size: 10px; color: var(--green-2); }
+  @keyframes regscroll { to { transform: translateY(-50%); } }
+  .mar { display: flex; align-items: center; gap: 4px; font-family: var(--mono); font-size: 10.5px; color: #cfdae3; }
+  .mar span { white-space: nowrap; padding: 5px 6px; border-radius: 7px; border: 1px solid var(--line-dark); background: var(--ink-2); }
+  .mar span.g { border-color: rgba(34,195,142,.6); color: var(--green-2); }
+  .mar em { color: var(--green); font-style: normal; }
+  .win svg.candles { position: absolute; inset: 22px 8px 6px; width: calc(100% - 16px); height: calc(100% - 28px); }
+  .viz-legend { position: absolute; top: 6px; left: 10px; display: flex; gap: 10px; font-family: var(--mono); font-size: 9.5px; color: var(--muted-dark); z-index: 1; }
+  .viz-legend b { font-weight: 700; }
+  .viz-legend .bb { color: #8fb7ff; }
+  .viz-legend .ma { color: var(--amber); }
+
+  /* How I work */
+  .how { background: var(--ink); color: #fff; }
+  .how .sec-head p { color: var(--muted-dark); }
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .principle { border-top: 2px solid var(--line-dark); padding-top: 24px; position: relative; }
+  .principle::before { content: ""; position: absolute; top: -2px; left: 0; height: 2px; width: 0; background: var(--green); transition: width 1.2s ease .2s; }
+  .in.principle::before, .in .principle::before { width: 100%; }
+  .principle .big { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 700; }
+  .principle h3 { font-size: 26px; margin: 12px 0 10px; }
+  .principle p { color: var(--muted-dark); margin: 0; }
+
+  /* Experience */
+  .xp { position: relative; max-width: 1000px; }
+  .xp::before { content: ""; position: absolute; left: 150px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .job { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 0 40px; padding: 0 0 38px; }
+  .job::after { content: ""; position: absolute; left: 144px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--green); }
+  .job.now::after { background: var(--green); box-shadow: 0 0 0 6px var(--green-soft); }
+  .job .yrs { font-family: var(--mono); font-size: 14px; color: var(--muted); padding-top: 2px; }
+  .job h3 { font-size: 24px; }
+  .job .where { color: var(--muted); font-size: 15.5px; margin: 4px 0 8px; }
+  .job p { margin: 0; }
+  .duties { margin: 6px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; }
+  .duties li { position: relative; padding-left: 18px; font-size: 15.5px; line-height: 1.45; }
+  .duties li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 2px; background: var(--green); }
+  .job .chips { margin-top: 12px; }
+
+  /* Skills */
+  .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .skill h3 { font-family: var(--head); font-size: 20px; margin: 0 0 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 14px; padding: 5px 12px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); }
+  .chip.g { background: var(--green-soft); border-color: rgba(34,195,142,.35); color: #0f6f50; font-weight: 500; }
+
+  /* Contact */
+  .contact { position: relative; background: radial-gradient(800px 400px at 50% 120%, rgba(34,195,142,.35), transparent 70%), var(--ink); color: #fff; text-align: center; padding: 120px 0; overflow: hidden; }
+  .contact h2 { font-size: clamp(38px, 6vw, 72px); margin: 14px auto 18px; max-width: 900px; }
+  .contact p { color: var(--muted-dark); font-size: 19px; margin: 0 auto 34px; max-width: 620px; }
+  .contact .cta { justify-content: center; }
+  footer { background: var(--ink); color: var(--muted-dark); border-top: 1px solid var(--line-dark); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; padding-top: 24px; padding-bottom: 28px; gap: 12px; flex-wrap: wrap; }
+
+  /* Reveal */
+  .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 1180px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .portrait-wrap { justify-self: center; }
+  }
+  @media (max-width: 1000px) {
+    .nav-links { gap: 18px; }
+  }
+  @media (max-width: 980px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .case { grid-template-columns: 1fr; gap: 32px; margin-bottom: 90px; }
+    .case.flip .case-visual { order: 0; }
+    .wins { grid-template-columns: 1fr 1fr; }
+    .principles, .skill-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 800px) {
+    .nav-links { gap: 8px; }
+    .nav-links a:not(.work) { display: none; }
+    .nav-links a.work { padding: 7px 12px; border: 1px solid rgba(127,240,196,.45); border-radius: 999px; font-size: 14px; }
+    .nav-links a.work .long { display: none; }
+    .nav-links a.work .short { display: inline; }
+  }
+  @media (max-width: 640px) {
+    .logo { gap: 8px; font-size: 16px; }
+    .logo svg { width: 28px; height: 28px; }
+    .lang button { padding: 0 9px; gap: 5px; }
+    body { font-size: 16px; }
+    .wrap { padding: 0 18px; }
+    .hero { padding-top: 104px; }
+    .hero p.sub { font-size: 18px; }
+    .portrait-wrap { flex-direction: column; align-items: center; gap: 18px; width: 100%; }
+    .portrait { flex: none; width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; }
+    .checklist { flex: none; width: 100%; max-width: 320px; height: auto; }
+    .checklist ul { gap: 6px; }
+    .meta { grid-template-columns: 1fr; }
+    .stats-grid { gap: 12px; }
+    .stat { padding: 20px 16px; }
+    .stat .num { font-size: 34px; }
+    .stat p { font-size: 13.5px; }
+    .sec { padding: 80px 0; }
+    .panel { padding: 20px 16px; border-radius: 22px; }
+    .node { width: 86px; padding: 12px 4px 10px; }
+    .node .ico { width: 36px; height: 36px; }
+    .node b { font-size: 12.5px; }
+    .node small { font-size: 10.5px; }
+    .bar-row { grid-template-columns: 104px 1fr 48px; font-size: 12px; }
+    .before-after, .timeline-chips { grid-template-columns: 1fr; }
+    .chart { height: 220px; }
+    .sheet { font-size: 12.5px; }
+    .sh-row { grid-template-columns: 24px 1fr 1fr 1fr; }
+    .sh-row > span { padding: 7px 7px; }
+    .sh-row .stat-cell em { display: none; }
+    .rrow { grid-template-columns: 44px 1fr 16px 1fr; }
+    .rrow .verdict { grid-column: 1 / -1; }
+    .amt span { font-size: 13px; }
+    .chart-note { max-width: 100%; font-size: 12.5px; }
+    .wins { grid-template-columns: 1fr; }
+    .xp::before { left: 6px; }
+    .job { grid-template-columns: 1fr; padding-left: 34px; }
+    .job::after { left: 0; }
+    .job .yrs { margin-bottom: 4px; }
+    .duties { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .lang .code { display: none; }
+  }
+  @media (max-width: 350px) {
+    .logo .name { display: none; }
+    .stats .stat .num { font-size: 26px; }
+    .node small { font-size: 10px; }
+  }
+  @media (max-width: 380px) {
+    .stat .num { font-size: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17303f"/><path d="M12 44 L24 32 L33 38 L52 18" stroke="#22c38e" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="name">Marko Simić</span>
+    </a>
+    <div class="nav-links">
+      <a class="work" href="#work"><span class="long">Selected work</span><span class="short">Work</span></a>
+      <a href="#how">How I work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <div class="lang" role="group" aria-label="Language / Jezik">
+        <button type="button" data-lang="en" lang="en" title="English"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><clipPath id="uk-c"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#uk-c)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg></span><span class="code">EN</span></button>
+        <button type="button" data-lang="sr" lang="sr" title="Srpski"><span class="flag" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1.3334" fill="#0C4076"/><rect width="3" height=".6667" fill="#C6363C"/></svg></span><span class="code">SR</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="heroFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#22c38e" stop-opacity=".22"/>
+          <stop offset="1" stop-color="#22c38e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+        <line x1="0" y1="80" x2="1200" y2="80"/><line x1="0" y1="160" x2="1200" y2="160"/>
+        <line x1="0" y1="240" x2="1200" y2="240"/><line x1="0" y1="320" x2="1200" y2="320"/>
+      </g>
+      <path id="heroArea" fill="url(#heroFill)" d=""/>
+      <path id="heroLine" fill="none" stroke="#22c38e" stroke-width="2.5" stroke-opacity=".7" vector-effect="non-scaling-stroke" d=""/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-role">Accountant&nbsp;· AP/AR&nbsp;· Payroll&nbsp;· Payments&nbsp;· Reconciliations</p>
+      <h1>Accurate books.<br><span class="grad">Reliable processes.</span></h1>
+      <p class="sub">I'm Marko, an accountant with <b>5+ years of hands-on work</b> in accounts payable and receivable, payment runs, bank and balance reconciliations, payroll, VAT records, fixed assets and management reporting. I handle the daily routine myself, and I know it well enough to make it more accurate and efficient.</p>
+      <div class="cta">
+        <a class="btn btn-green" href="#work">See what I've built ↓</a>
+        <a class="btn btn-ghost" href="mailto:marko.simic.ks@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/marko-simic-ks/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="meta">
+        <span>Kruševac, Serbia</span>
+        <span>Remote-ready (CET)</span>
+        <span>3 years in a remote international team</span>
+        <span>Serbian · English</span>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <div class="ring" aria-hidden="true"></div>
+        <img src="photo.jpg" alt="Portrait of Marko Simić">
+      </div>
+      <div class="checklist" aria-hidden="true">
+        <div class="cl-head"><span>Month-end close</span><span><b id="clDone">0</b> / 7</span></div>
+        <ul id="clList">
+          <li><span class="box"></span>AP/AR cut-off<span class="day">T+1</span></li>
+          <li><span class="box"></span>Payroll posted<span class="day">T+1</span></li>
+          <li><span class="box"></span>Depreciation run<span class="day">T+1</span></li>
+          <li><span class="box"></span>Bank reconciled<span class="day">T+1</span></li>
+          <li><span class="box"></span>AP/AR ledgers tied to GL<span class="day">T+2</span></li>
+          <li><span class="box"></span>VAT reconciled<span class="day">T+2</span></li>
+          <li><span class="box"></span>Trial balance reviewed<span class="day">T+3</span></li>
+        </ul>
+        <div class="cl-bar"><i id="clBar"></i></div>
+        <div class="cl-status" id="clStatus">✓ Ready for management reports</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span><b>ACCOUNTING</b><em class="up">▲</em> 5+ YRS</span>
+      <span><b>PAYMENT ORDERS</b><em class="up">▲</em> ~4,400 / MO AUTOMATED</span>
+      <span><b>BANK FEES</b><em class="up">▼</em> €100s / MO SAVED</span>
+      <span><b>SPIN-OFF ADJ.</b><em class="up">▲</em> READY DAY ONE</span>
+      <span><b>REMOTE</b><em class="up">▲</em> 3 YRS</span>
+      <span><b>MARKET DATA</b><em class="up">▲</em> 5 YRS</span>
+      <span><b>XERO · MYOB · PANTHEON</b><em class="up">●</em></span>
+      <span><b>EXCEL · POWER QUERY · SQL</b><em class="up">●</em></span>
+      <span><b>ACCOUNTING</b><em class="up">▲</em> 5+ YRS</span>
+      <span><b>PAYMENT ORDERS</b><em class="up">▲</em> ~4,400 / MO AUTOMATED</span>
+      <span><b>BANK FEES</b><em class="up">▼</em> €100s / MO SAVED</span>
+      <span><b>SPIN-OFF ADJ.</b><em class="up">▲</em> READY DAY ONE</span>
+      <span><b>REMOTE</b><em class="up">▲</em> 3 YRS</span>
+      <span><b>MARKET DATA</b><em class="up">▲</em> 5 YRS</span>
+      <span><b>XERO · MYOB · PANTHEON</b><em class="up">●</em></span>
+      <span><b>EXCEL · POWER QUERY · SQL</b><em class="up">●</em></span>
+    </div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal">
+      <div class="num">~<span data-count="4400">4,400</span></div>
+      <p>payment orders a month moved from manual typing to a single file import</p>
+      <small>Bechtel-Enka</small>
+    </div>
+    <div class="stat reveal">
+      <div class="num">2 <em>→</em> 1</div>
+      <p>people needed for payment entry after the import file replaced manual work</p>
+      <small>Bechtel-Enka</small>
+    </div>
+    <div class="stat reveal">
+      <div class="num">Day <em>1</em></div>
+      <p>spin-off price adjustments ready, at least a day earlier, for every market covered</p>
+      <small>Teletrader</small>
+    </div>
+    <div class="stat reveal">
+      <div class="num">€<span>100s</span></div>
+      <p>saved every month in bank fees by changing when payments were released</p>
+      <small>Bechtel-Enka</small>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Selected work</span>
+      <h2>Know the routine. Then improve it.</h2>
+      <p>Each of these started in my own daily work. Knowing the process inside out is what showed me where it could be more accurate and efficient.</p>
+    </div>
+
+    <!-- Case 1: Bechtel-Enka payments -->
+    <article class="case">
+      <div class="case-text reveal">
+        <div class="case-meta"><span class="tag co">Bechtel-Enka</span><span class="tag">Payments</span><span class="tag">2020 – 2022</span></div>
+        <h3>Thousands of payment orders, no more typing</h3>
+        <div class="step-text"><span class="n">01</span><p><b>The routine.</b> I processed vendor and staff payments for a large motorway construction project.</p></div>
+        <div class="step-text"><span class="n">02</span><p><b>The problem.</b> The company's in-house ERP had no link to the local e-banking platform (Halcom), so every order was typed in by hand: permits and fees for about 2,000 expat workers (renewed every three months, three orders each), their monthly salaries, and around 100 vendor payments a week.</p></div>
+        <div class="step-text"><span class="n">03</span><p><b>What I did.</b> Built an Excel workbook that generates the bank's import file (TXT) straight from the payment data, so a whole batch loads into Halcom in one step. I also wrote a small Python script that filled in payment slips on the government ePlati portal and saved the payment reference numbers back to the sheet.</p></div>
+        <div class="result"><strong>Result</strong>Work that needed two people was done by me alone, with far fewer entry errors. The workbook is still in use.</div>
+      </div>
+      <div class="case-visual reveal">
+        <div class="panel">
+          <div class="panel-top"><span class="panel-label">How a payment batch moves</span></div>
+          <div class="pipe">
+            <div class="node">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+              <b>Excel</b><small>payment data</small>
+            </div>
+            <div class="wire"><i></i><i></i><i></i></div>
+            <div class="node hl">
+              <span class="ico">TXT</span>
+              <b>Import file</b><small>generated</small>
+            </div>
+            <div class="wire"><i></i><i></i><i></i></div>
+            <div class="node">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></span>
+              <b>Halcom</b><small>e-banking</small>
+            </div>
+          </div>
+          <div class="vol">
+            <div class="vol-head"><span>Payment orders per month (approx.)</span><b><span data-count="4400">4,400</span></b></div>
+            <div class="bar-row"><span>Permits &amp; fees</span><div class="bar"><i style="--w:100%"></i></div><span class="v">2,000</span></div>
+            <div class="bar-row"><span>Expat salaries</span><div class="bar"><i style="--w:100%"></i></div><span class="v">2,000</span></div>
+            <div class="bar-row"><span>Vendor payments</span><div class="bar"><i style="--w:22%"></i></div><span class="v">430</span></div>
+          </div>
+          <div class="before-after">
+            <div class="ba before"><b>Before</b><span class="people">👤👤</span><br>Two people, every order typed by hand</div>
+            <div class="ba after"><b>After</b><span class="people">👤</span><br>One person, one import per batch</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 2: Teletrader spin-off -->
+    <article class="case flip">
+      <div class="case-text reveal">
+        <div class="case-meta"><span class="tag co">Teletrader</span><span class="tag">Market data</span><span class="tag">2015 – 2020</span></div>
+        <h3>Spin-off adjustments ready on day one</h3>
+        <div class="step-text"><span class="n">01</span><p><b>The routine.</b> Most of my day was reviewing reports from error-detection checks on market data (outliers, outages, missing prices) for stocks, bonds and funds from many sources.</p></div>
+        <div class="step-text"><span class="n">02</span><p><b>The problem.</b> When a company spins off part of its business, its price history has to be adjusted, or the chart shows a crash that never happened. The adjustment factor was copied from competitor platforms, so we had to wait for it, and it was not available for every market we covered.</p></div>
+        <div class="step-text"><span class="n">03</span><p><b>What I did.</b> Worked out a method that combines the public spin-off terms with pre-trading data available to us internally, so the factor can be calculated before trading starts.</p></div>
+        <div class="result"><strong>Result</strong>Adjusted prices on the spin-off date itself, at least a day earlier than before, for every market we covered. The method is still in use.</div>
+      </div>
+      <div class="case-visual reveal">
+        <div class="panel">
+          <div class="panel-top">
+            <span class="panel-label">Share price around a spin-off</span>
+            <div class="toggle" role="group" aria-label="Chart mode">
+              <button type="button" data-mode="raw">Unadjusted</button>
+              <button type="button" data-mode="adj">Adjusted</button>
+            </div>
+          </div>
+          <div class="chart" id="chart">
+            <svg viewBox="0 0 640 270" preserveAspectRatio="none" aria-label="Illustrative share price chart">
+              <defs>
+                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#22c38e" stop-opacity=".35"/>
+                  <stop offset="1" stop-color="#22c38e" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <g stroke="rgba(255,255,255,.07)" stroke-width="1" vector-effect="non-scaling-stroke">
+                <line x1="0" y1="60" x2="640" y2="60" vector-effect="non-scaling-stroke"/>
+                <line x1="0" y1="120" x2="640" y2="120" vector-effect="non-scaling-stroke"/>
+                <line x1="0" y1="180" x2="640" y2="180" vector-effect="non-scaling-stroke"/>
+                <line x1="0" y1="240" x2="640" y2="240" vector-effect="non-scaling-stroke"/>
+              </g>
+              <line id="spinLine" x1="0" y1="24" x2="0" y2="270" stroke="#f2b544" stroke-width="1.5" stroke-dasharray="5 5" vector-effect="non-scaling-stroke"/>
+              <path id="chartArea" fill="url(#chartFill)" d=""/>
+              <path id="chartLine" fill="none" stroke="#22c38e" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d=""/>
+            </svg>
+            <div class="spin-flag" id="spinFlag">Spin-off date</div>
+            <div class="chart-note" id="chartNote"></div>
+          </div>
+          <div class="timeline-chips">
+            <div class="tchip us"><b>Day 1</b>My method: factor ready at the open, every market</div>
+            <div class="tchip them"><b>Day 2+</b>Copied factor: later, and not for every market</div>
+          </div>
+          <div class="illus">Illustration with simulated prices, not real market data.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 3: Orange Trail -->
+    <article class="case">
+      <div class="case-text reveal">
+        <div class="case-meta"><span class="tag co">Orange Trail</span><span class="tag">AR · AP</span><span class="tag">Remote · 2022 – 2025</span></div>
+        <h3>Billing data that pulls itself in</h3>
+        <div class="step-text"><span class="n">01</span><p><b>The routine.</b> Day-to-day accounting for several group companies: invoicing, vendor payments, reconciliations and payroll.</p></div>
+        <div class="step-text"><span class="n">02</span><p><b>The problem.</b> Clients were billed on their Google Ads spend, and a part-time colleague copied those figures by hand from each account's dashboard. On the AP side, daily invoices from Meta in USD and EUR took at least an hour a day to check.</p></div>
+        <div class="step-text"><span class="n">03</span><p><b>What I did.</b> Built Google Sheets scripts that pull the spend directly from Google Ads, replacing the manual copying. For the Meta invoices I built a Power Query model that aggregates the spend data for the check.</p></div>
+        <div class="result"><strong>Result</strong>Billing figures arrive automatically and accurately instead of being retyped, and the daily invoice check starts from one table instead of scattered exports.</div>
+      </div>
+      <div class="case-visual reveal">
+        <div class="panel">
+          <div class="panel-top"><span class="panel-label">AR · Client billing sheet</span><span class="sync"><i></i>Pulled from Google Ads</span></div>
+          <div class="sheet" id="sheet">
+            <div class="sh-row sh-head"><span></span><span>Client</span><span>Ad spend</span><span>Billing</span></div>
+            <div class="sh-row"><span>1</span><span>Client A</span><span class="num" data-v="12,480.00">—</span><span class="stat-cell">waiting</span></div>
+            <div class="sh-row"><span>2</span><span>Client B</span><span class="num" data-v="3,915.40">—</span><span class="stat-cell">waiting</span></div>
+            <div class="sh-row"><span>3</span><span>Client C</span><span class="num" data-v="27,064.10">—</span><span class="stat-cell">waiting</span></div>
+            <div class="sh-row"><span>4</span><span>Client D</span><span class="num" data-v="8,230.75">—</span><span class="stat-cell">waiting</span></div>
+            <div class="sh-row"><span>5</span><span>Client E</span><span class="num" data-v="15,602.30">—</span><span class="stat-cell">waiting</span></div>
+          </div>
+          <div class="manual-note"><span class="strike">Copied by hand from each dashboard</span><span>→</span><b>Pulled in by script</b></div>
+
+          <div class="recon" id="recon">
+            <div class="recon-head"><b>AP · Daily Meta invoices</b><span class="strike">1h+ a day of manual checks</span></div>
+            <div class="recon-rows">
+              <div class="rrow"><span class="ccy">USD</span><div class="amt"><small>Invoice</small><span>3,214.50</span></div><span class="eq">=</span><div class="amt"><small>Power Query</small><span>3,214.50</span></div><span class="verdict">checking…</span></div>
+              <div class="rrow"><span class="ccy">EUR</span><div class="amt"><small>Invoice</small><span>1,876.20</span></div><span class="eq">=</span><div class="amt"><small>Power Query</small><span>1,876.20</span></div><span class="verdict">checking…</span></div>
+            </div>
+          </div>
+          <div class="illus">Illustration with sample figures, not real client data.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 4: REF-T -->
+    <article class="case flip">
+      <div class="case-text reveal">
+        <div class="case-meta"><span class="tag co">Bechtel-Enka</span><span class="tag">Tax</span><span class="tag">2020 – 2022</span></div>
+        <h3>A fuel excise refund, set up from zero</h3>
+        <div class="step-text"><span class="n">01</span><p><b>The routine.</b> Alongside AP, payments and VAT records, I handled correspondence with the Tax Administration.</p></div>
+        <div class="step-text"><span class="n">02</span><p><b>The problem.</b> The company was entitled to a refund of excise duty on transport fuel (REF-T), but had no procedure for claiming it.</p></div>
+        <div class="step-text"><span class="n">03</span><p><b>What I did.</b> Took part from the very first meeting with the tax inspector to the final claim: agreed with the Tax Administration how data and documents would be submitted, collected the documentation and filed the refund claims.</p></div>
+        <div class="result"><strong>Result</strong>A working procedure, agreed with the Tax Administration, for regular refund claims. The hard part was not filing a claim but getting the whole process defined and accepted.</div>
+      </div>
+      <div class="case-visual reveal">
+        <div class="panel">
+          <div class="panel-top"><span class="panel-label">From first meeting to refund</span></div>
+          <div class="stepper">
+            <div class="fill"></div>
+            <div class="st"><span class="dot">1</span><div><b>First meetings</b><span>with the tax inspector at the Tax Administration</span></div></div>
+            <div class="st"><span class="dot">2</span><div><b>Format agreed</b><span>how data and documents would be submitted</span></div></div>
+            <div class="st"><span class="dot">3</span><div><b>Documentation collected</b><span>everything the agreed procedure required</span></div></div>
+            <div class="st"><span class="dot">4</span><div><b>Claims filed</b><span>refund requests submitted</span></div></div>
+            <div class="st final"><span class="dot">✓</span><div><b>Repeatable procedure</b><span>in place for regular claims</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="sec-head reveal" style="margin-bottom:36px">
+      <span class="kicker">Also</span>
+      <h2 style="font-size:clamp(28px,3.4vw,38px)">Smaller wins along the way</h2>
+    </div>
+    <div class="wins">
+      <div class="win reveal">
+        <div class="viz"><div class="daybar"><div class="pin"></div><div class="hrs"><span>08h</span><span>12h</span><span>16h</span></div></div></div>
+        <span class="co">Bechtel-Enka</span>
+        <h3>Lower bank fees</h3>
+        <p>Payments went out late in the afternoon, when fees are highest. Moving the release time and value dates saved several hundred euros a month.</p>
+      </div>
+      <div class="win reveal">
+        <div class="viz"><div class="reg" aria-hidden="true"><div class="reg-head"><span>No.</span><span>Item</span><span>Status</span></div><div class="reg-body"><div class="reg-track"><div class="reg-row"><span class="id">FA-2041</span><span>Excavator</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2042</span><span>Dump truck</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2043</span><span>Paver</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2044</span><span>Road roller</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2045</span><span>Generator</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2046</span><span>Mixer truck</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2047</span><span>Container</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2048</span><span>Crane</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2041</span><span>Excavator</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2042</span><span>Dump truck</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2043</span><span>Paver</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2044</span><span>Road roller</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2045</span><span>Generator</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2046</span><span>Mixer truck</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2047</span><span>Container</span><span class="ok">✓ capitalised</span></div><div class="reg-row"><span class="id">FA-2048</span><span>Crane</span><span class="ok">✓ capitalised</span></div></div></div></div></div>
+        <span class="co">Bechtel-Enka</span>
+        <h3>Fixed assets at scale</h3>
+        <p>Capitalised hundreds of equipment items a month during project mobilisation, in a register of several thousand asset numbers.</p>
+      </div>
+      <div class="win reveal">
+        <div class="viz"><div class="mar"><span>Bank</span><em>+</em><span>MAR</span><em>→</em><span class="g">Scope</span><em>→</em><span>Test</span></div></div>
+        <span class="co">Teletrader</span>
+        <h3>Market abuse checks</h3>
+        <p>For a major EU bank client, I turned trader language and the EU Market Abuse Regulation (MAR) into a clear scope for developers, then tested the result.</p>
+      </div>
+      <div class="win reveal">
+        <div class="viz">
+          <div class="viz-legend" aria-hidden="true"><span class="bb"><b>BB</b> (20, 2)</span><span class="ma"><b>SMA</b> 20</span></div>
+          <svg class="candles" id="candles" viewBox="0 0 240 88" preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
+        <span class="co">Teletrader</span>
+        <h3>New platform indicators</h3>
+        <p>For sales-team requests, I researched how each indicator is calculated, modelled it in Excel, handed it to developers and verified the output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec how" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">How I work</span>
+      <h2>Reliable every day. Better over time.</h2>
+      <p>Most of finance is doing the same things right, every day and every month. I work well in that rhythm, and it is exactly where my improvements come from.</p>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
+        <span class="big">01</span>
+        <h3>Consistent and accurate</h3>
+        <p>Invoices, payment runs, bank statements and reconciliations, done on time every period, with every balance tied out.</p>
+      </div>
+      <div class="principle">
+        <span class="big">02</span>
+        <h3>Fewer errors by design</h3>
+        <p>Where the same data is retyped hundreds of times, an import file or a template keeps the numbers right and leaves more time for checking.</p>
+      </div>
+      <div class="principle">
+        <span class="big">03</span>
+        <h3>Built for the team</h3>
+        <p>Everything I set up is documented and easy to hand over. Some of it is still in use years after I left.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Experience</span>
+      <h2>Where I've done it</h2>
+    </div>
+    <div class="xp">
+      <div class="job now reveal">
+        <div class="yrs">2026 – now</div>
+        <div>
+          <h3>Payments Specialist</h3>
+          <div class="where">Mebit d.o.o. · Lopaš, Serbia</div>
+          <ul class="duties"><li>Reconcile deposit and withdrawal transactions against payment-provider records</li><li>Investigate failed, delayed and mismatched payments and resolve them with internal teams and payment providers</li><li>Monitor transaction flows to catch discrepancies and irregular payments early</li><li>Handle payment-related inquiries and give clear status updates</li></ul>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="yrs">2022 – 2025</div>
+        <div>
+          <h3>Finance &amp; Accounting Specialist</h3>
+          <div class="where">Orange Trail Ltd · Remote, international team</div>
+          <ul class="duties"><li>Day-to-day accounting for several companies within the group</li><li>Accounts payable and receivable, and vendor payment runs</li><li>Ongoing customer and supplier balance reconciliations</li><li>Review and verification of all transactions and their supporting documents</li><li>Payroll, commissions and bonuses</li><li>Financial reports for management</li><li>Records and documentation for the external tax accountant</li></ul>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="yrs">2020 – 2022</div>
+        <div>
+          <h3>Accountant</h3>
+          <div class="where">Bechtel-Enka UK Ltd · Kruševac, Serbia</div>
+          <ul class="duties"><li>Vendor payments, control of bank transactions and bank statement posting</li><li>Supplier and customer invoices (AP/AR)</li><li>Input and output VAT records and support with VAT returns</li><li>Fuel excise refund claims (REF-T) and correspondence with the Tax Administration</li><li>Capitalisation of fixed assets and depreciation</li><li>Financial reports and audit documentation; contact with auditors, banks and suppliers</li></ul>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="yrs">2015 – 2020</div>
+        <div>
+          <h3>Financial Data Specialist</h3>
+          <div class="where">Teletrader · Belgrade, Serbia</div>
+          <ul class="duties"><li>Quality and accuracy of financial market data from external sources</li><li>Analysis of incoming market data and mapping to the internal data model</li><li>Continuous improvement of error-detection checks and validation methods</li><li>Resolving client-reported data issues, escalating bugs to developers and testing fixes</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="skill-grid">
+      <div class="skill reveal">
+        <h3>Accounting</h3>
+        <div class="chips">
+          <span class="chip g">Accounts payable</span><span class="chip g">Accounts receivable</span><span class="chip g">Payment runs</span><span class="chip">Bank reconciliations</span><span class="chip">Balance reconciliations</span><span class="chip">Payroll</span><span class="chip">Commissions &amp; bonuses</span><span class="chip">General ledger review</span><span class="chip">VAT records</span><span class="chip">Fixed assets</span><span class="chip">Management reporting</span>
+        </div>
+      </div>
+      <div class="skill reveal">
+        <h3>Tools</h3>
+        <div class="chips">
+          <span class="chip g">Xero</span><span class="chip g">MYOB</span><span class="chip g">Pantheon</span><span class="chip">EGFS (ERP)</span><span class="chip">Halcom e-banking</span><span class="chip g">Excel &amp; Power Query</span><span class="chip">Google Sheets</span><span class="chip">MS SQL</span><span class="chip">Python (basic)</span>
+        </div>
+      </div>
+      <div class="skill reveal">
+        <h3>Also</h3>
+        <div class="chips">
+          <span class="chip">Claude · ChatGPT · Gemini</span><span class="chip">AI-assisted ledger review</span><span class="chip">Serbian (native)</span><span class="chip">English (professional)</span><span class="chip">Bachelor in Economics (Finance, Banking &amp; Insurance), University of Belgrade</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <span class="kicker">Contact</span>
+    <h2>Need someone who keeps the numbers right?</h2>
+    <p>I'm looking for a finance or accounting role: on-site in Kruševac, hybrid or fully remote.</p>
+    <div class="cta">
+      <a class="btn btn-green" href="mailto:marko.simic.ks@gmail.com">marko.simic.ks@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/marko-simic-ks/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span>© 2026 Marko Simić</span><span>Kruševac, Serbia · Remote (CET)</span></div>
+</footer>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Language: English by default; Serbian from the switch, a saved choice or ?lang=sr
+  var SR = {
+    "Work": "Primeri",
+    "How I work": "Kako radim",
+    "Experience": "Iskustvo",
+    "Contact": "Kontakt",
+    "Accountant&nbsp;· AP/AR&nbsp;· Payroll&nbsp;· Payments&nbsp;· Reconciliations": "Računovođa&nbsp;· Fakture&nbsp;· Plaćanja&nbsp;· Zarade&nbsp;· Usaglašavanja",
+    "Accurate books.<br><span class=\"grad\">Reliable processes.</span>": "Tačne knjige.<br><span class=\"grad\">Pouzdani procesi.</span>",
+    "I'm Marko, an accountant with <b>5+ years of hands-on work</b> in accounts payable and receivable, payment runs, bank and balance reconciliations, payroll, VAT records, fixed assets and management reporting. I handle the daily routine myself, and I know it well enough to make it more accurate and efficient.": "Ja sam Marko, računovođa sa <b>više od 5 godina praktičnog iskustva</b> u radu sa obavezama prema dobavljačima i potraživanjima od kupaca, plaćanjima, usaglašavanjem izvoda i salda, obračunom zarada, PDV evidencijom, osnovnim sredstvima i izveštavanjem za menadžment. Svakodnevni posao radim sam i dobro ga poznajem, pa znam gde može da se radi tačnije i efikasnije.",
+    "See what I've built ↓": "Pogledajte šta sam napravio ↓",
+    "Email me": "Pišite mi",
+    "Kruševac, Serbia": "Kruševac, Srbija",
+    "Remote-ready (CET)": "Rad na daljinu (CET)",
+    "3 years in a remote international team": "3 godine u međunarodnom timu na daljinu",
+    "Serbian · English": "Srpski · Engleski",
+    "Portrait of Marko Simić": "Marko Simić",
+    "Month-end close": "Zatvaranje meseca",
+    "<span class=\"box\"></span>AP/AR cut-off<span class=\"day\">T+1</span>": "<span class=\"box\"></span>Sve fakture proknjižene<span class=\"day\">T+1</span>",
+    "<span class=\"box\"></span>Payroll posted<span class=\"day\">T+1</span>": "<span class=\"box\"></span>Zarade proknjižene<span class=\"day\">T+1</span>",
+    "<span class=\"box\"></span>Depreciation run<span class=\"day\">T+1</span>": "<span class=\"box\"></span>Amortizacija obračunata<span class=\"day\">T+1</span>",
+    "<span class=\"box\"></span>Bank reconciled<span class=\"day\">T+1</span>": "<span class=\"box\"></span>Izvodi usaglašeni<span class=\"day\">T+1</span>",
+    "<span class=\"box\"></span>AP/AR ledgers tied to GL<span class=\"day\">T+2</span>": "<span class=\"box\"></span>Analitika = sintetika<span class=\"day\">T+2</span>",
+    "<span class=\"box\"></span>VAT reconciled<span class=\"day\">T+2</span>": "<span class=\"box\"></span>PDV usaglašen<span class=\"day\">T+2</span>",
+    "<span class=\"box\"></span>Trial balance reviewed<span class=\"day\">T+3</span>": "<span class=\"box\"></span>Bruto bilans proveren<span class=\"day\">T+3</span>",
+    "<b>ACCOUNTING</b><em class=\"up\">▲</em> 5+ YRS": "<b>RAČUNOVODSTVO</b><em class=\"up\">▲</em> 5+ GOD.",
+    "<b>PAYMENT ORDERS</b><em class=\"up\">▲</em> ~4,400 / MO AUTOMATED": "<b>NALOZI ZA PLAĆANJE</b><em class=\"up\">▲</em> ~4.400 / MES. AUTOMATIZOVANO",
+    "<b>BANK FEES</b><em class=\"up\">▼</em> €100s / MO SAVED": "<b>BANKARSKE PROVIZIJE</b><em class=\"up\">▼</em> STOTINE € / MES. UŠTEĐENO",
+    "<b>SPIN-OFF ADJ.</b><em class=\"up\">▲</em> READY DAY ONE": "<b>SPIN-OFF KOREKCIJE</b><em class=\"up\">▲</em> SPREMNE PRVOG DANA",
+    "<b>REMOTE</b><em class=\"up\">▲</em> 3 YRS": "<b>RAD NA DALJINU</b><em class=\"up\">▲</em> 3 GOD.",
+    "<b>MARKET DATA</b><em class=\"up\">▲</em> 5 YRS": "<b>BERZANSKI PODACI</b><em class=\"up\">▲</em> 5 GOD.",
+    "payment orders a month moved from manual typing to a single file import": "naloga za plaćanje mesečno umesto ručnog kucanja učitava se jednim fajlom",
+    "people needed for payment entry after the import file replaced manual work": "broj ljudi potrebnih za unos plaćanja, kad je fajl za uvoz zamenio ručni rad",
+    "Day <em>1</em>": "Dan <em>1</em>",
+    "spin-off price adjustments ready, at least a day earlier, for every market covered": "korekcije cena kod spin-offa spremne najmanje dan ranije, za sva tržišta koja smo pratili",
+    "€<span>100s</span>": "€<span>100+</span>",
+    "saved every month in bank fees by changing when payments were released": "mesečne uštede na bankarskim provizijama, promenom vremena slanja plaćanja",
+    "Selected work": "Izdvojeni primeri",
+    "Know the routine. Then improve it.": "Poznajem rutinu. Zato je unapređujem.",
+    "Each of these started in my own daily work. Knowing the process inside out is what showed me where it could be more accurate and efficient.": "Svaki od ovih primera počeo je u mom svakodnevnom poslu. Baš zato što proces poznajem do detalja, video sam gde može da bude tačniji i efikasniji.",
+    "Payments": "Plaćanja",
+    "Thousands of payment orders, no more typing": "Hiljade naloga za plaćanje, bez ručnog kucanja",
+    "<b>The routine.</b> I processed vendor and staff payments for a large motorway construction project.": "<b>Rutina.</b> Obrađivao sam plaćanja dobavljačima i zaposlenima na velikom projektu izgradnje autoputa.",
+    "<b>The problem.</b> The company's in-house ERP had no link to the local e-banking platform (Halcom), so every order was typed in by hand: permits and fees for about 2,000 expat workers (renewed every three months, three orders each), their monthly salaries, and around 100 vendor payments a week.": "<b>Problem.</b> Interni ERP kompanije nije bio povezan sa domaćim e-bankarstvom (Halcom), pa se svaki nalog kucao ručno: dozvole i takse za oko 2.000 stranih radnika (obnavljaju se na tri meseca, po tri naloga za svakog), njihove mesečne zarade i oko 100 plaćanja dobavljačima nedeljno.",
+    "<b>What I did.</b> Built an Excel workbook that generates the bank's import file (TXT) straight from the payment data, so a whole batch loads into Halcom in one step. I also wrote a small Python script that filled in payment slips on the government ePlati portal and saved the payment reference numbers back to the sheet.": "<b>Šta sam uradio.</b> Napravio sam Excel fajl koji od podataka o plaćanjima pravi fajl za uvoz u banku (TXT), pa se cela grupa naloga učitava u Halcom u jednom koraku. Napisao sam i malu Python skriptu koja je popunjavala uplatnice na državnom portalu ePlati i upisivala pozive na broj nazad u tabelu.",
+    "<strong>Result</strong>Work that needed two people was done by me alone, with far fewer entry errors. The workbook is still in use.": "<strong>Rezultat</strong>Posao za koji su bile potrebne dve osobe obavljao sam samostalno, uz mnogo manje grešaka pri unosu. Excel fajl se i danas koristi.",
+    "How a payment batch moves": "Put jedne grupe naloga",
+    "payment data": "spisak naloga",
+    "Import file": "Fajl za uvoz",
+    "generated": "generisan",
+    "e-banking": "e-bankarstvo",
+    "Payment orders per month (approx.)": "Naloga mesečno (okvirno)",
+    "Permits &amp; fees": "Dozvole i takse",
+    "Expat salaries": "Zarade stranaca",
+    "Vendor payments": "Dobavljači",
+    "2,000": "2.000",
+    "<b>Before</b><span class=\"people\">👤👤</span><br>Two people, every order typed by hand": "<b>Pre</b><span class=\"people\">👤👤</span><br>Dve osobe, svaki nalog kucan ručno",
+    "<b>After</b><span class=\"people\">👤</span><br>One person, one import per batch": "<b>Posle</b><span class=\"people\">👤</span><br>Jedna osoba, jedan uvoz po grupi naloga",
+    "Market data": "Berzanski podaci",
+    "Spin-off adjustments ready on day one": "Spin-off korekcije spremne već prvog dana",
+    "<b>The routine.</b> Most of my day was reviewing reports from error-detection checks on market data (outliers, outages, missing prices) for stocks, bonds and funds from many sources.": "<b>Rutina.</b> Najveći deo dana pregledao sam izveštaje provera koje otkrivaju greške u tržišnim podacima (odstupanja, prekidi, cene koje nedostaju) za akcije, obveznice i fondove iz mnogo izvora.",
+    "<b>The problem.</b> When a company spins off part of its business, its price history has to be adjusted, or the chart shows a crash that never happened. The adjustment factor was copied from competitor platforms, so we had to wait for it, and it was not available for every market we covered.": "<b>Problem.</b> Kada kompanija izdvoji deo poslovanja u novu firmu (spin-off), istorija cene mora da se koriguje, inače grafik pokazuje pad koji se nikad nije desio. Faktor korekcije preuzimao se sa konkurentskih platformi, pa smo morali da ga čekamo, a nije postojao za sva tržišta koja smo pratili.",
+    "<b>What I did.</b> Worked out a method that combines the public spin-off terms with pre-trading data available to us internally, so the factor can be calculated before trading starts.": "<b>Šta sam uradio.</b> Osmislio sam metod koji kombinuje javno objavljene uslove spin-offa sa podacima pre početka trgovanja koji su nam interno bili dostupni, pa faktor može da se izračuna pre otvaranja trgovanja.",
+    "<strong>Result</strong>Adjusted prices on the spin-off date itself, at least a day earlier than before, for every market we covered. The method is still in use.": "<strong>Rezultat</strong>Korigovane cene već na sam dan spin-offa, najmanje dan ranije nego pre, za sva tržišta koja smo pratili. Metod se i danas koristi.",
+    "Share price around a spin-off": "Cena akcije oko spin-offa",
+    "Chart mode": "Prikaz grafika",
+    "Unadjusted": "Nekorigovano",
+    "Adjusted": "Korigovano",
+    "Illustrative share price chart": "Ilustrativni grafik cene akcije",
+    "Spin-off date": "Dan spin-offa",
+    "<b>Day 1</b>My method: factor ready at the open, every market": "<b>Dan 1</b>Moj metod: faktor spreman na otvaranju, za svako tržište",
+    "<b>Day 2+</b>Copied factor: later, and not for every market": "<b>Dan 2+</b>Preuzet faktor: kasnije, i ne za svako tržište",
+    "Illustration with simulated prices, not real market data.": "Ilustracija sa simuliranim cenama, nisu stvarni tržišni podaci.",
+    "AR · AP": "Kupci · Dobavljači",
+    "Remote · 2022 – 2025": "Na daljinu · 2022 – 2025",
+    "Billing data that pulls itself in": "Podaci za fakturisanje koji stižu sami",
+    "<b>The routine.</b> Day-to-day accounting for several group companies: invoicing, vendor payments, reconciliations and payroll.": "<b>Rutina.</b> Svakodnevno knjigovodstvo za više firmi u okviru grupe: fakturisanje, plaćanja dobavljačima, usaglašavanja i zarade.",
+    "<b>The problem.</b> Clients were billed on their Google Ads spend, and a part-time colleague copied those figures by hand from each account's dashboard. On the AP side, daily invoices from Meta in USD and EUR took at least an hour a day to check.": "<b>Problem.</b> Klijentima se fakturisala potrošnja na Google Adsu, a te iznose je osoba zaposlena na pola radnog vremena ručno prepisivala sa kontrolne table svakog naloga. Na strani dobavljača, provera dnevnih Meta faktura u USD i EUR trajala je najmanje sat vremena dnevno.",
+    "<b>What I did.</b> Built Google Sheets scripts that pull the spend directly from Google Ads, replacing the manual copying. For the Meta invoices I built a Power Query model that aggregates the spend data for the check.": "<b>Šta sam uradio.</b> Napravio sam skripte u Google Sheets-u koje povlače potrošnju direktno iz Google Adsa, umesto ručnog prepisivanja. Za Meta fakture napravio sam Power Query model koji sabira podatke o potrošnji za proveru.",
+    "<strong>Result</strong>Billing figures arrive automatically and accurately instead of being retyped, and the daily invoice check starts from one table instead of scattered exports.": "<strong>Rezultat</strong>Iznosi za fakturisanje stižu automatski i tačno, bez prepisivanja, a dnevna provera faktura kreće od jedne tabele umesto od više odvojenih izvoza.",
+    "AR · Client billing sheet": "Kupci · Tabela za fakturisanje",
+    "<i></i>Pulled from Google Ads": "<i></i>Povučeno iz Google Adsa",
+    "Client": "Klijent",
+    "Ad spend": "Potrošnja",
+    "Billing": "Fakturisanje",
+    "Client A": "Klijent A",
+    "Client B": "Klijent B",
+    "Client C": "Klijent C",
+    "Client D": "Klijent D",
+    "Client E": "Klijent E",
+    "Copied by hand from each dashboard": "Ručno prepisivano sa svake kontrolne table",
+    "Pulled in by script": "Povučeno skriptom",
+    "AP · Daily Meta invoices": "Dobavljači · Dnevne Meta fakture",
+    "1h+ a day of manual checks": "1h+ dnevno ručne provere",
+    "Invoice": "Faktura",
+    "3,214.50": "3.214,50",
+    "1,876.20": "1.876,20",
+    "Illustration with sample figures, not real client data.": "Ilustracija sa primerima iznosa, nisu stvarni podaci klijenata.",
+    "Tax": "Porezi",
+    "A fuel excise refund, set up from zero": "Refakcija akcize na gorivo, od nule",
+    "<b>The routine.</b> Alongside AP, payments and VAT records, I handled correspondence with the Tax Administration.": "<b>Rutina.</b> Pored obaveza prema dobavljačima, plaćanja i PDV evidencije, vodio sam komunikaciju sa Poreskom upravom.",
+    "<b>The problem.</b> The company was entitled to a refund of excise duty on transport fuel (REF-T), but had no procedure for claiming it.": "<b>Problem.</b> Kompanija je imala pravo na refakciju akcize na gorivo za transportne svrhe (REF-T), ali nije imala proceduru za podnošenje zahteva.",
+    "<b>What I did.</b> Took part from the very first meeting with the tax inspector to the final claim: agreed with the Tax Administration how data and documents would be submitted, collected the documentation and filed the refund claims.": "<b>Šta sam uradio.</b> Učestvovao sam od prvog sastanka sa poreskim inspektorom do konačnog zahteva: sa Poreskom upravom dogovorio način dostavljanja podataka i dokumenata, prikupio dokumentaciju i podneo zahteve za refakciju.",
+    "<strong>Result</strong>A working procedure, agreed with the Tax Administration, for regular refund claims. The hard part was not filing a claim but getting the whole process defined and accepted.": "<strong>Rezultat</strong>Procedura dogovorena sa Poreskom upravom, po kojoj se redovno podnose zahtevi za refakciju. Najteže nije bilo podneti zahtev, već definisati ceo proces i dobiti saglasnost za njega.",
+    "From first meeting to refund": "Od prvog sastanka do refakcije",
+    "First meetings": "Prvi sastanci",
+    "with the tax inspector at the Tax Administration": "sa poreskim inspektorom u Poreskoj upravi",
+    "Format agreed": "Dogovoren način",
+    "how data and documents would be submitted": "kako se dostavljaju podaci i dokumenti",
+    "Documentation collected": "Dokumentacija prikupljena",
+    "everything the agreed procedure required": "sve što dogovorena procedura traži",
+    "Claims filed": "Zahtevi podneti",
+    "refund requests submitted": "zahtevi za refakciju predati",
+    "Repeatable procedure": "Ustaljena procedura",
+    "in place for regular claims": "za redovne zahteve",
+    "Also": "Ostalo",
+    "Smaller wins along the way": "Manji doprinosi usput",
+    "Lower bank fees": "Niže bankarske provizije",
+    "Payments went out late in the afternoon, when fees are highest. Moving the release time and value dates saved several hundred euros a month.": "Plaćanja su išla kasno popodne, kad su provizije najveće. Pomeranjem vremena slanja i datuma valute uštedelo se nekoliko stotina evra mesečno.",
+    "No.": "Br.",
+    "Item": "Stavka",
+    "Excavator": "Bager",
+    "Dump truck": "Kiper",
+    "Paver": "Finišer",
+    "Road roller": "Valjak",
+    "Generator": "Agregat",
+    "Mixer truck": "Mikser",
+    "Container": "Kontejner",
+    "Crane": "Dizalica",
+    "✓ capitalised": "✓ aktivirano",
+    "Fixed assets at scale": "Osnovna sredstva u velikom obimu",
+    "Capitalised hundreds of equipment items a month during project mobilisation, in a register of several thousand asset numbers.": "Tokom mobilizacije projekta aktivirao sam stotine stavki opreme mesečno, u registru od nekoliko hiljada inventarskih brojeva.",
+    "Bank": "Banka",
+    "Scope": "Zahtevi",
+    "Market abuse checks": "Provere zloupotrebe tržišta",
+    "For a major EU bank client, I turned trader language and the EU Market Abuse Regulation (MAR) into a clear scope for developers, then tested the result.": "Za klijenta, veliku banku iz EU, preveo sam jezik trejdera i EU Uredbu o zloupotrebi tržišta (MAR) u jasne zahteve za programere, a zatim testirao rešenje.",
+    "New platform indicators": "Novi indikatori na platformi",
+    "For sales-team requests, I researched how each indicator is calculated, modelled it in Excel, handed it to developers and verified the output.": "Na zahtev prodajnog tima istraživao sam kako se svaki indikator računa, modelovao ga u Excelu, predao programerima i proverio rezultat.",
+    "Reliable every day. Better over time.": "Pouzdano svakog dana. Bolje iz meseca u mesec.",
+    "Most of finance is doing the same things right, every day and every month. I work well in that rhythm, and it is exactly where my improvements come from.": "Najveći deo posla u finansijama je da se iste stvari rade tačno, svakog dana i svakog meseca. U tom ritmu radim dobro, i upravo iz njega dolaze moja unapređenja.",
+    "Consistent and accurate": "Dosledno i tačno",
+    "Invoices, payment runs, bank statements and reconciliations, done on time every period, with every balance tied out.": "Fakture, plaćanja, izvodi i usaglašavanja, završeni na vreme u svakom periodu, a svako saldo usaglašeno.",
+    "Fewer errors by design": "Greške sprečene unapred",
+    "Where the same data is retyped hundreds of times, an import file or a template keeps the numbers right and leaves more time for checking.": "Gde se isti podaci kucaju stotinama puta, fajl za uvoz ili šablon drži brojeve tačnim i ostavlja više vremena za proveru.",
+    "Built for the team": "Napravljeno za tim",
+    "Everything I set up is documented and easy to hand over. Some of it is still in use years after I left.": "Sve što postavim je dokumentovano i lako se predaje drugima. Deo toga se koristi i godinama posle mog odlaska.",
+    "Where I've done it": "Gde sam to radio",
+    "2026 – now": "2026 – danas",
+    "Payments Specialist": "Specijalista za platne operacije",
+    "Mebit d.o.o. · Lopaš, Serbia": "Mebit d.o.o. · Lopaš, Srbija",
+    "Reconcile deposit and withdrawal transactions against payment-provider records": "Usaglašavanje uplata i isplata sa evidencijom platnih provajdera",
+    "Investigate failed, delayed and mismatched payments and resolve them with internal teams and payment providers": "Istraživanje i rešavanje neuspelih, zakašnjelih i neusaglašenih plaćanja u saradnji sa internim timovima i platnim provajderima",
+    "Monitor transaction flows to catch discrepancies and irregular payments early": "Praćenje toka transakcija radi ranog otkrivanja razlika i nepravilnih plaćanja",
+    "Handle payment-related inquiries and give clear status updates": "Odgovori na upite u vezi sa plaćanjima i informisanje o statusu transakcija",
+    "Finance &amp; Accounting Specialist": "Specijalista za finansije i računovodstvo",
+    "Orange Trail Ltd · Remote, international team": "Orange Trail Ltd · Na daljinu, međunarodni tim",
+    "Day-to-day accounting for several companies within the group": "Vođenje svakodnevnog knjigovodstva za više povezanih firmi u okviru grupe",
+    "Accounts payable and receivable, and vendor payment runs": "Obrada obaveza prema dobavljačima i potraživanja od kupaca i priprema plaćanja dobavljačima",
+    "Ongoing customer and supplier balance reconciliations": "Kontinuirano usaglašavanje potraživanja i obaveza sa kupcima i dobavljačima (IOS)",
+    "Review and verification of all transactions and their supporting documents": "Kontrola i verifikacija svih finansijskih transakcija i prateće dokumentacije",
+    "Payroll, commissions and bonuses": "Obračun i isplata zarada, provizija i bonusa",
+    "Financial reports for management": "Izrada finansijskih izveštaja za menadžment",
+    "Records and documentation for the external tax accountant": "Saradnja sa eksternim poreskim računovođom i priprema dokumentacije za poreske prijave",
+    "Accountant": "Računovođa",
+    "Bechtel-Enka UK Ltd · Kruševac, Serbia": "Bechtel-Enka UK Ltd · Kruševac, Srbija",
+    "Vendor payments, control of bank transactions and bank statement posting": "Plaćanja dobavljačima, kontrola bankovnih transakcija i knjiženje izvoda",
+    "Supplier and customer invoices (AP/AR)": "Knjiženje ulaznih i izlaznih faktura",
+    "Input and output VAT records and support with VAT returns": "Vođenje PDV evidencije i podrška u pripremi PDV prijava",
+    "Fuel excise refund claims (REF-T) and correspondence with the Tax Administration": "Zahtevi za refakciju akcize na gorivo (REF-T) i komunikacija sa Poreskom upravom",
+    "Capitalisation of fixed assets and depreciation": "Aktiviranje osnovnih sredstava i obračun amortizacije",
+    "Financial reports and audit documentation; contact with auditors, banks and suppliers": "Izrada izveštaja i dokumentacije za reviziju; komunikacija sa revizorima, bankama i dobavljačima",
+    "Financial Data Specialist": "Specijalista za finansijske podatke",
+    "Teletrader · Belgrade, Serbia": "Teletrader · Beograd, Srbija",
+    "Quality and accuracy of financial market data from external sources": "Kontrola kvaliteta i tačnosti finansijskih tržišnih podataka iz eksternih izvora",
+    "Analysis of incoming market data and mapping to the internal data model": "Analiza tržišnih podataka i njihovo prilagođavanje internom modelu podataka",
+    "Continuous improvement of error-detection checks and validation methods": "Stalno unapređivanje provera i metoda za otkrivanje grešaka u podacima",
+    "Resolving client-reported data issues, escalating bugs to developers and testing fixes": "Rešavanje problema sa podacima koje prijave klijenti, prijava grešaka razvojnom timu i testiranje ispravki",
+    "Accounting": "Računovodstvo",
+    "Accounts payable": "Obaveze prema dobavljačima",
+    "Accounts receivable": "Potraživanja od kupaca",
+    "Payment runs": "Plaćanja dobavljačima",
+    "Bank reconciliations": "Usaglašavanje izvoda",
+    "Balance reconciliations": "Usaglašavanje salda (IOS)",
+    "Payroll": "Obračun zarada",
+    "Commissions &amp; bonuses": "Provizije i bonusi",
+    "General ledger review": "Kontrola glavne knjige",
+    "VAT records": "PDV evidencija",
+    "Fixed assets": "Osnovna sredstva i amortizacija",
+    "Management reporting": "Izveštavanje za menadžment",
+    "Tools": "Alati",
+    "Halcom e-banking": "Halcom e-bankarstvo",
+    "Excel &amp; Power Query": "Excel i Power Query",
+    "Python (basic)": "Python (osnove)",
+    "AI-assisted ledger review": "Provera knjiženja uz pomoć AI",
+    "Serbian (native)": "Srpski (maternji)",
+    "English (professional)": "Engleski (napredni nivo)",
+    "Bachelor in Economics (Finance, Banking &amp; Insurance), University of Belgrade": "Diplomirani ekonomista (Finansije, bankarstvo i osiguranje), Ekonomski fakultet u Beogradu",
+    "Need someone who keeps the numbers right?": "Treba vam neko ko drži brojeve u redu?",
+    "I'm looking for a finance or accounting role: on-site in Kruševac, hybrid or fully remote.": "Tražim posao u finansijama ili računovodstvu: u kancelariji u Kruševcu, hibridno ili potpuno na daljinu.",
+    "Kruševac, Serbia · Remote (CET)": "Kruševac, Srbija · Rad na daljinu (CET)"
+  };
+  var metaDesc = document.querySelector('meta[name="description"]');
+  var STR = {
+    en: {
+      title: document.title,
+      desc: metaDesc.getAttribute('content'),
+      clStatus: '✓ Ready for management reports',
+      noteAdj: 'Adjusted on the spin-off date: the history stays comparable.',
+      noteRaw: 'Unadjusted: the chart shows a fake 32% crash. Click Adjusted to fix it.',
+      waiting: 'waiting',
+      syncing: 'syncing…',
+      ok: '✓ ready<em> to bill</em>',
+      checking: 'checking…',
+      matched: '✓ matched'
+    },
+    sr: {
+      title: "Marko Simić · Računovođa, fakture i plaćanja",
+      desc: "Računovođa sa više od 5 godina praktičnog iskustva u radu sa dobavljačima i kupcima, plaćanjima, usaglašavanjima i obračunom zarada. Kruševac, Srbija · hibridno ili na daljinu (CET).",
+      clStatus: "✓ Spremno za izveštaje",
+      noteAdj: "Korigovano na dan spin-offa: istorija cene ostaje uporediva.",
+      noteRaw: "Nekorigovano: grafik pokazuje lažan pad od 32%. Kliknite Korigovano da se ispravi.",
+      waiting: "čeka",
+      syncing: "učitava…",
+      ok: "✓ spremno<em> za fakturu</em>",
+      checking: "provera…",
+      matched: "✓ slaže se"
+    }
+  };
+  var lang = 'en', langHooks = [];
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    lang = q === 'sr' || q === 'en' ? q : (localStorage.getItem('lang') === 'sr' ? 'sr' : 'en');
+  } catch (e) {}
+  function t(k) { return STR[lang][k]; }
+  // 12,480.00 becomes 12.480,00 in Serbian
+  function num(s) { return lang === 'sr' ? s.replace(/[,.]/g, function (c) { return c === ',' ? '.' : ','; }) : s; }
+  function key(h) { return h.replace(/\s+/g, ' ').trim(); }
+  // Translatable elements: the outermost ones with their own text, minus the parts scripts keep updating
+  var DYN = '.stat-cell, .verdict, .chart-note, [data-count], [data-v], #clDone, #clStatus';
+  var texts = [], labels = [];
+  document.querySelectorAll('body *').forEach(function (el) {
+    if (el.closest('script, .lang, ' + DYN) || el.querySelector(DYN)) return;
+    for (var p = el.parentElement; p; p = p.parentElement) if (p._en !== undefined) return;
+    if (!Array.prototype.some.call(el.childNodes, function (n) { return n.nodeType === 3 && n.nodeValue.trim(); })) return;
+    el._en = el._cur = el.innerHTML;
+    texts.push(el);
+  });
+  document.querySelectorAll('body [aria-label], body img[alt]').forEach(function (el) {
+    if (el.closest('.lang')) return;
+    ['aria-label', 'alt'].forEach(function (a) { if (el.hasAttribute(a)) labels.push([el, a, el.getAttribute(a)]); });
+  });
+  function setLang(l) {
+    lang = l === 'sr' ? 'sr' : 'en';
+    var sr = lang === 'sr';
+    document.documentElement.lang = sr ? 'sr-Latn' : 'en';
+    texts.forEach(function (el) {
+      var h = (sr && SR[key(el._en)]) || el._en;
+      if (h !== el._cur) { el.innerHTML = h; el._cur = h; }
+    });
+    labels.forEach(function (x) { x[0].setAttribute(x[1], (sr && SR[x[2]]) || x[2]); });
+    document.title = t('title');
+    metaDesc.setAttribute('content', t('desc'));
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      var on = b.dataset.lang === lang;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on);
+    });
+    langHooks.forEach(function (f) { f(); });
+  }
+
+  // Nav background and scroll progress
+  var nav = document.getElementById('nav'), bar = document.getElementById('progress');
+  function onScroll() {
+    var h = document.documentElement;
+    nav.classList.toggle('scrolled', h.scrollTop > 40);
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Seeded random walk for the illustrative charts
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }; }
+  function pathFrom(vals, w, h, lo, hi, pad) {
+    return vals.map(function (v, i) {
+      var x = i / (vals.length - 1) * w;
+      var y = pad + (1 - (v - lo) / (hi - lo)) * (h - pad * 2);
+      return (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }).join(' ');
+  }
+
+  // Hero background line
+  (function () {
+    var r = rng(11), p = 60, vals = [];
+    for (var i = 0; i < 90; i++) { p += (r() - 0.42) * 6; vals.push(p); }
+    var lo = Math.min.apply(null, vals) - 10, hi = Math.max.apply(null, vals) + 10;
+    var d = pathFrom(vals, 1200, 400, lo, hi, 20);
+    var line = document.getElementById('heroLine');
+    line.setAttribute('d', d);
+    document.getElementById('heroArea').setAttribute('d', d + ' L1200 400 L0 400 Z');
+    if (!reduce) {
+      var len = line.getTotalLength();
+      line.style.strokeDasharray = len; line.style.strokeDashoffset = len;
+      line.getBoundingClientRect();
+      line.style.transition = 'stroke-dashoffset 3.5s ease-out';
+      line.style.strokeDashoffset = 0;
+    }
+  })();
+
+  // Spin-off chart (simulated prices)
+  (function () {
+    var r = rng(7), p = 100, base = [];
+    var N = 64, S = 40, F = 0.68;
+    for (var i = 0; i < N; i++) { p += (r() - 0.47) * 3.2; base.push(p); }
+    var raw = base.map(function (v, i) { return i >= S ? v * F : v; });
+    var adj = base.map(function (v) { return v * F; });
+    var all = raw.concat(adj);
+    var lo = Math.min.apply(null, all) - 6, hi = Math.max.apply(null, all) + 6;
+    var W = 640, H = 270, PAD = 34;
+    var line = document.getElementById('chartLine'), area = document.getElementById('chartArea');
+    var note = document.getElementById('chartNote');
+    var xS = (S - 0.5) / (N - 1) * W;
+    document.getElementById('spinLine').setAttribute('x1', xS);
+    document.getElementById('spinLine').setAttribute('x2', xS);
+    document.getElementById('spinFlag').style.left = (xS / W * 100) + '%';
+    var current = raw.slice(), anim, noteMode = 'raw';
+    function renderNote() { note.textContent = t(noteMode === 'adj' ? 'noteAdj' : 'noteRaw'); }
+    langHooks.push(renderNote);
+    function draw(vals) {
+      var d = pathFrom(vals, W, H, lo, hi, PAD);
+      line.setAttribute('d', d);
+      area.setAttribute('d', d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z');
+    }
+    function setMode(mode) {
+      var target = mode === 'adj' ? adj : raw, from = current.slice(), t0 = null;
+      document.querySelectorAll('.toggle button').forEach(function (b) { b.classList.toggle('on', b.dataset.mode === mode); });
+      note.className = 'chart-note ' + (mode === 'adj' ? 'good' : 'bad');
+      noteMode = mode;
+      renderNote();
+      line.setAttribute('stroke', mode === 'adj' ? '#22c38e' : '#ef6b5b');
+      document.querySelectorAll('#chartFill stop').forEach(function (st) { st.setAttribute('stop-color', mode === 'adj' ? '#22c38e' : '#ef6b5b'); });
+      cancelAnimationFrame(anim);
+      if (reduce) { current = target.slice(); draw(current); return; }
+      anim = requestAnimationFrame(function step(ts) {
+        if (!t0) t0 = ts;
+        var k = Math.max(0, Math.min(1, (ts - t0) / 900)), e = 1 - Math.pow(1 - k, 3);
+        current = from.map(function (v, i) { return v + (target[i] - v) * e; });
+        draw(current);
+        if (k < 1) anim = requestAnimationFrame(step);
+      });
+    }
+    draw(raw);
+    setMode('raw');
+    var adjBtn = document.querySelector('.toggle button[data-mode="adj"]');
+    adjBtn.classList.add('hint');
+    document.querySelectorAll('.toggle button').forEach(function (b) {
+      b.addEventListener('click', function () { adjBtn.classList.remove('hint'); setMode(b.dataset.mode); });
+    });
+  })();
+
+  // Hero checklist: ticks items one by one, then starts over
+  (function () {
+    var items = document.querySelectorAll('#clList li'), done = document.getElementById('clDone');
+    var bar = document.getElementById('clBar'), status = document.getElementById('clStatus'), n = 0;
+    function render() {
+      items.forEach(function (li, i) { li.classList.toggle('done', i < n); });
+      done.textContent = n;
+      bar.style.width = (n / items.length * 100) + '%';
+      status.classList.toggle('show', n === items.length);
+    }
+    function label() { status.textContent = t('clStatus'); }
+    langHooks.push(label);
+    label();
+    if (reduce) { n = items.length; render(); return; }
+    function tick() {
+      if (n < items.length) { n++; render(); setTimeout(tick, n === items.length ? 3200 : 650); }
+      else { n = 0; render(); setTimeout(tick, 900); }
+    }
+    render();
+    setTimeout(tick, 900);
+  })();
+
+  // Orange Trail: sheet fills itself, then the invoices reconcile
+  (function () {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#sheet .sh-row:not(.sh-head)'));
+    var recon = Array.prototype.slice.call(document.querySelectorAll('#recon .rrow'));
+    function paint(r) {
+      var cell = r.querySelector('.num'), st = r.querySelector('.stat-cell'), s = r.dataset.st || 'waiting';
+      cell.textContent = s === 'ok' ? num(cell.dataset.v) : '—';
+      cell.classList.toggle('loading', s === 'syncing');
+      st.innerHTML = t(s);
+      st.classList.toggle('ok', s === 'ok');
+    }
+    function setRow(r, s) {
+      r.dataset.st = s; paint(r);
+      if (s === 'ok') { r.classList.remove('fresh'); void r.offsetWidth; r.classList.add('fresh'); }
+    }
+    function verdict(r) { r.querySelector('.verdict').textContent = t(r.classList.contains('matched') ? 'matched' : 'checking'); }
+    function resetAll() {
+      rows.forEach(function (r) { r.classList.remove('fresh'); setRow(r, 'waiting'); });
+      recon.forEach(function (r) { r.classList.remove('matched'); verdict(r); });
+    }
+    function matchRow(r) { r.classList.add('matched'); verdict(r); }
+    langHooks.push(function () { rows.forEach(paint); recon.forEach(verdict); });
+    if (reduce) { rows.forEach(function (r) { setRow(r, 'ok'); }); recon.forEach(matchRow); return; }
+    function run() {
+      resetAll();
+      rows.forEach(function (r, i) {
+        setTimeout(function () { setRow(r, 'syncing'); }, 400 + i * 380);
+        setTimeout(function () { setRow(r, 'ok'); }, 400 + i * 380 + 700);
+      });
+      var t = 400 + rows.length * 380 + 1100;
+      recon.forEach(function (r, i) { setTimeout(function () { matchRow(r); }, t + i * 700); });
+      setTimeout(run, t + recon.length * 700 + 4000);
+    }
+    var obs = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      obs.disconnect();
+      run();
+    }, { threshold: 0.45 });
+    obs.observe(document.getElementById('sheet'));
+  })();
+
+  // Indicator tile: live candlestick chart with SMA 20 and Bollinger Bands (20, 2)
+  (function () {
+    var svg = document.getElementById('candles'), NS = 'http://www.w3.org/2000/svg';
+    var r = rng(23), price = 100, series = [], SHOW = 32, P = 20, W = 240, H = 88;
+    function nextCandle() {
+      var o = price, drift = (r() - 0.48) * 2.4, c = Math.max(60, o + drift);
+      var hi = Math.max(o, c) + r() * 1.2, lo = Math.min(o, c) - r() * 1.2;
+      price = c;
+      return { o: o, h: hi, l: lo, c: c };
+    }
+    for (var i = 0; i < SHOW + P; i++) series.push(nextCandle());
+    function el(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+    function draw() {
+      var view = series.slice(-SHOW), stats = [];
+      for (var i = series.length - SHOW; i < series.length; i++) {
+        var win = series.slice(i - P + 1, i + 1).map(function (k) { return k.c; });
+        var mean = win.reduce(function (a, b) { return a + b; }, 0) / P;
+        var sd = Math.sqrt(win.reduce(function (a, b) { return a + (b - mean) * (b - mean); }, 0) / P);
+        stats.push({ m: mean, up: mean + 2 * sd, dn: mean - 2 * sd });
+      }
+      var lo = Infinity, hi = -Infinity;
+      view.forEach(function (k, i) { lo = Math.min(lo, k.l, stats[i].dn); hi = Math.max(hi, k.h, stats[i].up); });
+      var pad = (hi - lo) * 0.06; lo -= pad; hi += pad;
+      var step = W / SHOW, bw = step * 0.56;
+      function y(v) { return (H - (v - lo) / (hi - lo) * H).toFixed(2); }
+      function x(i) { return (i * step + step / 2).toFixed(2); }
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var up = stats.map(function (s, i) { return x(i) + ' ' + y(s.up); });
+      var dn = stats.map(function (s, i) { return x(i) + ' ' + y(s.dn); }).reverse();
+      svg.appendChild(el('path', { d: 'M' + up.join(' L') + ' L' + dn.join(' L') + ' Z', fill: 'rgba(143,183,255,.10)' }));
+      svg.appendChild(el('path', { d: 'M' + up.join(' L'), fill: 'none', stroke: 'rgba(143,183,255,.55)', 'stroke-width': 1, 'vector-effect': 'non-scaling-stroke' }));
+      svg.appendChild(el('path', { d: 'M' + dn.slice().reverse().join(' L'), fill: 'none', stroke: 'rgba(143,183,255,.55)', 'stroke-width': 1, 'vector-effect': 'non-scaling-stroke' }));
+      view.forEach(function (k, i) {
+        var col = k.c >= k.o ? '#22c38e' : '#ef6b5b';
+        svg.appendChild(el('line', { x1: x(i), x2: x(i), y1: y(k.h), y2: y(k.l), stroke: col, 'stroke-width': 1, 'vector-effect': 'non-scaling-stroke' }));
+        var top = Math.min(+y(k.o), +y(k.c)), h = Math.max(1, Math.abs(+y(k.o) - +y(k.c)));
+        svg.appendChild(el('rect', { x: (i * step + (step - bw) / 2).toFixed(2), y: top.toFixed(2), width: bw.toFixed(2), height: h.toFixed(2), fill: col, rx: 0.6 }));
+      });
+      svg.appendChild(el('path', { d: 'M' + stats.map(function (s, i) { return x(i) + ' ' + y(s.m); }).join(' L'), fill: 'none', stroke: '#f2b544', 'stroke-width': 1.5, 'vector-effect': 'non-scaling-stroke' }));
+    }
+    draw();
+    if (reduce) return;
+    var timer = null;
+    var obs = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !timer) timer = setInterval(function () { series.push(nextCandle()); series.shift(); draw(); }, 1100);
+      else if (!es[0].isIntersecting && timer) { clearInterval(timer); timer = null; }
+    }, { threshold: 0.3 });
+    obs.observe(svg);
+  })();
+
+  // Count-up numbers
+  function fmtInt(n) { return num(n.toLocaleString('en-US')); }
+  function countUp(el) {
+    var end = +el.dataset.count, t0 = null;
+    if (reduce) { el.textContent = fmtInt(end); return; }
+    requestAnimationFrame(function step(ts) {
+      if (!t0) t0 = ts;
+      var k = Math.max(0, Math.min(1, (ts - t0) / 1600)), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmtInt(Math.round(end * e));
+      if (k < 1) requestAnimationFrame(step);
+    });
+  }
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.18 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // Language switch
+  langHooks.push(function () {
+    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = fmtInt(+el.dataset.count); });
+  });
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      setLang(b.dataset.lang);
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      try {
+        var u = new URL(location.href);
+        if (lang === 'sr') u.searchParams.set('lang', 'sr'); else u.searchParams.delete('lang');
+        history.replaceState(null, '', u.href);
+      } catch (e) {}
+    });
+  });
+  setLang(lang);
+})();
+</script>
+</body>
+</html>
