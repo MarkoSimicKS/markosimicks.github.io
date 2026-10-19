@@ -31,7 +31,7 @@
   --ink-3: #756e7b;
   --line: #efe5da;
   --line-2: #e2d6c9;
-  --coral: #ff7a59; --coral-50: #ffe9e1; --coral-ink: #c2410c;
+  --coral: #ff7a59; --coral-50: #ffe9e1; --coral-ink: #b93a08;
   --sun: #ffcb45;   --sun-50: #fff3cc;   --sun-ink: #8a5a00;
   --sky: #6cb8ff;   --sky-50: #e3f1ff;   --sky-ink: #1d5fa8;
   --lilac: #a98bff; --lilac-50: #f0eaff; --lilac-ink: #5b3fc4;
@@ -210,13 +210,13 @@ ul, ol { padding: 0; }
 .t-recon { grid-column: 1 / 7; grid-row: span 2; display: flex; flex-direction: column; }
 .rc-head { display: flex; align-items: center; gap: 14px; }
 .rc-ico { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 14px; background: var(--sky-50); color: var(--sky-ink); }
-.rc-ico svg, .rc-replay svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rc-ico svg, .rc-replay svg, .vz-replay svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .rc-title { display: grid; gap: 4px; min-width: 0; margin-right: auto; }
 .rc-title b { font: 700 18px/1.2 var(--display); letter-spacing: -.01em; }
 .rc-title span { font: 500 12px/1.3 var(--mono); color: var(--ink-3); }
-.rc-replay { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--card); cursor: pointer; transition: transform .7s var(--spring), background-color .2s, border-color .2s; }
-.rc-replay svg { width: 18px; height: 18px; stroke-width: 2; }
-.rc-replay:hover { transform: rotate(-300deg); background: var(--bg); border-color: var(--line-2); }
+.rc-replay, .vz-replay { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--card); cursor: pointer; transition: transform .7s var(--spring), background-color .2s, border-color .2s; }
+.rc-replay svg, .vz-replay svg { width: 18px; height: 18px; stroke-width: 2; }
+.rc-replay:hover, .vz-replay:hover { transform: rotate(-300deg); background: var(--bg); border-color: var(--line-2); }
 .rc-body { flex: 1; display: flex; flex-direction: column; margin-top: clamp(18px, 2vw, 26px); }
 /* The columns are measured in ch of the mono face, so every amount lines up to the digit */
 .rc-cols, .rc-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) 10.5ch 40px 10.5ch; column-gap: 12px; align-items: center; font: 500 14.5px/1 var(--mono); }
@@ -282,8 +282,425 @@ ul, ol { padding: 0; }
 .fi svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .t-fact dt { font: 500 11.5px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
 .t-fact dd { font: 600 16px/1.35 var(--sans); }
-.t-fact dd.sub { font: 500 12.5px/1.3 var(--mono); color: var(--ink-3); }
-.t-fact dd.sub b { font-weight: 500; color: var(--ink); }
+
+/* =========================================================
+   Sections below the hero
+   ========================================================= */
+.js .rv { opacity: 0; }
+.js .rv.in { opacity: 1; animation: rise 1s var(--spring) backwards; animation-delay: calc(var(--d, 0) * 90ms); }
+@keyframes nudge { 40% { transform: scale(1.035); } }
+@keyframes spin { to { transform: rotate(1turn); } }
+
+.sec { padding-bottom: clamp(80px, 9vw, 140px); }
+.sec-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(16px, 1.6vw, 24px); align-items: end; margin-bottom: clamp(28px, 3.2vw, 48px); }
+.kick { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 18px 0 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--shadow); font: 600 14px/1 var(--sans); color: var(--ink-2); white-space: nowrap; }
+.kick b { width: 30px; height: 30px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--c); font: 500 12px/1 var(--mono); color: var(--ink); }
+.h2 { grid-column: 1 / 9; font: 800 clamp(34px, 4.5vw, 68px)/1.02 var(--display); letter-spacing: -.03em; text-wrap: balance; }
+.sec-p { grid-column: 9 / 13; font-size: clamp(16px, 1.15vw, 18px); line-height: 1.6; color: var(--ink-2); }
+/* A highlighter stroke under one phrase, drawn when the heading comes into view */
+.mark { position: relative; isolation: isolate; white-space: nowrap; }
+.mark::before { content: ''; position: absolute; z-index: -1; left: -.04em; right: -.06em; bottom: .06em; height: .3em; border-radius: .08em; background: var(--mk, var(--c)); transform-origin: 0 50%; rotate: -1deg; }
+.js .rv .mark::before { transform: scaleX(0); transition: transform .85s cubic-bezier(.7, 0, .25, 1) .45s; }
+.js .rv.in .mark::before { transform: none; }
+
+/* ---------- Case studies: the story on one side, a working exhibit on the other ---------- */
+.case { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.case + .case { margin-top: var(--gap); }
+.cs-text { grid-column: 1 / 6; display: flex; flex-direction: column; padding: clamp(22px, 2.8vw, 44px); }
+.cs-viz { grid-column: 6 / 13; }
+.flip .cs-text { grid-column: 8 / 13; grid-row: 1; }
+.flip .cs-viz { grid-column: 1 / 8; grid-row: 1; }
+.cs-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cs-no { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; background: var(--c); font: 500 12.5px/1 var(--mono); }
+.cs-co { display: inline-flex; align-items: center; height: 30px; padding: 0 13px; border-radius: 999px; background: var(--ink); color: #fff; font: 700 13px/1 var(--sans); white-space: nowrap; }
+.cs-tag { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font: 500 12px/1 var(--mono); color: var(--ink-2); white-space: nowrap; }
+.h3 { margin-top: clamp(18px, 2vw, 26px); font: 800 clamp(26px, 2.35vw, 38px)/1.08 var(--display); letter-spacing: -.025em; text-wrap: balance; }
+.cs-steps { list-style: none; display: grid; gap: 16px; margin: clamp(20px, 2.2vw, 28px) 0 clamp(22px, 2.4vw, 30px); counter-reset: st; }
+.cs-steps li { position: relative; padding-left: 48px; font-size: 15.5px; line-height: 1.62; color: var(--ink-2); counter-increment: st; }
+.cs-steps li::before { content: '0' counter(st); position: absolute; left: 0; top: -3px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: var(--c50); color: var(--cink); font: 500 12px/1 var(--mono); }
+.cs-steps li::after { content: ''; position: absolute; left: 15.25px; top: 35px; bottom: -7px; width: 1.5px; border-radius: 2px; background: var(--c50); }
+.cs-steps li:last-child::after { display: none; }
+.cs-steps b { color: var(--ink); font-weight: 700; }
+.cs-res { margin-top: auto; padding: 18px 20px 20px; border-radius: 18px; background: var(--c50); }
+.cs-res-k { display: flex; align-items: center; gap: 9px; font: 500 11.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cink); }
+.cs-res-i { width: 24px; height: 24px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--c); }
+.cs-res-i svg { width: 14px; height: 14px; fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.cs-res-t { margin-top: 10px; font: 600 16px/1.5 var(--sans); color: var(--ink); }
+
+.cs-viz { display: flex; flex-direction: column; gap: 12px; padding: clamp(14px, 1.6vw, 24px); background: var(--c50); border-color: transparent; }
+.vz-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; min-height: 44px; padding-left: 6px; }
+.vz-label { margin-right: auto; font: 500 12px/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cink); }
+.vz-card { position: relative; min-width: 0; padding: clamp(14px, 1.5vw, 20px); border-radius: 18px; background: var(--card); box-shadow: 0 1px 2px rgba(31, 26, 36, .05); }
+.vz-k { font: 500 11.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.vz-note { padding-left: 6px; font: 500 11.5px/1.45 var(--mono); color: var(--ink-2); }
+
+/* Case 1: the batch travels from the sheet to the bank. Many rows go into one file, one file goes to the bank */
+.pay { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "head head" "flow vol" "ba ba"; }
+.pay > .vz-head { grid-area: head; }
+.pay-flow { grid-area: flow; display: flex; flex-direction: column; }
+.pay-node { display: flex; align-items: center; gap: 14px; }
+.pay-ico { position: relative; width: 52px; height: 52px; flex: none; display: grid; place-items: center; border-radius: 16px; background: var(--c50); color: var(--cink); transition: background-color .35s, color .35s; }
+.pay-ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pay-txt { font: 500 13px/1 var(--mono); letter-spacing: .04em; }
+.pay-t { display: grid; justify-items: start; gap: 5px; min-width: 0; }
+.pay-t b { font: 700 16px/1.2 var(--sans); }
+.pay-t small { font: 500 12px/1.2 var(--mono); color: var(--ink-3); }
+.pay-wire { position: relative; flex: 1 1 22px; min-height: 22px; width: 2px; margin: 7px 0 7px 25px; background: repeating-linear-gradient(180deg, var(--line-2) 0 4px, transparent 4px 8px); }
+.pay-wire::after { content: ''; position: absolute; inset: 0; border-radius: 2px; background: var(--sky); transform-origin: 50% 0; transition: transform .6s var(--out); }
+.pay-wire i { position: absolute; z-index: 1; left: 50%; top: 0; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 3px; background: var(--ink); opacity: 0; }
+.pay-wire.w2 i { width: 18px; height: 22px; margin: -11px 0 0 -9px; border-radius: 4px; background: var(--card); box-shadow: 0 3px 8px rgba(31, 26, 36, .28), inset 0 5px 0 var(--sun); }
+.js .pay-wire::after { transform: scaleY(0); }
+.js .pay.p2 .w1::after, .js .pay.p4 .w2::after { transform: none; }
+.pay.p2 .w1 i { animation: pkt .55s var(--out) both; }
+.pay.p2 .w1 i:nth-child(2) { animation-delay: .09s; }
+.pay.p2 .w1 i:nth-child(3) { animation-delay: .18s; }
+.pay.p2 .w1 i:nth-child(4) { animation-delay: .27s; }
+.pay.p4 .w2 i { animation: pkt .7s var(--out) both; }
+@keyframes pkt { 0% { top: 0; opacity: 0; } 15%, 80% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.pay.p1 .n1 .pay-ico, .pay.p3 .n2 .pay-ico, .pay.p5 .n3 .pay-ico { background: var(--c); color: var(--ink); animation: boing .55s var(--spring); }
+.pay-badge { display: inline-flex; align-items: center; gap: 7px; height: 30px; margin-top: 4px; padding: 0 12px 0 5px; border-radius: 999px; background: var(--ink); color: #fff; font: 600 12.5px/1 var(--sans); white-space: nowrap; transform-origin: 15px 50%; transition: transform .5s var(--spring); }
+.pay-badge svg { width: 20px; height: 20px; padding: 3px; border-radius: 50%; background: var(--sun); fill: none; stroke: var(--ink); stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.js .pay-badge { transform: scale(0); }
+.js .pay.p5 .pay-badge { transform: none; }
+/* Orders a month: three columns that grow from the baseline */
+.pay-vol { grid-area: vol; display: flex; flex-direction: column; }
+.pay-vh { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 14px; font: 500 11.5px/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.pay-total { font: 800 clamp(30px, 2.6vw, 40px)/.9 var(--display); letter-spacing: -.03em; text-transform: none; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+.pay-total em { font-style: normal; color: var(--sky-ink); }
+.js .pay-total { opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .5s var(--spring); }
+.js .pay.p6 .pay-total { opacity: 1; transform: none; }
+.pay-bar { position: relative; flex: 1; min-height: 120px; margin-top: 20px; box-shadow: 0 1.5px 0 var(--line-2); }
+/* Each column has a pale track; the bar grows inside it */
+.pay-bar i { --cw: calc((100% - 24px) / 3); --bw: min(var(--cw), 76px); position: absolute; top: 0; bottom: 0; left: calc(var(--k) * (var(--cw) + 12px) + (var(--cw) - var(--bw)) / 2); width: var(--bw); border-radius: 12px 12px 3px 3px; background: var(--c50); }
+.pay-bar b { position: absolute; left: 0; right: 0; bottom: 0; top: calc(100% - var(--w) / 2000 * 100%); border-radius: inherit; background: var(--c); transform-origin: 50% 100%; }
+.js .pay-bar b { transform: scaleY(0); transition: transform .8s var(--spring); }
+.js .pay-bar i:nth-child(2) b { transition-delay: .1s; }
+.js .pay-bar i:nth-child(3) b { transition-delay: .2s; }
+.js .pay.p6 .pay-bar b { transform: none; }
+.pay-leg { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.pay-leg li { display: grid; justify-items: center; align-content: start; gap: 6px; font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ink-2); }
+.pay-leg b { order: -1; font: 700 18px/1 var(--display); font-variant-numeric: tabular-nums; color: var(--ink); }
+.pay-ba { grid-area: ba; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pay-ba .vz-card { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 14px; row-gap: 12px; transition: box-shadow .4s; }
+.pay-ba .vz-k { grid-column: 1 / -1; }
+.pay-ppl { display: flex; }
+.pay-ppl i { width: 40px; height: 40px; display: grid; place-items: center; border: 2px solid var(--card); border-radius: 50%; background: var(--line); color: var(--ink-3); }
+.pay-ppl i + i { margin-left: -12px; }
+.pay-ppl svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.pay-a .pay-ppl i { background: var(--sky); color: var(--ink); }
+.pay-bt { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+.pay.p7 .pay-a { box-shadow: inset 0 0 0 2px var(--sky); animation: nudge .6s var(--spring); }
+
+/* Case 2: the chart with and without the adjustment */
+.seg { position: relative; display: flex; flex: none; padding: 4px; border-radius: 999px; background: var(--card); box-shadow: 0 1px 2px rgba(31, 26, 36, .06); }
+.seg button { position: relative; z-index: 1; height: 36px; padding: 0 15px; border: 0; border-radius: 999px; background: none; font: 600 13.5px/1 var(--sans); color: var(--ink-2); white-space: nowrap; cursor: pointer; transition: color .3s; }
+.seg button:hover { color: var(--ink); }
+.seg button.on { color: #fff; }
+.seg-k { position: absolute; top: 4px; left: 0; width: 0; height: 36px; border-radius: 999px; background: var(--ink); transition: transform .5s var(--spring), width .5s var(--spring); }
+.seg.hint [data-mode="adj"]::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 2px var(--lilac); pointer-events: none; animation: ping 1.8s var(--out) infinite; }
+@keyframes ping { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.25, 1.6); } }
+.spn { flex: 1; display: flex; flex-direction: column; min-height: 300px; }
+.spn-plot { position: relative; flex: 1; min-height: 200px; margin-top: 32px; }
+.spn-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; color: var(--coral); transition: color .5s; }
+.spn.adj .spn-plot svg { color: var(--lilac-ink); }
+.js .rv .spn-plot svg { clip-path: inset(-20px 100% -20px -20px); transition: clip-path 1.5s var(--out) .35s, color .5s; }
+.js .rv.in .spn-plot svg { clip-path: inset(-20px -20px -20px -20px); }
+.spn-grid line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.spn-date { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 4 5; vector-effect: non-scaling-stroke; }
+.spn-line { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.spn-flag { position: absolute; top: -32px; transform: translateX(-50%); display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 999px; background: var(--ink); color: #fff; font: 500 11.5px/1 var(--mono); white-space: nowrap; }
+.spn-drop { position: absolute; margin: -13px 0 0 12px; display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--coral); font: 700 13px/1 var(--sans); color: var(--ink); transition: opacity .3s, transform .45s var(--spring); }
+.spn.adj .spn-drop { opacity: 0; transform: scale(.6); }
+.spn-note { position: relative; min-height: 2.9em; margin-top: 16px; padding-left: 20px; font: 600 14px/1.45 var(--sans); color: var(--ink); }
+.spn-note::before { content: ''; position: absolute; left: 0; top: .4em; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); transition: background-color .4s; }
+.spn.adj .spn-note::before { background: var(--lilac); }
+.spn-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.spn-chip { display: grid; align-content: start; gap: 8px; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.spn-chip b { justify-self: start; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--bg); font: 700 14px/1 var(--display); color: var(--ink); }
+.spn-chip.us b { background: var(--lilac); }
+
+/* Case 3: the billing sheet fills itself, then the invoices are checked */
+.ot-sheet { flex: 1; display: flex; flex-direction: column; }
+.ot-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin-bottom: 8px; }
+.ot-top b { font: 700 15px/1.3 var(--sans); }
+.ot-top s, .ot-was s { color: var(--ink-3); text-decoration-color: var(--coral); text-decoration-thickness: 1.5px; }
+.ot-top s { font: 500 12px/1.3 var(--mono); }
+.ot-sync { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px 0 9px; border-radius: 999px; background: var(--coral-50); font: 500 11.5px/1 var(--mono); color: var(--coral-ink); white-space: nowrap; }
+.ot-sync i { width: 12px; height: 12px; flex: none; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; }
+.ot.busy .ot-sync i { animation: spin .8s linear infinite; }
+.ot-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) 11ch 11.5em; align-items: center; column-gap: 12px; height: 42px; padding: 0 8px; border-bottom: 1px solid var(--line); font: 500 13.5px/1 var(--mono); }
+.ot-row:last-of-type { border-bottom: 0; }
+/* When the story next to it is long, the rows open up a little instead of leaving a hole under the table */
+.ot-row[data-v] { flex: 1 0 auto; height: auto; min-height: 42px; max-height: 62px; }
+.ot-hd { height: 32px; border-bottom-color: var(--line-2); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.ot-hd span:nth-child(3), .ot-num { text-align: right; }
+.ot-i { font-size: 12px; color: var(--ink-3); }
+.ot-c { overflow: hidden; font: 600 14px/1.2 var(--sans); white-space: nowrap; text-overflow: ellipsis; }
+.ot-num { font-variant-numeric: tabular-nums; border-radius: 6px; }
+.ot-row.sync .ot-num { color: transparent; background: linear-gradient(90deg, var(--line) 30%, var(--coral-50) 50%, var(--line) 70%) 0 0 / 300% 100%; animation: shimmer 1s linear infinite; }
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.ot-row.ok .ot-num { animation: amtIn .5s var(--out); }
+.ot-row.ok { animation: rowIn 1s var(--out); }
+@keyframes rowIn { from { background-color: var(--coral-50); } }
+.ot-st, .ot-v { display: inline-flex; align-items: center; gap: 7px; min-width: 0; font: 600 13px/1.2 var(--sans); color: var(--ink-3); white-space: nowrap; }
+.ot-st em { font-style: normal; }
+.ot-row.ok .ot-st, .ot-m.ok .ot-v { color: var(--ink); }
+.ot-row.ok .ot-st::before, .ot-m.ok .ot-v::before { content: ''; width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--coral) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1a24' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 12px no-repeat; animation: boing .5s var(--spring); }
+.ot-was { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: auto; padding-top: 14px; font: 500 12.5px/1.35 var(--sans); }
+.ot-was svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--coral-ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ot-was b { font-weight: 700; color: var(--coral-ink); }
+.ot-m { display: grid; grid-template-columns: 50px minmax(0, 1fr) 16px minmax(0, 1fr) minmax(7.5em, auto); align-items: center; column-gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+.ot-ccy { display: grid; place-items: center; height: 28px; border-radius: 8px; background: var(--bg); font: 500 12px/1 var(--mono); }
+.ot-a { display: grid; gap: 5px; min-width: 0; }
+.ot-a small { overflow: hidden; font: 500 10.5px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; text-overflow: ellipsis; }
+.ot-a b { font: 500 15px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.ot-eq { text-align: center; font: 500 16px/1 var(--mono); color: var(--ink-3); transition: color .3s; }
+.ot-m.ok .ot-eq { color: var(--coral-ink); }
+.ot-v { justify-content: flex-end; }
+
+/* Case 4: from the first meeting to a repeatable procedure */
+.rt { flex: 1; list-style: none; position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; padding: clamp(18px, 2vw, 28px) clamp(16px, 1.8vw, 24px); }
+.rt::before, .rt::after { content: ''; position: absolute; left: var(--x, 36px); top: var(--t, 40px); width: 2px; margin-left: -1px; border-radius: 2px; }
+.rt::before { height: var(--len, 0px); background: var(--line); }
+.rt::after { height: var(--fill, 0px); background: var(--c); transition: height .55s var(--out); }
+.rt li { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 16px; }
+.rt-n { width: 38px; height: 38px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--card); box-shadow: inset 0 0 0 2px var(--line-2); font: 500 13px/1 var(--mono); color: var(--ink-3); transition: background-color .3s, box-shadow .3s, color .3s; }
+.rt-n > * { grid-area: 1 / 1; transition: opacity .2s, transform .45s var(--spring); }
+.rt-n svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.rt li:not(.fin) .rt-n svg { opacity: 0; transform: scale(.4); }
+.rt li.on .rt-n { background: var(--c); box-shadow: none; color: var(--ink); animation: boing .55s var(--spring); }
+.rt li.on:not(.fin) .rt-n span { opacity: 0; transform: scale(.4); }
+.rt li.on:not(.fin) .rt-n svg { opacity: 1; transform: none; }
+.rt .fin .rt-n svg { stroke-width: 2; }
+.rt .fin.on .rt-n { background: var(--ink); color: var(--sun); }
+.rt.live .fin.on .rt-loop { animation: spin 4s linear infinite; }
+.rt-t { display: grid; gap: 4px; min-width: 0; padding-top: 8px; }
+.rt-t b { font: 700 16px/1.25 var(--sans); }
+.rt-t > span { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.rt .fin .rt-t b { font: 700 19px/1.2 var(--display); letter-spacing: -.01em; }
+
+/* ---------- Smaller wins ---------- */
+.wins-h { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: clamp(56px, 6vw, 96px) 0 clamp(20px, 2.2vw, 30px); font: 800 clamp(26px, 2.6vw, 40px)/1.1 var(--display); letter-spacing: -.025em; }
+.kick-s { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--ink); color: #fff; font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.wins { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.win { grid-column: span 6; display: flex; flex-direction: column; align-items: flex-start; transition: transform .45s var(--spring), box-shadow .45s var(--spring); }
+.win:hover { transform: translateY(-4px); box-shadow: var(--shadow-up); }
+.wn-viz { position: relative; align-self: stretch; height: 136px; margin-bottom: 20px; overflow: hidden; border-radius: 16px; background: var(--c50); }
+.wn-co { display: inline-flex; align-items: center; height: 28px; padding: 0 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font: 500 11.5px/1 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.h4 { margin-top: 12px; font: 700 clamp(20px, 1.7vw, 25px)/1.2 var(--display); letter-spacing: -.015em; }
+.wn-p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+
+/* Bank fees: the release time moves from the late afternoon to the morning */
+.fee { display: flex; flex-direction: column; justify-content: center; gap: 11px; padding: 0 clamp(18px, 2vw, 28px); }
+.fee-lab, .fee-hrs { display: flex; justify-content: space-between; font: 500 11px/1 var(--mono); letter-spacing: .05em; color: var(--ink-2); }
+.fee-lab { text-transform: uppercase; }
+.fee-track { position: relative; height: 12px; margin: 6px 0; border-radius: 99px; background: linear-gradient(90deg, var(--sky), var(--sun) 55%, var(--coral)); }
+.fee-pin { position: absolute; top: 50%; left: 86%; width: 34px; height: 34px; margin: -17px 0 0 -17px; display: grid; place-items: center; border-radius: 50%; background: var(--card); box-shadow: 0 0 0 3px var(--coral-ink), 0 8px 16px -8px rgba(31, 26, 36, .5); }
+.fee-pin svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fee.live .fee-pin { animation: feeMove 7s var(--out) infinite; }
+@keyframes feeMove {
+  0%, 20% { left: 86%; opacity: 1; box-shadow: 0 0 0 3px var(--coral-ink), 0 8px 16px -8px rgba(31, 26, 36, .5); }
+  44%, 88% { left: 22%; opacity: 1; box-shadow: 0 0 0 3px var(--sky-ink), 0 8px 16px -8px rgba(31, 26, 36, .5); }
+  94% { left: 22%; opacity: 0; }
+  95% { left: 86%; opacity: 0; box-shadow: 0 0 0 3px var(--coral-ink), 0 8px 16px -8px rgba(31, 26, 36, .5); }
+  100% { left: 86%; opacity: 1; }
+}
+
+/* Fixed assets: the register keeps rolling */
+.reg { display: flex; flex-direction: column; padding: 14px 18px 0; }
+.reg-hd, .reg-roll p { display: grid; grid-template-columns: 7.5ch minmax(0, 1fr) auto; column-gap: 12px; align-items: center; }
+.reg-hd { padding-bottom: 9px; border-bottom: 1px solid rgba(29, 95, 168, .16); font: 500 10.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.reg-hd span:last-child { text-align: right; }
+.reg-win { position: relative; flex: 1; overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 22%, #000 78%, transparent); mask: linear-gradient(transparent, #000 22%, #000 78%, transparent); }
+.reg-roll { animation: roll 16s linear infinite paused; }
+.reg.live .reg-roll { animation-play-state: running; }
+@keyframes roll { to { transform: translateY(-50%); } }
+.reg-roll p { height: 32px; font: 500 12.5px/1 var(--mono); color: var(--ink-2); }
+.reg-roll p span:nth-child(2) { overflow: hidden; font: 600 13.5px/1.2 var(--sans); color: var(--ink); white-space: nowrap; text-overflow: ellipsis; }
+.reg-ok { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/1 var(--sans); color: var(--sky-ink); white-space: nowrap; }
+.reg-ok::before { content: ''; width: 16px; height: 16px; flex: none; border-radius: 50%; background: var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1a24' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 10px no-repeat; }
+
+/* Market abuse checks: bank and regulation in, scope and test out */
+.mar { display: flex; flex-wrap: wrap; align-items: center; align-content: center; justify-content: center; gap: 10px 8px; padding: 14px; }
+.mar-c { display: inline-flex; align-items: center; height: 36px; padding: 0 15px; border-radius: 999px; background: var(--card); box-shadow: 0 1px 2px rgba(31, 26, 36, .06); font: 600 14px/1 var(--sans); transition: background-color .35s, transform .45s var(--spring); }
+.mar-c.on { background: var(--lilac); transform: translateY(-2px); }
+.mar-g { display: inline-flex; align-items: center; gap: 8px; }
+.mar em { font: 500 16px/1 var(--mono); font-style: normal; color: var(--lilac-ink); }
+.mar svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--lilac-ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.mar-c.fin::after { content: ''; width: 0; height: 18px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffcb45' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 11px no-repeat; transition: width .35s var(--spring), margin .35s var(--spring); }
+.mar-c.fin.on::after { width: 18px; margin-left: 8px; }
+
+/* Platform indicators: live candles */
+.cnd { display: flex; flex-direction: column; padding: 12px 14px 10px; }
+.ind-leg { display: flex; gap: 16px; font: 500 11px/1 var(--mono); color: var(--ink-2); }
+.ind-leg span { display: inline-flex; align-items: center; gap: 6px; }
+.ind-leg span::before { content: ''; width: 14px; height: 3px; border-radius: 2px; }
+.ind-leg .bb::before { background: rgba(91, 63, 196, .55); }
+.ind-leg .ma::before { background: var(--ink); }
+.ind-leg b { font-weight: 500; color: var(--ink); }
+/* flex-basis 0 and min-height 0, or the SVG takes its height from its viewBox ratio and spills out */
+.candles { flex: 1 1 0; min-height: 0; width: 100%; margin-top: 8px; overflow: visible; }
+.candles line { stroke-width: 1; vector-effect: non-scaling-stroke; }
+.candles line.cu { stroke: var(--sky-ink); }
+.candles line.cd { stroke: var(--coral-ink); }
+.candles rect.cu { fill: var(--sky); }
+.candles rect.cd { fill: var(--coral); }
+.candles .bb-f { fill: rgba(91, 63, 196, .1); }
+.candles .bb-l { fill: none; stroke: rgba(91, 63, 196, .5); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.candles .sma { fill: none; stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+/* ---------- How I work ---------- */
+.how { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.pr { grid-column: span 4; display: flex; flex-direction: column; }
+.pr-viz { position: relative; height: 136px; margin-bottom: 22px; overflow: hidden; border-radius: 16px; background: var(--c50); }
+.pr-h { display: flex; align-items: center; gap: 12px; margin-top: 0; }
+.pr-n { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 10px; background: var(--c); font: 500 12px/1 var(--mono); letter-spacing: 0; }
+.pr-p { margin-top: 12px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+/* Every month closed on time: the months tick off one by one */
+.pr-cal { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 16px; }
+.pr-cal i { position: relative; display: grid; place-items: center; border-radius: 10px; background: var(--c); font: 500 12px/1 var(--mono); font-style: normal; color: var(--ink); }
+.pr-cal i::after { content: ''; position: absolute; top: -4px; right: -4px; width: 16px; height: 16px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffcb45' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 10px no-repeat; }
+.js .pr-cal i { background: var(--card); color: var(--ink-3); transition: background-color .35s, color .35s; transition-delay: calc(.5s + var(--k) * 95ms); }
+.js .pr-cal i::after { transform: scale(0); transition: transform .45s var(--spring); transition-delay: calc(.6s + var(--k) * 95ms); }
+.js .rv.in .pr-cal i { background: var(--c); color: var(--ink); }
+.js .rv.in .pr-cal i::after { transform: none; }
+/* The same template row after row: every row comes out filled and checked */
+.pr-tpl { display: grid; align-content: center; gap: 10px; padding: 16px 18px; }
+.pr-tpl p { display: grid; grid-template-columns: 1.4fr 1fr 1fr .8fr 18px; gap: 8px; align-items: center; }
+.pr-tpl i { height: 14px; border-radius: 5px; background: var(--card); }
+.pr-tpl i:nth-child(2) { --cd: .06s; }
+.pr-tpl i:nth-child(3) { --cd: .12s; }
+.pr-tpl i:nth-child(4) { --cd: .18s; }
+.pr-tpl b { width: 18px; height: 18px; border-radius: 50%; background: var(--sky-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 11px no-repeat; transform: scale(0); }
+.pr-tpl.live i { animation: tplCell 4.2s var(--out) infinite; animation-delay: calc(var(--r) * .4s + var(--cd, 0s)); }
+.pr-tpl.live b { animation: tplOk 4.2s var(--spring) infinite; animation-delay: calc(var(--r) * .4s + .3s); }
+@keyframes tplCell { 0%, 6% { background: var(--card); } 16%, 72% { background: var(--c); } 84%, 100% { background: var(--card); } }
+@keyframes tplOk { 0%, 10% { transform: scale(0); } 20%, 70% { transform: none; } 80%, 100% { transform: scale(0); } }
+/* Handed over to the team, and still in use */
+.pr-team { display: flex; align-items: center; justify-content: center; padding: 34px 20px 0; }
+.tm-doc { position: relative; width: 52px; height: 64px; flex: none; display: grid; align-content: start; gap: 6px; padding: 16px 10px 0; border-radius: 10px; background: var(--card); box-shadow: 0 6px 14px -8px rgba(31, 26, 36, .35); }
+.tm-doc::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 7px; border-radius: 10px 10px 0 0; background: var(--c); }
+.tm-doc i { height: 4px; border-radius: 2px; background: var(--line-2); }
+.tm-doc i:nth-child(2) { width: 75%; }
+.tm-doc i:nth-child(3) { width: 55%; }
+.tm-path { position: relative; flex: 1; max-width: 120px; height: 2px; margin: 0 14px; background: repeating-linear-gradient(90deg, rgba(185, 58, 8, .45) 0 4px, transparent 4px 9px); }
+.tm-path i { position: absolute; top: -9px; left: 0; width: 15px; height: 19px; border-radius: 3px; background: var(--card); box-shadow: 0 2px 6px rgba(31, 26, 36, .2), inset 0 4px 0 var(--c); opacity: 0; }
+.pr-team.live .tm-path i { animation: fly 3.2s var(--out) infinite; }
+@keyframes fly { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 70% { left: calc(100% - 15px); opacity: 1; } 82%, 100% { left: calc(100% - 15px); opacity: 0; } }
+.tm-ppl { display: flex; flex: none; }
+.tm-ppl i { width: 40px; height: 40px; display: grid; place-items: center; border: 3px solid var(--c50); border-radius: 50%; background: var(--coral); }
+.tm-ppl i + i { margin-left: -11px; }
+.tm-ppl i:nth-child(2) { background: var(--sun); }
+.tm-ppl i:nth-child(3) { background: var(--sky); }
+.tm-ppl svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.9; stroke-linecap: round; }
+.pr-team.live .tm-ppl i { animation: hop 3.2s var(--spring) infinite; }
+.pr-team.live .tm-ppl i:nth-child(2) { animation-delay: .08s; }
+.pr-team.live .tm-ppl i:nth-child(3) { animation-delay: .16s; }
+@keyframes hop { 0%, 70% { transform: none; } 78% { transform: translateY(-6px); } 88%, 100% { transform: none; } }
+.tm-use { position: absolute; left: 14px; top: 12px; display: inline-flex; align-items: center; gap: 8px; height: 26px; padding: 0 11px 0 10px; border-radius: 999px; background: var(--card); font: 500 11px/1 var(--mono); color: var(--ink-2); white-space: nowrap; }
+.tm-use i { position: relative; width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--coral); }
+.pr-team.live .tm-use i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--coral); animation: beat 2.2s var(--out) infinite; }
+
+/* ---------- Experience: pick a role on the left, read it on the right ---------- */
+.xp { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(4, auto) 1fr; column-gap: var(--gap); row-gap: 10px; }
+.xp-h { grid-column: 1 / 6; }
+.xp-h:nth-of-type(1) { grid-row: 1; }
+.xp-h:nth-of-type(2) { grid-row: 2; }
+.xp-h:nth-of-type(3) { grid-row: 3; }
+.xp-h:nth-of-type(4) { grid-row: 4; }
+.xp-tab { position: relative; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "y go" "r go" "c go"; column-gap: 16px; row-gap: 6px; align-items: center; padding: 18px 18px 18px 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); box-shadow: var(--shadow); text-align: left; cursor: pointer; transition: background-color .3s, border-color .3s, transform .45s var(--spring), box-shadow .45s var(--spring); }
+.xp-tab::before { content: ''; position: absolute; left: -1px; top: 20px; bottom: 20px; width: 4px; border-radius: 0 4px 4px 0; background: var(--c); }
+.xp-tab:hover { transform: translateX(4px); }
+.on > .xp-tab { background: var(--c50); border-color: transparent; box-shadow: none; }
+.xp-y { grid-area: y; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; color: var(--cink); }
+.xp-r { grid-area: r; font: 700 clamp(17px, 1.35vw, 20px)/1.2 var(--display); letter-spacing: -.01em; }
+.xp-c { grid-area: c; font-size: 13.5px; line-height: 1.35; color: var(--ink-2); }
+.xp-go { grid-area: go; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--bg); transition: background-color .3s; }
+.xp-go svg { width: 16px; height: 16px; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transform: rotate(45deg); transition: transform .45s var(--spring); }
+.on > .xp-tab .xp-go { background: var(--c); }
+.on > .xp-tab .xp-go svg { transform: none; }
+.xp-panel { grid-column: 6 / 13; grid-row: 1 / 6; display: flex; flex-direction: column; gap: clamp(20px, 2.2vw, 28px); background: var(--c50); border-color: transparent; container-type: inline-size; }
+.xp-panel[hidden] { display: none; }
+.xp-ph { display: grid; justify-items: start; gap: 10px; }
+.xp-ph .xp-y { grid-area: auto; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--card); }
+.xp-pr { font: 800 clamp(26px, 2.5vw, 40px)/1.05 var(--display); letter-spacing: -.025em; }
+.xp-pc { font: 500 13px/1.35 var(--mono); color: var(--ink-2); }
+.xp-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.xp-list li { position: relative; padding: 15px 16px 15px 46px; border-radius: 16px; background: var(--card); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.xp-list li::before { content: ''; position: absolute; left: 15px; top: 16px; width: 20px; height: 20px; border-radius: 50%; background: var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1a24' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.xp-panel.show .xp-list li { animation: rise .7s var(--spring) backwards; animation-delay: calc(var(--k) * 50ms); }
+@container (max-width: 600px) { .xp-list { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.sk-acc { grid-column: 1 / -1; }
+.sk-tools, .sk-also { grid-column: span 6; }
+.sk-h { display: flex; align-items: center; gap: 14px; font: 700 clamp(20px, 1.6vw, 24px)/1.2 var(--display); letter-spacing: -.01em; }
+.sk-ico { width: 46px; height: 46px; flex: none; display: grid; place-items: center; border-radius: 15px; background: var(--c50); color: var(--cink); }
+.sk-ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.chips li { display: inline-flex; align-items: center; min-height: 38px; padding: 8px 15px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font: 600 14px/1.3 var(--sans); transition: transform .35s var(--spring), background-color .25s, border-color .25s; }
+.chips li.key { background: var(--c50); border-color: transparent; }
+.chips li.key::before { content: ''; width: 8px; height: 8px; flex: none; margin-right: 9px; border-radius: 50%; background: var(--c); transition: background-color .25s; }
+.chips li:hover { transform: translateY(-3px) rotate(-1.5deg); background: var(--c); border-color: transparent; }
+.chips li.key:hover::before { background: var(--ink); }
+.chips li.long { border-radius: 18px; }
+
+/* ---------- Contact ---------- */
+.ct-sec { padding-bottom: clamp(36px, 4vw, 56px); }
+.ct { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.ct-main { grid-column: 1 / 9; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; padding: clamp(26px, 4vw, 64px); background: var(--coral); border-color: transparent; --mk: var(--sun); }
+.ct-main > :not(.ct-art) { position: relative; z-index: 1; }
+.ct-main .kick { border-color: transparent; box-shadow: none; }
+.ct-main .h2 { max-width: 10.5em; margin-top: clamp(20px, 2.4vw, 30px); font-size: clamp(36px, 4.6vw, 72px); }
+.ct-p { max-width: 27em; margin-top: 18px; font-size: clamp(16.5px, 1.25vw, 19px); line-height: 1.6; color: var(--ink); }
+.ct-main .btn.solid { --btn-sh: var(--sun); }
+.ct-main :focus-visible { outline-color: var(--ink); }
+.ct-arr { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .4s var(--spring); }
+.btn:hover .ct-arr { transform: translateX(3px); }
+.ct-art { position: absolute; inset: 0; pointer-events: none; }
+.ct-art i { position: absolute; display: block; translate: calc(var(--mx, 0) * var(--f)) calc(var(--my, 0) * var(--f)); transition: translate .7s var(--out); }
+.ct-art .a1 { right: -64px; bottom: -86px; width: 280px; aspect-ratio: 1; border-radius: 50%; background: var(--sun); --f: -16px; }
+.ct-art .a2 { right: 196px; bottom: 60px; width: 84px; aspect-ratio: 1; border-radius: 24px; background: var(--lilac); rotate: 14deg; --f: 26px; }
+.ct-art .a3 { right: 70px; bottom: 236px; width: 52px; aspect-ratio: 1; border-radius: 50%; background: var(--sky); --f: 34px; }
+.ct-art .a4 { right: 132px; bottom: 196px; width: 26px; aspect-ratio: 1; border-radius: 8px; background: var(--pink); rotate: -14deg; --f: -30px; }
+.ct-art.live i { animation: bob 6s ease-in-out infinite alternate; }
+.ct-art.live .a2 { animation-delay: -2s; }
+.ct-art.live .a3 { animation-delay: -4s; animation-duration: 5s; }
+.ct-art.live .a4 { animation-delay: -1s; animation-duration: 4s; }
+@keyframes bob { to { transform: translateY(-12px); } }
+.ct-card { grid-column: 9 / 13; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: clamp(22px, 2.4vw, 36px); background: var(--ink); border-color: var(--ink); color: #fff; }
+.ct-card :focus-visible { outline-color: var(--sun); }
+.ct-open { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; height: 34px; padding: 0 15px 0 13px; border-radius: 999px; background: rgba(255, 255, 255, .09); font: 600 13.5px/1 var(--sans); white-space: nowrap; }
+.ct-open i { position: relative; width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--sun); }
+.ct-open i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--sun); animation: beat 2.2s var(--out) infinite; }
+.ct-row { padding: 18px 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+.ct-row:first-child { padding-top: 0; border-top: 0; }
+.ct-row:last-child { padding-bottom: 0; }
+.ct-row dt { font: 500 11.5px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 255, 255, .64); }
+.ct-row dd { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 9px; font: 600 16px/1.35 var(--sans); }
+.ct-row a { text-decoration: none; overflow-wrap: anywhere; }
+.ct-row a:hover { text-decoration: underline; text-decoration-color: var(--sun); text-underline-offset: 4px; }
+.ct-copy { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 13px 0 10px; border: 0; border-radius: 999px; background: var(--sun); color: var(--ink); font: 700 13px/1 var(--sans); cursor: pointer; transition: background-color .25s, transform .4s var(--spring); }
+.ct-copy:hover { transform: translateY(-2px); }
+.ct-copy.done { background: var(--sky); }
+.ct-copy svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Footer ---------- */
+.foot { padding-bottom: 40px; }
+.ft-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; padding-top: 24px; border-top: 1px solid var(--line-2); font: 500 13px/1.4 var(--mono); color: var(--ink-2); }
+.ft-g { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px; }
+.ft-btn { display: inline-flex; align-items: center; gap: 9px; height: 36px; padding: 0 6px 0 14px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--card); font: 600 13px/1 var(--sans); color: var(--ink); cursor: pointer; transition: background-color .25s, border-color .25s, transform .4s var(--spring); }
+.ft-btn:hover { transform: translateY(-2px); }
+.ft-btn[aria-pressed="true"] { background: var(--coral-50); border-color: var(--coral); }
+.ft-btn kbd { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 8px; background: var(--bg); box-shadow: inset 0 -2px 0 var(--line-2); font: 500 12px/1 var(--mono); }
+.ft-top { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; color: var(--ink); text-decoration: none; }
+.ft-top svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .4s var(--spring); }
+.ft-top:hover svg { transform: translateY(-3px); }
+@media (hover: none) {
+  .ft-btn { padding: 0 14px; }
+  .ft-btn kbd { display: none; }
+}
 
 /* ---------- Layout grid overlay (press G) ---------- */
 .gridlay { position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: 0; transition: opacity .3s; }
@@ -354,6 +771,8 @@ ul, ol { padding: 0; }
 @media (max-width: 359px) {
   .brand .logo { display: none; }
   .brand { font-size: 17px; }
+  /* A long label may take two lines rather than leave its tile */
+  .btn { height: auto; min-height: 50px; padding: 12px 18px; line-height: 1.25; text-align: center; white-space: normal; }
 }
 @media (max-width: 419px) {
   /* Two lines per item: name on top, books and bank under it */
@@ -371,11 +790,87 @@ ul, ol { padding: 0; }
   .rc-row em { left: auto; right: 12px; top: 13px; }
 }
 
+/* ---------- Responsive: sections ---------- */
+@media (max-width: 1279px) {
+  .cs-text, .flip .cs-viz { grid-column: 1 / 7; }
+  .cs-viz, .flip .cs-text { grid-column: 7 / 13; }
+  .xp-tab { padding: 16px 16px 16px 22px; }
+}
+@media (max-width: 1023px) {
+  .sec-head, .case, .wins, .how, .skills, .ct { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .h2, .sec-p { grid-column: 1 / -1; }
+  .sec-p { max-width: 36em; }
+  .cs-text, .cs-viz, .flip .cs-text, .flip .cs-viz { grid-column: 1 / -1; grid-row: auto; }
+  .win { grid-column: span 3; }
+  /* Each principle becomes a row: the picture on the left, the words on the right */
+  .pr { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; align-content: center; column-gap: var(--pad); }
+  .pr-viz { grid-row: 1 / 3; height: auto; min-height: 136px; margin-bottom: 0; }
+  .pr-h { align-self: end; }
+  .pr-p { align-self: start; }
+  .sk-acc { grid-column: 1 / -1; }
+  .sk-tools, .sk-also { grid-column: span 3; }
+  .ct-main, .ct-card { grid-column: 1 / -1; }
+  /* Experience: the tabs turn into an accordion, each role opens right under its button */
+  .xp { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .xp > .xp-h, .xp > .xp-panel { grid-column: 1; grid-row: auto; }
+  .xp-ph { display: none; }
+  .xp-tab:hover { transform: none; }
+  .xp-go svg { transform: rotate(90deg); }
+  .on > .xp-tab .xp-go svg { transform: rotate(-90deg); }
+  .on > .xp-tab { border-radius: 20px 20px 0 0; }
+  .xp-h.on + .xp-panel { margin-top: -10px; padding-top: 4px; border-radius: 0 0 20px 20px; box-shadow: none; }
+}
+@media (max-width: 639px) {
+  .sec-head, .case, .wins, .how, .skills, .ct { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .win, .sk-tools, .sk-also { grid-column: 1 / -1; }
+  .pr { display: flex; flex-direction: column; }
+  .pr-viz { height: 136px; margin-bottom: 22px; }
+  .pr-h, .pr-p { align-self: auto; }
+  .pay { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "flow" "vol" "ba"; }
+  .pay-ba, .spn-chips { grid-template-columns: minmax(0, 1fr); }
+  .ot-row { grid-template-columns: minmax(0, 1fr) 10ch 6.6em; }
+  .ot-i, .ot-hd span:first-child, .ot-st em { display: none; }
+  /* Contact: the shapes get their own strip under the buttons */
+  .ct-main { padding-bottom: 150px; }
+  .ct-art .a1 { right: -50px; bottom: -100px; width: 200px; }
+  .ct-art .a2 { right: 150px; bottom: 30px; width: 58px; border-radius: 18px; }
+  .ct-art .a3 { right: 50px; bottom: 112px; width: 38px; }
+  .ct-art .a4 { right: 118px; bottom: 100px; width: 20px; border-radius: 6px; }
+  .ft-in { flex-direction: column; justify-content: center; text-align: center; }
+}
+@media (max-width: 479px) {
+  .cs-steps li { padding-left: 42px; font-size: 15px; }
+  .cs-steps li::before { top: -1px; width: 28px; height: 28px; border-radius: 9px; }
+  .cs-steps li::after { left: 13.25px; top: 31px; }
+  .ot-row { grid-template-columns: minmax(0, 1fr) 9.5ch 6.6em; column-gap: 10px; }
+  /* Invoice and Power Query side by side under the currency */
+  .ot-m { grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr); grid-template-areas: "ccy ccy v" "a eq b"; row-gap: 10px; column-gap: 10px; }
+  .ot-ccy { grid-area: ccy; justify-self: start; padding: 0 10px; }
+  .ot-m > :nth-child(2) { grid-area: a; }
+  .ot-eq { grid-area: eq; }
+  .ot-m > :nth-child(4) { grid-area: b; }
+  .ot-v { grid-area: v; }
+  .ct-main .h2 { font-size: clamp(28px, 9vw, 40px); }
+}
+@media (max-width: 379px) {
+  /* Billing status as a tick only */
+  .ot-row { grid-template-columns: minmax(0, 1fr) 9.5ch 18px; }
+  .ot-st { gap: 0; font-size: 0; }
+  .ot-hd span:last-child { display: none; }
+}
+
 /* ---------- Reduced motion: final states, no movement ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
   .beat::after { display: none; }
+  /* Exhibits already show their end state, so there is nothing to replay */
+  .rc-replay, .vz-replay { display: none; }
+  .seg.hint [data-mode="adj"]::after { display: none; }
+  .fee-pin { animation: none !important; left: 22%; box-shadow: 0 0 0 3px var(--sky-ink), 0 8px 16px -8px rgba(31, 26, 36, .5); }
+  .pr-tpl i { background: var(--c); }
+  .pr-tpl b { transform: none; }
+  .tm-path i { display: none; }
 }
 </style>
 </head>
@@ -487,7 +982,7 @@ ul, ol { padding: 0; }
         <span class="st-v" data-i18n="kf.3v">Day&nbsp;1</span>
         <span class="st-t" data-i18n="kf.3">spin-off price adjustments ready, at least a day earlier, for every market covered</span>
       </a>
-      <a class="tile t-stat c-pink pop" href="#c-payments" style="--i:7">
+      <a class="tile t-stat c-pink pop" href="#w-fees" style="--i:7">
         <span class="st-top"><span class="src">Bechtel-Enka</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         <span class="st-v" data-i18n="kf.4v"><em>€</em>100s</span>
         <span class="st-t" data-i18n="kf.4">saved every month in bank fees by changing when payments were released</span>
@@ -514,9 +1009,412 @@ ul, ol { padding: 0; }
     </div>
   </div>
 </section>
+<section class="sec" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <header class="sec-head c-sky rv">
+      <p class="kick"><b>01</b><span data-i18n="nav.work">Selected work</span></p>
+      <h2 class="h2" id="work-h" data-i18n="work.h">Know the routine. Then <span class="mark">improve</span> it.</h2>
+      <p class="sec-p" data-i18n="work.p">Each of these started in my own daily work. Knowing the process inside out is what showed me where it could be more accurate and efficient.</p>
+    </header>
 
+    <!-- Case 1: payment orders at Bechtel-Enka -->
+    <article class="case c-sky" id="c-payments" aria-labelledby="c1-h">
+      <div class="tile cs-text rv">
+        <p class="cs-meta"><span class="cs-no">01</span><span class="cs-co">Bechtel-Enka</span><span class="cs-tag" data-i18n="c1.tag">Payments</span><span class="cs-tag">2020 – 2022</span></p>
+        <h3 class="h3" id="c1-h" data-i18n="c1.h">Thousands of payment orders, no more typing</h3>
+        <ol class="cs-steps">
+          <li data-i18n="c1.s1"><b>The routine.</b> I processed vendor and staff payments for a large motorway construction project.</li>
+          <li data-i18n="c1.s2"><b>The problem.</b> The company's in-house ERP had no link to the local e-banking platform (Halcom), so every order was typed in by hand: permits and fees for about 2,000 expat workers (renewed every three months, three orders each), their monthly salaries, and around 100 vendor payments a week.</li>
+          <li data-i18n="c1.s3"><b>What I did.</b> Built an Excel workbook that generates the bank's import file (TXT) straight from the payment data, so a whole batch loads into Halcom in one step. I also wrote a small Python script that filled in payment slips on the government ePlati portal and saved the payment reference numbers back to the sheet.</li>
+        </ol>
+        <div class="cs-res">
+          <p class="cs-res-k"><span class="cs-res-i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span data-i18n="res">Result</span></p>
+          <p class="cs-res-t" data-i18n="c1.r">Work that needed two people was done by me alone, with far fewer entry errors. The workbook is still in use.</p>
+        </div>
+      </div>
+
+      <div class="tile cs-viz pay rv" id="pay" style="--d:1">
+        <div class="vz-head">
+          <p class="vz-label" id="pay-l" data-i18n="c1.vz">How a payment batch moves</p>
+          <button class="vz-replay" type="button" aria-describedby="pay-l" aria-label="Replay" title="Replay" data-i18n-attr="aria-label:rc.replay,title:rc.replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+        </div>
+        <div class="vz-card pay-flow">
+          <div class="pay-node n1 c-sky"><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 9.2h17M3.5 14.8h17M9.2 3.5v17"/></svg></span><span class="pay-t"><b>Excel</b><small data-i18n="c1.n1">payment data</small></span></div>
+          <span class="pay-wire w1" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <div class="pay-node n2 c-sun"><span class="pay-ico pay-txt" aria-hidden="true">TXT</span><span class="pay-t"><b data-i18n="c1.n2">Import file</b><small data-i18n="c1.n2s">generated</small></span></div>
+          <span class="pay-wire w2" aria-hidden="true"><i></i></span>
+          <div class="pay-node n3 c-lilac"><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></span><span class="pay-t"><b>Halcom</b><small data-i18n="c1.n3">e-banking</small><span class="pay-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg><span data-i18n="c1.ok">Loaded</span></span></span></div>
+        </div>
+        <div class="vz-card pay-vol">
+          <p class="pay-vh"><span data-i18n="c1.vol">Payment orders per month (approx.)</span><b class="pay-total"><em>~</em><span data-n="4400">4,400</span></b></p>
+          <div class="pay-bar" aria-hidden="true"><i class="c-sky" style="--w:2000;--k:0"><b></b></i><i class="c-lilac" style="--w:2000;--k:1"><b></b></i><i class="c-coral" style="--w:430;--k:2"><b></b></i></div>
+          <ul class="pay-leg">
+            <li class="c-sky"><span data-i18n="c1.v1">Permits &amp; fees</span><b data-num="2000">2,000</b></li>
+            <li class="c-lilac"><span data-i18n="c1.v2">Expat salaries</span><b data-num="2000">2,000</b></li>
+            <li class="c-coral"><span data-i18n="c1.v3">Vendor payments</span><b data-num="430">430</b></li>
+          </ul>
+        </div>
+        <div class="pay-ba">
+          <div class="vz-card pay-b"><p class="vz-k" data-i18n="before">Before</p><span class="pay-ppl" aria-hidden="true"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i></span><p class="pay-bt" data-i18n="c1.b">Two people, every order typed by hand</p></div>
+          <div class="vz-card pay-a"><p class="vz-k" data-i18n="after">After</p><span class="pay-ppl" aria-hidden="true"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i></span><p class="pay-bt" data-i18n="c1.a">One person, one import per batch</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case 2: spin-off adjustments at Teletrader -->
+    <article class="case flip c-lilac" id="c-spinoff" aria-labelledby="c2-h">
+      <div class="tile cs-text rv">
+        <p class="cs-meta"><span class="cs-no">02</span><span class="cs-co">Teletrader</span><span class="cs-tag" data-i18n="c2.tag">Market data</span><span class="cs-tag">2015 – 2020</span></p>
+        <h3 class="h3" id="c2-h" data-i18n="c2.h">Spin-off adjustments ready on day one</h3>
+        <ol class="cs-steps">
+          <li data-i18n="c2.s1"><b>The routine.</b> Most of my day was reviewing reports from error-detection checks on market data (outliers, outages, missing prices) for stocks, bonds and funds from many sources.</li>
+          <li data-i18n="c2.s2"><b>The problem.</b> When a company spins off part of its business, its price history has to be adjusted, or the chart shows a crash that never happened. The adjustment factor was copied from competitor platforms, so we had to wait for it, and it was not available for every market we covered.</li>
+          <li data-i18n="c2.s3"><b>What I did.</b> Worked out a method that combines the public spin-off terms with pre-trading data available to us internally, so the factor can be calculated before trading starts.</li>
+        </ol>
+        <div class="cs-res">
+          <p class="cs-res-k"><span class="cs-res-i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span data-i18n="res">Result</span></p>
+          <p class="cs-res-t" data-i18n="c2.r">Adjusted prices on the spin-off date itself, at least a day earlier than before, for every market we covered. The method is still in use.</p>
+        </div>
+      </div>
+
+      <div class="tile cs-viz rv" id="spin" style="--d:1">
+        <div class="vz-head">
+          <p class="vz-label" id="spin-l" data-i18n="c2.vz">Share price around a spin-off</p>
+          <div class="seg hint" role="group" aria-label="Chart mode" data-i18n-attr="aria-label:c2.mode"><span class="seg-k" aria-hidden="true"></span><button type="button" data-mode="raw" data-i18n="c2.raw">Unadjusted</button><button type="button" data-mode="adj" data-i18n="c2.adj">Adjusted</button></div>
+        </div>
+        <div class="vz-card spn">
+          <div class="spn-plot">
+            <svg viewBox="0 0 640 280" preserveAspectRatio="none" role="img" aria-label="Illustrative share price chart" data-i18n-attr="aria-label:c2.aria">
+              <defs><linearGradient id="spnFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+              <g class="spn-grid"><line x1="0" y1="56" x2="640" y2="56"/><line x1="0" y1="112" x2="640" y2="112"/><line x1="0" y1="168" x2="640" y2="168"/><line x1="0" y1="224" x2="640" y2="224"/></g>
+              <line class="spn-date" x1="0" y1="0" x2="0" y2="280"/>
+              <path class="spn-area" fill="url(#spnFill)" d=""/>
+              <path class="spn-line" d=""/>
+            </svg>
+            <span class="spn-flag" data-i18n="c2.flag">Spin-off date</span>
+            <span class="spn-drop" aria-hidden="true">−32%</span>
+          </div>
+          <p class="spn-note" aria-live="polite"></p>
+        </div>
+        <div class="spn-chips">
+          <p class="vz-card spn-chip us"><b data-i18n="c2.d1">Day 1</b><span data-i18n="c2.d1t">My method: factor ready at the open, every market</span></p>
+          <p class="vz-card spn-chip them"><b data-i18n="c2.d2">Day 2+</b><span data-i18n="c2.d2t">Copied factor: later, and not for every market</span></p>
+        </div>
+        <p class="vz-note" data-i18n="c2.note">Illustration with simulated prices, not real market data.</p>
+      </div>
+    </article>
+
+    <!-- Case 3: billing data at Orange Trail -->
+    <article class="case c-coral" id="c-billing" aria-labelledby="c3-h">
+      <div class="tile cs-text rv">
+        <p class="cs-meta"><span class="cs-no">03</span><span class="cs-co">Orange Trail</span><span class="cs-tag" data-i18n="c3.tag">AR · AP</span><span class="cs-tag" data-i18n="c3.yrs">Remote · 2022 – 2025</span></p>
+        <h3 class="h3" id="c3-h" data-i18n="c3.h">Billing data that pulls itself in</h3>
+        <ol class="cs-steps">
+          <li data-i18n="c3.s1"><b>The routine.</b> Day-to-day accounting for several group companies: invoicing, vendor payments, reconciliations and payroll.</li>
+          <li data-i18n="c3.s2"><b>The problem.</b> Clients were billed on their Google Ads spend, and a part-time colleague copied those figures by hand from each account's dashboard. On the AP side, daily invoices from Meta in USD and EUR took at least an hour a day to check.</li>
+          <li data-i18n="c3.s3"><b>What I did.</b> Built Google Sheets scripts that pull the spend directly from Google Ads, replacing the manual copying. For the Meta invoices I built a Power Query model that aggregates the spend data for the check.</li>
+        </ol>
+        <div class="cs-res">
+          <p class="cs-res-k"><span class="cs-res-i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span data-i18n="res">Result</span></p>
+          <p class="cs-res-t" data-i18n="c3.r">Billing figures arrive automatically and accurately instead of being retyped, and the daily invoice check starts from one table instead of scattered exports.</p>
+        </div>
+      </div>
+
+      <div class="tile cs-viz ot rv" id="ot" style="--d:1">
+        <div class="vz-head">
+          <p class="vz-label" id="ot-l" data-i18n="c3.vz">Billing and invoice checks</p>
+          <button class="vz-replay" type="button" aria-describedby="ot-l" aria-label="Replay" title="Replay" data-i18n-attr="aria-label:rc.replay,title:rc.replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+        </div>
+        <div class="vz-card ot-sheet">
+          <p class="ot-top"><b data-i18n="c3.sheet">AR · Client billing sheet</b><span class="ot-sync"><i aria-hidden="true"></i><span data-i18n="c3.sync">Pulled from Google Ads</span></span></p>
+          <div class="ot-row ot-hd"><span>#</span><span data-i18n="c3.client">Client</span><span data-i18n="c3.spend">Ad spend</span><span data-i18n="c3.bill">Billing</span></div>
+          <div class="ot-row" data-v="12480"><span class="ot-i">1</span><span class="ot-c" data-i18n="c3.ca">Client A</span><span class="ot-num">—</span><span class="ot-st"></span></div>
+          <div class="ot-row" data-v="3915.4"><span class="ot-i">2</span><span class="ot-c" data-i18n="c3.cb">Client B</span><span class="ot-num">—</span><span class="ot-st"></span></div>
+          <div class="ot-row" data-v="27064.1"><span class="ot-i">3</span><span class="ot-c" data-i18n="c3.cc">Client C</span><span class="ot-num">—</span><span class="ot-st"></span></div>
+          <div class="ot-row" data-v="8230.75"><span class="ot-i">4</span><span class="ot-c" data-i18n="c3.cd">Client D</span><span class="ot-num">—</span><span class="ot-st"></span></div>
+          <div class="ot-row" data-v="15602.3"><span class="ot-i">5</span><span class="ot-c" data-i18n="c3.ce">Client E</span><span class="ot-num">—</span><span class="ot-st"></span></div>
+          <p class="ot-was"><s data-i18n="c3.was">Copied by hand from each dashboard</s><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><b data-i18n="c3.now">Pulled in by script</b></p>
+        </div>
+        <div class="vz-card ot-meta">
+          <p class="ot-top"><b data-i18n="c3.ap">AP · Daily Meta invoices</b><s data-i18n="c3.apWas">1h+ a day of manual checks</s></p>
+          <div class="ot-m"><span class="ot-ccy">USD</span><span class="ot-a"><small data-i18n="c3.inv">Invoice</small><b data-num="3214.5" data-dec="2">3,214.50</b></span><span class="ot-eq" aria-hidden="true">=</span><span class="ot-a"><small>Power Query</small><b data-num="3214.5" data-dec="2">3,214.50</b></span><span class="ot-v"></span></div>
+          <div class="ot-m"><span class="ot-ccy">EUR</span><span class="ot-a"><small data-i18n="c3.inv">Invoice</small><b data-num="1876.2" data-dec="2">1,876.20</b></span><span class="ot-eq" aria-hidden="true">=</span><span class="ot-a"><small>Power Query</small><b data-num="1876.2" data-dec="2">1,876.20</b></span><span class="ot-v"></span></div>
+        </div>
+        <p class="vz-note" data-i18n="c3.note">Illustration with sample figures, not real client data.</p>
+      </div>
+    </article>
+
+    <!-- Case 4: fuel excise refund at Bechtel-Enka -->
+    <article class="case flip c-sun" id="c-refund" aria-labelledby="c4-h">
+      <div class="tile cs-text rv">
+        <p class="cs-meta"><span class="cs-no">04</span><span class="cs-co">Bechtel-Enka</span><span class="cs-tag" data-i18n="c4.tag">Tax</span><span class="cs-tag">2020 – 2022</span></p>
+        <h3 class="h3" id="c4-h" data-i18n="c4.h">A fuel excise refund, set up from zero</h3>
+        <ol class="cs-steps">
+          <li data-i18n="c4.s1"><b>The routine.</b> Alongside AP, payments and VAT records, I handled correspondence with the Tax Administration.</li>
+          <li data-i18n="c4.s2"><b>The problem.</b> The company was entitled to a refund of excise duty on transport fuel (REF-T), but had no procedure for claiming it.</li>
+          <li data-i18n="c4.s3"><b>What I did.</b> Took part from the very first meeting with the tax inspector to the final claim: agreed with the Tax Administration how data and documents would be submitted, collected the documentation and filed the refund claims.</li>
+        </ol>
+        <div class="cs-res">
+          <p class="cs-res-k"><span class="cs-res-i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span data-i18n="res">Result</span></p>
+          <p class="cs-res-t" data-i18n="c4.r">A working procedure, agreed with the Tax Administration, for regular refund claims. The hard part was not filing a claim but getting the whole process defined and accepted.</p>
+        </div>
+      </div>
+
+      <div class="tile cs-viz rv" id="reft" style="--d:1">
+        <div class="vz-head">
+          <p class="vz-label" id="rt-l" data-i18n="c4.vz">From first meeting to refund</p>
+          <button class="vz-replay" type="button" aria-describedby="rt-l" aria-label="Replay" title="Replay" data-i18n-attr="aria-label:rc.replay,title:rc.replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+        </div>
+        <ol class="vz-card rt loop">
+          <li><span class="rt-n"><span>1</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span class="rt-t"><b data-i18n="c4.t1">First meetings</b><span data-i18n="c4.d1">with the tax inspector at the Tax Administration</span></span></li>
+          <li><span class="rt-n"><span>2</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span class="rt-t"><b data-i18n="c4.t2">Format agreed</b><span data-i18n="c4.d2">how data and documents would be submitted</span></span></li>
+          <li><span class="rt-n"><span>3</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span class="rt-t"><b data-i18n="c4.t3">Documentation collected</b><span data-i18n="c4.d3">everything the agreed procedure required</span></span></li>
+          <li><span class="rt-n"><span>4</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></span><span class="rt-t"><b data-i18n="c4.t4">Claims filed</b><span data-i18n="c4.d4">refund requests submitted</span></span></li>
+          <li class="fin"><span class="rt-n"><svg class="rt-loop" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2.5l3 3-3 3"/><path d="M4 11.5v-1a5 5 0 0 1 5-5h11"/><path d="M7 21.5l-3-3 3-3"/><path d="M20 12.5v1a5 5 0 0 1-5 5H4"/></svg></span><span class="rt-t"><b data-i18n="c4.t5">Repeatable procedure</b><span data-i18n="c4.d5">in place for regular claims</span></span></li>
+        </ol>
+      </div>
+    </article>
+
+    <!-- Smaller wins -->
+    <h3 class="wins-h rv"><span class="kick-s" data-i18n="w.k">Also</span><span data-i18n="w.h">Smaller wins along the way</span></h3>
+    <div class="wins">
+      <article class="tile win c-pink rv" id="w-fees">
+        <div class="wn-viz fee loop" aria-hidden="true">
+          <p class="fee-lab"><span data-i18n="w1.lo">lower fee</span><span data-i18n="w1.hi">higher fee</span></p>
+          <div class="fee-track"><span class="fee-pin"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.6 1.6"/></svg></span></div>
+          <p class="fee-hrs"><span>08h</span><span>12h</span><span>16h</span></p>
+        </div>
+        <p class="wn-co">Bechtel-Enka</p>
+        <h4 class="h4" data-i18n="w1.h">Lower bank fees</h4>
+        <p class="wn-p" data-i18n="w1.p">Payments went out late in the afternoon, when fees are highest. Moving the release time and value dates saved several hundred euros a month.</p>
+      </article>
+      <article class="tile win c-sky rv" style="--d:1">
+        <div class="wn-viz reg loop" aria-hidden="true">
+          <p class="reg-hd"><span data-i18n="w2.no">No.</span><span data-i18n="rc.item">Item</span><span data-i18n="w2.st">Status</span></p>
+          <div class="reg-win"><div class="reg-roll">
+            <p><span>FA-2041</span><span data-i18n="w2.i1">Excavator</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2042</span><span data-i18n="w2.i2">Dump truck</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2043</span><span data-i18n="w2.i3">Paver</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2044</span><span data-i18n="w2.i4">Road roller</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2045</span><span data-i18n="w2.i5">Generator</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2046</span><span data-i18n="w2.i6">Mixer truck</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2047</span><span data-i18n="w2.i7">Container</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2048</span><span data-i18n="w2.i8">Crane</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2041</span><span data-i18n="w2.i1">Excavator</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2042</span><span data-i18n="w2.i2">Dump truck</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2043</span><span data-i18n="w2.i3">Paver</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2044</span><span data-i18n="w2.i4">Road roller</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2045</span><span data-i18n="w2.i5">Generator</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2046</span><span data-i18n="w2.i6">Mixer truck</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2047</span><span data-i18n="w2.i7">Container</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+            <p><span>FA-2048</span><span data-i18n="w2.i8">Crane</span><span class="reg-ok" data-i18n="w2.ok">capitalised</span></p>
+          </div></div>
+        </div>
+        <p class="wn-co">Bechtel-Enka</p>
+        <h4 class="h4" data-i18n="w2.h">Fixed assets at scale</h4>
+        <p class="wn-p" data-i18n="w2.p">Capitalised hundreds of equipment items a month during project mobilisation, in a register of several thousand asset numbers.</p>
+      </article>
+      <article class="tile win c-lilac rv" style="--d:2">
+        <div class="wn-viz mar" aria-hidden="true">
+          <span class="mar-g"><span class="mar-c" data-i18n="w3.bank">Bank</span><em>+</em><span class="mar-c">MAR</span></span><span class="mar-g"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span class="mar-c" data-i18n="w3.scope">Scope</span><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span class="mar-c fin">Test</span></span>
+        </div>
+        <p class="wn-co">Teletrader</p>
+        <h4 class="h4" data-i18n="w3.h">Market abuse checks</h4>
+        <p class="wn-p" data-i18n="w3.p">For a major EU bank client, I turned trader language and the EU Market Abuse Regulation (MAR) into a clear scope for developers, then tested the result.</p>
+      </article>
+      <article class="tile win c-sun rv" style="--d:3">
+        <div class="wn-viz cnd" aria-hidden="true">
+          <p class="ind-leg"><span class="bb"><b>BB</b> (20, 2)</span><span class="ma"><b>SMA</b> 20</span></p>
+          <svg class="candles" viewBox="0 0 240 88" preserveAspectRatio="none"></svg>
+        </div>
+        <p class="wn-co">Teletrader</p>
+        <h4 class="h4" data-i18n="w4.h">New platform indicators</h4>
+        <p class="wn-p" data-i18n="w4.p">For sales-team requests, I researched how each indicator is calculated, modelled it in Excel, handed it to developers and verified the output.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <header class="sec-head c-sun rv">
+      <p class="kick"><b>02</b><span data-i18n="nav.how">How I work</span></p>
+      <h2 class="h2" id="how-h" data-i18n="how.h">Reliable <span class="mark">every day</span>. Better over time.</h2>
+      <p class="sec-p" data-i18n="how.p">Most of finance is doing the same things right, every day and every month. I work well in that rhythm, and it is exactly where my improvements come from.</p>
+    </header>
+    <div class="how">
+      <article class="tile pr c-sun rv">
+        <div class="pr-viz pr-cal" aria-hidden="true"><i style="--k:0">J</i><i style="--k:1">F</i><i style="--k:2">M</i><i style="--k:3">A</i><i style="--k:4">M</i><i style="--k:5">J</i><i style="--k:6">J</i><i style="--k:7">A</i><i style="--k:8">S</i><i style="--k:9">O</i><i style="--k:10">N</i><i style="--k:11">D</i></div>
+        <h3 class="h4 pr-h"><span class="pr-n" aria-hidden="true">01</span><span data-i18n="p1.h">Consistent and accurate</span></h3>
+        <p class="pr-p" data-i18n="p1.p">Invoices, payment runs, bank statements and reconciliations, done on time every period, with every balance tied out.</p>
+      </article>
+      <article class="tile pr c-sky rv" style="--d:1">
+        <div class="pr-viz pr-tpl loop" aria-hidden="true">
+          <p style="--r:0"><i></i><i></i><i></i><i></i><b></b></p>
+          <p style="--r:1"><i></i><i></i><i></i><i></i><b></b></p>
+          <p style="--r:2"><i></i><i></i><i></i><i></i><b></b></p>
+        </div>
+        <h3 class="h4 pr-h"><span class="pr-n" aria-hidden="true">02</span><span data-i18n="p2.h">Fewer errors by design</span></h3>
+        <p class="pr-p" data-i18n="p2.p">Where the same data is retyped hundreds of times, an import file or a template keeps the numbers right and leaves more time for checking.</p>
+      </article>
+      <article class="tile pr c-coral rv" style="--d:2">
+        <div class="pr-viz pr-team loop" aria-hidden="true">
+          <span class="tm-doc"><i></i><i></i><i></i></span>
+          <span class="tm-path"><i></i></span>
+          <span class="tm-ppl"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8.6" r="3.9"/><path d="M4.6 20.5c.7-4.1 3.7-6.7 7.4-6.7s6.7 2.6 7.4 6.7"/></svg></i></span>
+          <span class="tm-use"><i></i><span data-i18n="p3.use">Still in use</span></span>
+        </div>
+        <h3 class="h4 pr-h"><span class="pr-n" aria-hidden="true">03</span><span data-i18n="p3.h">Built for the team</span></h3>
+        <p class="pr-p" data-i18n="p3.p">Everything I set up is documented and easy to hand over. Some of it is still in use years after I left.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experience" aria-labelledby="xp-h">
+  <div class="wrap">
+    <header class="sec-head c-coral rv">
+      <p class="kick"><b>03</b><span data-i18n="nav.xp">Experience</span></p>
+      <h2 class="h2" id="xp-h" data-i18n="xp.h">Where I've <span class="mark">done it</span></h2>
+      <p class="sec-p" data-i18n="xp.p">Pick a role to see what it involved.</p>
+    </header>
+    <div class="xp rv">
+      <h3 class="xp-h c-pink on"><button class="xp-tab" type="button" id="xp-t1" aria-expanded="true" aria-controls="xp-p1"><span class="xp-y" data-i18n="x1.y">2026 – now</span><span class="xp-r" data-i18n="x1.r">Payments Specialist</span><span class="xp-c" data-i18n="x1.c">Mebit d.o.o. · Lopaš, Serbia</span><span class="xp-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button></h3>
+      <div class="tile xp-panel c-pink" id="xp-p1" role="region" aria-labelledby="xp-t1">
+        <div class="xp-ph" aria-hidden="true"><span class="xp-y" data-i18n="x1.y">2026 – now</span><p class="xp-pr" data-i18n="x1.r">Payments Specialist</p><p class="xp-pc" data-i18n="x1.c">Mebit d.o.o. · Lopaš, Serbia</p></div>
+        <ul class="xp-list">
+          <li style="--k:0" data-i18n="x1.d1">Reconcile deposit and withdrawal transactions against payment-provider records</li>
+          <li style="--k:1" data-i18n="x1.d2">Investigate failed, delayed and mismatched payments and resolve them with internal teams and payment providers</li>
+          <li style="--k:2" data-i18n="x1.d3">Monitor transaction flows to catch discrepancies and irregular payments early</li>
+          <li style="--k:3" data-i18n="x1.d4">Handle payment-related inquiries and give clear status updates</li>
+        </ul>
+      </div>
+      <h3 class="xp-h c-coral"><button class="xp-tab" type="button" id="xp-t2" aria-expanded="false" aria-controls="xp-p2"><span class="xp-y">2022 – 2025</span><span class="xp-r" data-i18n="x2.r">Finance &amp; Accounting Specialist</span><span class="xp-c" data-i18n="x2.c">Orange Trail Ltd · Remote, international team</span><span class="xp-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button></h3>
+      <div class="tile xp-panel c-coral" id="xp-p2" role="region" aria-labelledby="xp-t2" hidden>
+        <div class="xp-ph" aria-hidden="true"><span class="xp-y">2022 – 2025</span><p class="xp-pr" data-i18n="x2.r">Finance &amp; Accounting Specialist</p><p class="xp-pc" data-i18n="x2.c">Orange Trail Ltd · Remote, international team</p></div>
+        <ul class="xp-list">
+          <li style="--k:0" data-i18n="x2.d1">Day-to-day accounting for several companies within the group</li>
+          <li style="--k:1" data-i18n="x2.d2">Accounts payable and receivable, and vendor payment runs</li>
+          <li style="--k:2" data-i18n="x2.d3">Ongoing customer and supplier balance reconciliations</li>
+          <li style="--k:3" data-i18n="x2.d4">Review and verification of all transactions and their supporting documents</li>
+          <li style="--k:4" data-i18n="x2.d5">Payroll, commissions and bonuses</li>
+          <li style="--k:5" data-i18n="x2.d6">Financial reports for management</li>
+          <li style="--k:6" data-i18n="x2.d7">Records and documentation for the external tax accountant</li>
+        </ul>
+      </div>
+      <h3 class="xp-h c-sky"><button class="xp-tab" type="button" id="xp-t3" aria-expanded="false" aria-controls="xp-p3"><span class="xp-y">2020 – 2022</span><span class="xp-r" data-i18n="x3.r">Accountant</span><span class="xp-c" data-i18n="x3.c">Bechtel-Enka UK Ltd · Kruševac, Serbia</span><span class="xp-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button></h3>
+      <div class="tile xp-panel c-sky" id="xp-p3" role="region" aria-labelledby="xp-t3" hidden>
+        <div class="xp-ph" aria-hidden="true"><span class="xp-y">2020 – 2022</span><p class="xp-pr" data-i18n="x3.r">Accountant</p><p class="xp-pc" data-i18n="x3.c">Bechtel-Enka UK Ltd · Kruševac, Serbia</p></div>
+        <ul class="xp-list">
+          <li style="--k:0" data-i18n="x3.d1">Vendor payments, control of bank transactions and bank statement posting</li>
+          <li style="--k:1" data-i18n="x3.d2">Supplier and customer invoices (AP/AR)</li>
+          <li style="--k:2" data-i18n="x3.d3">Input and output VAT records and support with VAT returns</li>
+          <li style="--k:3" data-i18n="x3.d4">Fuel excise refund claims (REF-T) and correspondence with the Tax Administration</li>
+          <li style="--k:4" data-i18n="x3.d5">Capitalisation of fixed assets and depreciation</li>
+          <li style="--k:5" data-i18n="x3.d6">Financial reports and audit documentation; contact with auditors, banks and suppliers</li>
+        </ul>
+      </div>
+      <h3 class="xp-h c-lilac"><button class="xp-tab" type="button" id="xp-t4" aria-expanded="false" aria-controls="xp-p4"><span class="xp-y">2015 – 2020</span><span class="xp-r" data-i18n="x4.r">Financial Data Specialist</span><span class="xp-c" data-i18n="x4.c">Teletrader · Belgrade, Serbia</span><span class="xp-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button></h3>
+      <div class="tile xp-panel c-lilac" id="xp-p4" role="region" aria-labelledby="xp-t4" hidden>
+        <div class="xp-ph" aria-hidden="true"><span class="xp-y">2015 – 2020</span><p class="xp-pr" data-i18n="x4.r">Financial Data Specialist</p><p class="xp-pc" data-i18n="x4.c">Teletrader · Belgrade, Serbia</p></div>
+        <ul class="xp-list">
+          <li style="--k:0" data-i18n="x4.d1">Quality and accuracy of financial market data from external sources</li>
+          <li style="--k:1" data-i18n="x4.d2">Analysis of incoming market data and mapping to the internal data model</li>
+          <li style="--k:2" data-i18n="x4.d3">Continuous improvement of error-detection checks and validation methods</li>
+          <li style="--k:3" data-i18n="x4.d4">Resolving client-reported data issues, escalating bugs to developers and testing fixes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="skills" aria-labelledby="sk-h">
+  <div class="wrap">
+    <header class="sec-head c-lilac rv">
+      <p class="kick"><b>04</b><span data-i18n="nav.skills">Skills</span></p>
+      <h2 class="h2" id="sk-h" data-i18n="sk.h">What I <span class="mark">work with</span></h2>
+    </header>
+    <div class="skills">
+      <div class="tile sk sk-acc c-sky rv">
+        <h3 class="sk-h"><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.5 3.5h10l3 3v14h-13z"/><path d="M15.5 3.5v3h3M8.5 10.5h7M8.5 14h7M8.5 17.5h4"/></svg></span><span data-i18n="sk.a">Accounting</span></h3>
+        <ul class="chips">
+          <li class="key" data-i18n="sk.a1">Accounts payable</li>
+          <li class="key" data-i18n="sk.a2">Accounts receivable</li>
+          <li class="key" data-i18n="sk.a3">Payment runs</li>
+          <li data-i18n="sk.a4">Bank reconciliations</li>
+          <li data-i18n="sk.a5">Balance reconciliations</li>
+          <li data-i18n="sk.a6">Payroll</li>
+          <li data-i18n="sk.a7">Commissions &amp; bonuses</li>
+          <li data-i18n="sk.a8">General ledger review</li>
+          <li data-i18n="sk.a9">VAT records</li>
+          <li data-i18n="sk.a10">Fixed assets</li>
+          <li data-i18n="sk.a11">Management reporting</li>
+        </ul>
+      </div>
+      <div class="tile sk sk-tools c-sun rv" style="--d:1">
+        <h3 class="sk-h"><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="3.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="3.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg></span><span data-i18n="sk.t">Tools</span></h3>
+        <ul class="chips">
+          <li class="key">Xero</li>
+          <li class="key">MYOB</li>
+          <li class="key">Pantheon</li>
+          <li>EGFS (ERP)</li>
+          <li data-i18n="sk.t1">Halcom e-banking</li>
+          <li class="key" data-i18n="sk.t2">Excel &amp; Power Query</li>
+          <li>Google Sheets</li>
+          <li>MS SQL</li>
+          <li data-i18n="sk.t3">Python (basic)</li>
+        </ul>
+      </div>
+      <div class="tile sk sk-also c-lilac rv" style="--d:2">
+        <h3 class="sk-h"><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.4 5.4 5.9.6-4.4 4 1.3 5.8L12 16.3l-5.2 3 1.3-5.8-4.4-4 5.9-.6z"/></svg></span><span data-i18n="sk.o">Also</span></h3>
+        <ul class="chips">
+          <li>Claude · ChatGPT · Gemini</li>
+          <li data-i18n="sk.o1">AI-assisted ledger review</li>
+          <li data-i18n="sk.o2">Serbian (native)</li>
+          <li data-i18n="sk.o3">English (professional)</li>
+          <li class="long" data-i18n="sk.o4">Bachelor in Economics (Finance, Banking &amp; Insurance), University of Belgrade</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ct-sec" id="contact" aria-labelledby="ct-h">
+  <div class="wrap">
+    <div class="ct">
+      <div class="tile ct-main c-pink rv">
+        <div class="ct-art loop" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i></div>
+        <p class="kick"><b>05</b><span data-i18n="nav.contact">Contact</span></p>
+        <h2 class="h2" id="ct-h" data-i18n="ct.h">Need someone who keeps the <span class="mark">numbers right</span>?</h2>
+        <p class="ct-p" data-i18n="ct.p">I'm looking for a finance or accounting role: on-site in Kruševac, hybrid or fully remote.</p>
+        <div class="cta">
+          <a class="btn solid" href="mailto:marko.simic.ks@gmail.com"><span data-i18n="hero.email">Email me</span><svg class="ct-arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/marko-simic-ks/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="tile ct-card rv" style="--d:1">
+        <p class="ct-open"><i aria-hidden="true"></i><span data-i18n="ct.open">Open to new roles</span></p>
+        <dl class="ct-dl">
+          <div class="ct-row"><dt data-i18n="ct.mail">Email</dt><dd><a href="mailto:marko.simic.ks@gmail.com">marko.simic.ks@gmail.com</a><button class="ct-copy" type="button" data-copy="marko.simic.ks@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.5"/><path d="M15.5 8.5V6a2.5 2.5 0 0 0-2.5-2.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/></svg><span>Copy</span></button></dd></div>
+          <div class="ct-row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/marko-simic-ks/" target="_blank" rel="noopener">in/marko-simic-ks</a></dd></div>
+          <div class="ct-row"><dt data-i18n="f.loc">Based in</dt><dd data-i18n="f.locV">Kruševac, Serbia</dd></div>
+          <div class="ct-row"><dt data-i18n="f.mode">Work mode</dt><dd data-i18n="f.modeV">On-site, hybrid or remote (CET)</dd></div>
+        </dl>
+        <span class="vh" id="ctLive" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
-
+<footer class="foot">
+  <div class="wrap">
+    <div class="ft-in">
+      <p class="ft-c">© 2026 Marko Simić</p>
+      <p class="ft-g"><span data-i18n="ft.grid">Everything on this page sits on one grid.</span><button class="ft-btn" id="gridBtn" type="button" aria-pressed="false"><span>Show the grid</span><kbd aria-hidden="true">G</kbd></button></p>
+      <a class="ft-top" href="#top"><span data-i18n="ft.top">Back to top</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
 <div class="gridlay" id="gridlay" aria-hidden="true"><div class="wrap grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
 <script>
 (() => {
@@ -576,7 +1474,182 @@ ul, ol { padding: 0; }
     "f.remoteV": "3 godine u međunarodnom timu",
     "f.lang": "Jezici",
     "f.langV": "Srpski · Engleski",
-    "f.soft": "Softver"
+    "f.soft": "Softver",
+    "work.h": "Poznajem rutinu. Zato je <span class=\"mark\">unapređujem</span>.",
+    "work.p": "Svaki od ovih primera počeo je u mom svakodnevnom poslu. Baš zato što proces poznajem do detalja, video sam gde može da bude tačniji i efikasniji.",
+    "res": "Rezultat",
+    "before": "Pre",
+    "after": "Posle",
+    "c1.tag": "Plaćanja",
+    "c1.h": "Hiljade naloga za plaćanje, bez ručnog kucanja",
+    "c1.s1": "<b>Rutina.</b> Obrađivao sam plaćanja dobavljačima i zaposlenima na velikom projektu izgradnje autoputa.",
+    "c1.s2": "<b>Problem.</b> Interni ERP kompanije nije bio povezan sa domaćim e-bankarstvom (Halcom), pa se svaki nalog kucao ručno: dozvole i takse za oko 2.000 stranih radnika (obnavljaju se na tri meseca, po tri naloga za svakog), njihove mesečne zarade i oko 100 plaćanja dobavljačima nedeljno.",
+    "c1.s3": "<b>Šta sam uradio.</b> Napravio sam Excel fajl koji od podataka o plaćanjima pravi fajl za uvoz u banku (TXT), pa se cela grupa naloga učitava u Halcom u jednom koraku. Napisao sam i malu Python skriptu koja je popunjavala uplatnice na državnom portalu ePlati i upisivala pozive na broj nazad u tabelu.",
+    "c1.r": "Posao za koji su bile potrebne dve osobe obavljao sam samostalno, uz mnogo manje grešaka pri unosu. Excel fajl se i danas koristi.",
+    "c1.vz": "Put jedne grupe naloga",
+    "c1.n1": "spisak naloga",
+    "c1.n2": "Fajl za uvoz",
+    "c1.n2s": "generisan",
+    "c1.n3": "e-bankarstvo",
+    "c1.ok": "Učitano",
+    "c1.vol": "Naloga mesečno (okvirno)",
+    "c1.v1": "Dozvole i takse",
+    "c1.v2": "Zarade stranaca",
+    "c1.v3": "Dobavljači",
+    "c1.b": "Dve osobe, svaki nalog kucan ručno",
+    "c1.a": "Jedna osoba, jedan uvoz po grupi naloga",
+    "c2.tag": "Berzanski podaci",
+    "c2.h": "Spin-off korekcije spremne već prvog dana",
+    "c2.s1": "<b>Rutina.</b> Najveći deo dana pregledao sam izveštaje provera koje otkrivaju greške u tržišnim podacima (odstupanja, prekidi, cene koje nedostaju) za akcije, obveznice i fondove iz mnogo izvora.",
+    "c2.s2": "<b>Problem.</b> Kada kompanija izdvoji deo poslovanja u novu firmu (spin-off), istorija cene mora da se koriguje, inače grafik pokazuje pad koji se nikad nije desio. Faktor korekcije preuzimao se sa konkurentskih platformi, pa smo morali da ga čekamo, a nije postojao za sva tržišta koja smo pratili.",
+    "c2.s3": "<b>Šta sam uradio.</b> Osmislio sam metod koji kombinuje javno objavljene uslove spin-offa sa podacima pre početka trgovanja koji su nam interno bili dostupni, pa faktor može da se izračuna pre otvaranja trgovanja.",
+    "c2.r": "Korigovane cene već na sam dan spin-offa, najmanje dan ranije nego pre, za sva tržišta koja smo pratili. Metod se i danas koristi.",
+    "c2.vz": "Cena akcije oko spin-offa",
+    "c2.mode": "Prikaz grafika",
+    "c2.raw": "Nekorigovano",
+    "c2.adj": "Korigovano",
+    "c2.aria": "Ilustrativni grafik cene akcije",
+    "c2.flag": "Dan spin-offa",
+    "c2.d1": "Dan 1",
+    "c2.d1t": "Moj metod: faktor spreman na otvaranju, za svako tržište",
+    "c2.d2": "Dan 2+",
+    "c2.d2t": "Preuzet faktor: kasnije, i ne za svako tržište",
+    "c2.note": "Ilustracija sa simuliranim cenama, nisu stvarni tržišni podaci.",
+    "c3.tag": "Kupci · Dobavljači",
+    "c3.yrs": "Na daljinu · 2022 – 2025",
+    "c3.h": "Podaci za fakturisanje koji stižu sami",
+    "c3.s1": "<b>Rutina.</b> Svakodnevno knjigovodstvo za više firmi u okviru grupe: fakturisanje, plaćanja dobavljačima, usaglašavanja i zarade.",
+    "c3.s2": "<b>Problem.</b> Klijentima se fakturisala potrošnja na Google Adsu, a te iznose je osoba zaposlena na pola radnog vremena ručno prepisivala sa kontrolne table svakog naloga. Na strani dobavljača, provera dnevnih Meta faktura u USD i EUR trajala je najmanje sat vremena dnevno.",
+    "c3.s3": "<b>Šta sam uradio.</b> Napravio sam skripte u Google Sheets-u koje povlače potrošnju direktno iz Google Adsa, umesto ručnog prepisivanja. Za Meta fakture napravio sam Power Query model koji sabira podatke o potrošnji za proveru.",
+    "c3.r": "Iznosi za fakturisanje stižu automatski i tačno, bez prepisivanja, a dnevna provera faktura kreće od jedne tabele umesto od više odvojenih izvoza.",
+    "c3.vz": "Fakturisanje i provera faktura",
+    "c3.sheet": "Kupci · Tabela za fakturisanje",
+    "c3.sync": "Povučeno iz Google Adsa",
+    "c3.client": "Klijent",
+    "c3.spend": "Potrošnja",
+    "c3.bill": "Fakturisanje",
+    "c3.ca": "Klijent A",
+    "c3.cb": "Klijent B",
+    "c3.cc": "Klijent C",
+    "c3.cd": "Klijent D",
+    "c3.ce": "Klijent E",
+    "c3.was": "Ručno prepisivano sa svake kontrolne table",
+    "c3.now": "Povučeno skriptom",
+    "c3.ap": "Dobavljači · Dnevne Meta fakture",
+    "c3.apWas": "1h+ dnevno ručne provere",
+    "c3.inv": "Faktura",
+    "c3.note": "Ilustracija sa primerima iznosa, nisu stvarni podaci klijenata.",
+    "c4.tag": "Porezi",
+    "c4.h": "Refakcija akcize na gorivo, od nule",
+    "c4.s1": "<b>Rutina.</b> Pored obaveza prema dobavljačima, plaćanja i PDV evidencije, vodio sam komunikaciju sa Poreskom upravom.",
+    "c4.s2": "<b>Problem.</b> Kompanija je imala pravo na refakciju akcize na gorivo za transportne svrhe (REF-T), ali nije imala proceduru za podnošenje zahteva.",
+    "c4.s3": "<b>Šta sam uradio.</b> Učestvovao sam od prvog sastanka sa poreskim inspektorom do konačnog zahteva: sa Poreskom upravom dogovorio način dostavljanja podataka i dokumenata, prikupio dokumentaciju i podneo zahteve za refakciju.",
+    "c4.r": "Procedura dogovorena sa Poreskom upravom, po kojoj se redovno podnose zahtevi za refakciju. Najteže nije bilo podneti zahtev, već definisati ceo proces i dobiti saglasnost za njega.",
+    "c4.vz": "Od prvog sastanka do refakcije",
+    "c4.t1": "Prvi sastanci",
+    "c4.d1": "sa poreskim inspektorom u Poreskoj upravi",
+    "c4.t2": "Dogovoren način",
+    "c4.d2": "kako se dostavljaju podaci i dokumenti",
+    "c4.t3": "Dokumentacija prikupljena",
+    "c4.d3": "sve što dogovorena procedura traži",
+    "c4.t4": "Zahtevi podneti",
+    "c4.d4": "zahtevi za refakciju predati",
+    "c4.t5": "Ustaljena procedura",
+    "c4.d5": "za redovne zahteve",
+    "w.k": "Ostalo",
+    "w.h": "Manji doprinosi usput",
+    "w1.lo": "manja provizija",
+    "w1.hi": "veća provizija",
+    "w1.h": "Niže bankarske provizije",
+    "w1.p": "Plaćanja su išla kasno popodne, kad su provizije najveće. Pomeranjem vremena slanja i datuma valute uštedelo se nekoliko stotina evra mesečno.",
+    "w2.no": "Br.",
+    "w2.st": "Status",
+    "w2.ok": "aktivirano",
+    "w2.i1": "Bager",
+    "w2.i2": "Kiper",
+    "w2.i3": "Finišer",
+    "w2.i4": "Valjak",
+    "w2.i5": "Agregat",
+    "w2.i6": "Mikser",
+    "w2.i7": "Kontejner",
+    "w2.i8": "Dizalica",
+    "w2.h": "Osnovna sredstva u velikom obimu",
+    "w2.p": "Tokom mobilizacije projekta aktivirao sam stotine stavki opreme mesečno, u registru od nekoliko hiljada inventarskih brojeva.",
+    "w3.bank": "Banka",
+    "w3.scope": "Zahtevi",
+    "w3.h": "Provere zloupotrebe tržišta",
+    "w3.p": "Za klijenta, veliku banku iz EU, preveo sam jezik trejdera i EU Uredbu o zloupotrebi tržišta (MAR) u jasne zahteve za programere, a zatim testirao rešenje.",
+    "w4.h": "Novi indikatori na platformi",
+    "w4.p": "Na zahtev prodajnog tima istraživao sam kako se svaki indikator računa, modelovao ga u Excelu, predao programerima i proverio rezultat.",
+    "how.h": "Pouzdano <span class=\"mark\">svakog dana</span>. Bolje iz meseca u mesec.",
+    "how.p": "Najveći deo posla u finansijama je da se iste stvari rade tačno, svakog dana i svakog meseca. U tom ritmu radim dobro, i upravo iz njega dolaze moja unapređenja.",
+    "p1.h": "Dosledno i tačno",
+    "p1.p": "Fakture, plaćanja, izvodi i usaglašavanja, završeni na vreme u svakom periodu, a svako saldo usaglašeno.",
+    "p2.h": "Greške sprečene unapred",
+    "p2.p": "Gde se isti podaci kucaju stotinama puta, fajl za uvoz ili šablon drži brojeve tačnim i ostavlja više vremena za proveru.",
+    "p3.use": "I dalje u upotrebi",
+    "p3.h": "Napravljeno za tim",
+    "p3.p": "Sve što postavim je dokumentovano i lako se predaje drugima. Deo toga se koristi i godinama posle mog odlaska.",
+    "xp.h": "Gde sam to <span class=\"mark\">radio</span>",
+    "xp.p": "Izaberite poziciju da vidite šta je obuhvatala.",
+    "x1.y": "2026 – danas",
+    "x1.r": "Specijalista za platne operacije",
+    "x1.c": "Mebit d.o.o. · Lopaš, Srbija",
+    "x1.d1": "Usaglašavanje uplata i isplata sa evidencijom platnih provajdera",
+    "x1.d2": "Istraživanje i rešavanje neuspelih, zakašnjelih i neusaglašenih plaćanja u saradnji sa internim timovima i platnim provajderima",
+    "x1.d3": "Praćenje toka transakcija radi ranog otkrivanja razlika i nepravilnih plaćanja",
+    "x1.d4": "Odgovori na upite u vezi sa plaćanjima i informisanje o statusu transakcija",
+    "x2.r": "Specijalista za finansije i računovodstvo",
+    "x2.c": "Orange Trail Ltd · Na daljinu, međunarodni tim",
+    "x2.d1": "Vođenje svakodnevnog knjigovodstva za više povezanih firmi u okviru grupe",
+    "x2.d2": "Obrada obaveza prema dobavljačima i potraživanja od kupaca i priprema plaćanja dobavljačima",
+    "x2.d3": "Kontinuirano usaglašavanje potraživanja i obaveza sa kupcima i dobavljačima (IOS)",
+    "x2.d4": "Kontrola i verifikacija svih finansijskih transakcija i prateće dokumentacije",
+    "x2.d5": "Obračun i isplata zarada, provizija i bonusa",
+    "x2.d6": "Izrada finansijskih izveštaja za menadžment",
+    "x2.d7": "Saradnja sa eksternim poreskim računovođom i priprema dokumentacije za poreske prijave",
+    "x3.r": "Računovođa",
+    "x3.c": "Bechtel-Enka UK Ltd · Kruševac, Srbija",
+    "x3.d1": "Plaćanja dobavljačima, kontrola bankovnih transakcija i knjiženje izvoda",
+    "x3.d2": "Knjiženje ulaznih i izlaznih faktura",
+    "x3.d3": "Vođenje PDV evidencije i podrška u pripremi PDV prijava",
+    "x3.d4": "Zahtevi za refakciju akcize na gorivo (REF-T) i komunikacija sa Poreskom upravom",
+    "x3.d5": "Aktiviranje osnovnih sredstava i obračun amortizacije",
+    "x3.d6": "Izrada izveštaja i dokumentacije za reviziju; komunikacija sa revizorima, bankama i dobavljačima",
+    "x4.r": "Specijalista za finansijske podatke",
+    "x4.c": "Teletrader · Beograd, Srbija",
+    "x4.d1": "Kontrola kvaliteta i tačnosti finansijskih tržišnih podataka iz eksternih izvora",
+    "x4.d2": "Analiza tržišnih podataka i njihovo prilagođavanje internom modelu podataka",
+    "x4.d3": "Stalno unapređivanje provera i metoda za otkrivanje grešaka u podacima",
+    "x4.d4": "Rešavanje problema sa podacima koje prijave klijenti, prijava grešaka razvojnom timu i testiranje ispravki",
+    "sk.h": "S čim <span class=\"mark\">radim</span>",
+    "sk.a": "Računovodstvo",
+    "sk.a1": "Obaveze prema dobavljačima",
+    "sk.a2": "Potraživanja od kupaca",
+    "sk.a3": "Plaćanja dobavljačima",
+    "sk.a4": "Usaglašavanje izvoda",
+    "sk.a5": "Usaglašavanje salda (IOS)",
+    "sk.a6": "Obračun zarada",
+    "sk.a7": "Provizije i bonusi",
+    "sk.a8": "Kontrola glavne knjige",
+    "sk.a9": "PDV evidencija",
+    "sk.a10": "Osnovna sredstva i amortizacija",
+    "sk.a11": "Izveštavanje za menadžment",
+    "sk.t": "Alati",
+    "sk.t1": "Halcom e-bankarstvo",
+    "sk.t2": "Excel i Power Query",
+    "sk.t3": "Python (osnove)",
+    "sk.o": "Ostalo",
+    "sk.o1": "Provera knjiženja uz pomoć AI",
+    "sk.o2": "Srpski (maternji)",
+    "sk.o3": "Engleski (napredni nivo)",
+    "sk.o4": "Diplomirani ekonomista (Finansije, bankarstvo i osiguranje), Ekonomski fakultet u Beogradu",
+    "ct.h": "Treba vam neko ko drži <span class=\"mark\">brojeve u redu</span>?",
+    "ct.p": "Tražim posao u finansijama ili računovodstvu: u kancelariji u Kruševcu, hibridno ili potpuno na daljinu.",
+    "ct.mail": "Imejl",
+    "ct.open": "Otvoren za nove prilike",
+    "ft.grid": "Sve na ovoj stranici stoji na jednoj mreži.",
+    "ft.top": "Na vrh"
   };
   const metaDesc = $('meta[name="description"]');
   const STR = {
@@ -587,6 +1660,16 @@ ul, ol { padding: 0; }
       rcPosted: 'Posted',
       gridOn: 'Show the grid',
       gridOff: 'Hide the grid',
+      noteRaw: 'Unadjusted: the chart shows a fake 32% crash. Click Adjusted to fix it.',
+      noteAdj: 'Adjusted on the spin-off date: the price history stays comparable.',
+      otWait: 'waiting',
+      otSync: 'syncing…',
+      otOk: 'ready<em> to bill</em>',
+      otCheck: 'checking…',
+      otMatch: 'matched',
+      copy: 'Copy',
+      copied: 'Copied',
+      copiedMsg: 'Email address copied',
     },
     sr: {
       "title": "Marko Simić · Računovođa, fakture i plaćanja",
@@ -594,7 +1677,17 @@ ul, ol { padding: 0; }
       "rcFlag": "Nije u knjigama",
       "rcPosted": "Proknjiženo",
       "gridOn": "Prikaži mrežu",
-      "gridOff": "Sakrij mrežu"
+      "gridOff": "Sakrij mrežu",
+      "noteRaw": "Nekorigovano: grafik pokazuje lažan pad od 32%. Kliknite Korigovano da se ispravi.",
+      "noteAdj": "Korigovano na dan spin-offa: istorija cene ostaje uporediva.",
+      "otWait": "čeka",
+      "otSync": "učitava…",
+      "otOk": "spremno<em> za fakturu</em>",
+      "otCheck": "provera…",
+      "otMatch": "slaže se",
+      "copy": "Kopiraj",
+      "copied": "Kopirano",
+      "copiedMsg": "Imejl adresa je kopirana"
     }
   };
   let lang = 'en';
@@ -685,19 +1778,26 @@ ul, ol { padding: 0; }
   hooks.push(placeInd);
   addEventListener('resize', placeInd);
 
-  // Highlight the section in view
-  const navLinks = $$('.links a, .menu a');
-  const spy = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    const id = '#' + e.target.id;
+  // Highlight the section in view; at the very bottom of the page that is the last one, however short it is
+  const navLinks = $$('.links a, .menu a'), secs = $$('main > section[id]');
+  let inBand = null, spyId;
+  function paintSpy() {
+    const end = root.scrollTop > 0 && root.scrollTop + root.clientHeight >= root.scrollHeight - 2;
+    const id = end ? secs[secs.length - 1].id : inBand;
+    if (id === spyId) return;
+    spyId = id;
     navLinks.forEach(a => {
-      if (a.getAttribute('href') === id) a.setAttribute('aria-current', 'true');
+      if (id && a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
-    current = pillLinks.find(a => a.getAttribute('href') === id) || null;
+    current = id && pillLinks.find(a => a.getAttribute('href') === '#' + id) || null;
     placeInd();
+  }
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { inBand = e.target.id; paintSpy(); }
   }), { rootMargin: '-45% 0px -54% 0px' });
-  $$('main > section[id]').forEach(s => spy.observe(s));
+  secs.forEach(s => spy.observe(s));
+  addEventListener('scroll', paintSpy, { passive: true });
 
   // Mobile menu
   const menuBtn = $('.menu-btn'), menu = $('#menu');
@@ -730,7 +1830,7 @@ ul, ol { padding: 0; }
     e.target.classList.add('in');
     $$('[data-count]', e.target).forEach(el => countUp(el));
     io.unobserve(e.target);
-  }), { threshold: 0.2 });
+  }), { threshold: 0, rootMargin: '0px 0px -10% 0px' });
   $$('.rv').forEach(el => io.observe(el));
 
   /* ---------- Hero: bank reconciliation ---------- */
@@ -869,6 +1969,334 @@ ul, ol { padding: 0; }
     setInterval(tick, 1000);
   })();
 
+  /* ---------- Figures written the local way: 2,000 in English, 2.000 in Serbian ---------- */
+  const nums = $$('[data-num]');
+  hooks.push(() => nums.forEach(el => { el.textContent = fmt(+el.dataset.num, +(el.dataset.dec || 0)); }));
+
+  // Looping illustrations only move while they are on screen
+  if (!reduce) $$('.loop').forEach(el => onView(el, v => el.classList.toggle('live', v), { threshold: 0 }));
+
+  // Starts an exhibit once it is well in view; its own clock stops while it is off screen
+  function exhibit(box, play) {
+    const st = { visible: false, run: 0, started: false };
+    st.sleep = sleeper(() => !st.visible);
+    onView(box, (v, e) => {
+      st.visible = v;
+      if (!st.started && e.intersectionRatio >= 0.3) { st.started = true; play(); }
+    }, { threshold: [0, 0.3] });
+    const btn = $('.vz-replay', box);
+    if (btn) btn.addEventListener('click', () => play());
+    return st;
+  }
+
+  /* ---------- Case 1: a payment batch goes from the sheet to the bank ---------- */
+  (() => {
+    const box = $('#pay');
+    if (!box) return;
+    const tot = $('[data-n]', box), N = +tot.dataset.n;
+    const marks = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'], at = [0, 350, 1150, 1450, 2150, 2550, 4050];
+    let shown = N;
+    const paint = () => { tot.textContent = fmt(shown); };
+    const set = n => marks.forEach((m, i) => box.classList.toggle(m, i < n));
+    hooks.push(paint);
+    if (reduce) { set(marks.length); return; }
+    set(0); shown = 0;
+    const st = exhibit(box, async function play() {
+      const id = ++st.run, live = () => id === st.run;
+      set(0); shown = 0; paint();
+      await st.sleep(500);
+      for (let i = 0, t = 0; i < marks.length; i++) {
+        await st.sleep(at[i] - t); t = at[i];
+        if (!live()) return;
+        set(i + 1);
+        if (marks[i] === 'p6') {
+          const t0 = performance.now();
+          requestAnimationFrame(function f(now) {
+            if (!live()) return;
+            const k = Math.min(1, (now - t0) / 1400);
+            shown = Math.round(N * (1 - Math.pow(1 - k, 4))); paint();
+            if (k < 1) requestAnimationFrame(f);
+          });
+        }
+      }
+    });
+  })();
+
+  /* ---------- Case 2: the price chart, unadjusted or adjusted ---------- */
+  (() => {
+    const box = $('#spin');
+    if (!box) return;
+    const card = $('.spn', box), line = $('.spn-line', box), area = $('.spn-area', box), date = $('.spn-date', box);
+    const flag = $('.spn-flag', box), drop = $('.spn-drop', box), note = $('.spn-note', box);
+    const seg = $('.seg', box), knob = $('.seg-k', seg), btns = $$('button', seg);
+    // Simulated prices from a seeded random walk, the same on every visit
+    let seed = 7;
+    const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+    const N = 64, S = 40, F = 0.68, W = 640, H = 280, PAD = 34;
+    const base = [];
+    for (let i = 0, p = 100; i < N; i++) { p += (rnd() - 0.47) * 3.2; base.push(p); }
+    const raw = base.map((v, i) => (i >= S ? v * F : v)), adj = base.map(v => v * F);
+    const all = raw.concat(adj), lo = Math.min(...all) - 6, hi = Math.max(...all) + 6;
+    const X = i => i / (N - 1) * W, Y = v => PAD + (1 - (v - lo) / (hi - lo)) * (H - PAD * 2);
+    const path = vals => vals.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
+    const xS = (S - 0.5) / (N - 1) * W;
+    date.setAttribute('x1', xS); date.setAttribute('x2', xS);
+    flag.style.left = drop.style.left = (xS / W * 100) + '%';
+    drop.style.top = (Y((raw[S - 1] + raw[S]) / 2) / H * 100) + '%';
+    let cur = raw.slice(), mode = 'raw', anim = 0;
+    function draw(v) {
+      const d = path(v);
+      line.setAttribute('d', d);
+      area.setAttribute('d', d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z');
+    }
+    function placeKnob() {
+      const b = btns.find(x => x.dataset.mode === mode);
+      if (!b.offsetWidth) return;
+      const jump = !knob.style.width;
+      if (jump) knob.style.transition = 'none';
+      knob.style.width = b.offsetWidth + 'px';
+      knob.style.transform = 'translateX(' + b.offsetLeft + 'px)';
+      if (jump) { void knob.offsetWidth; knob.style.transition = ''; }
+    }
+    const paintNote = () => { note.textContent = T(mode === 'adj' ? 'noteAdj' : 'noteRaw'); };
+    function setMode(m, instant) {
+      mode = m;
+      card.classList.toggle('adj', m === 'adj');
+      btns.forEach(b => { const on = b.dataset.mode === m; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+      placeKnob(); paintNote();
+      const target = m === 'adj' ? adj : raw, from = cur.slice();
+      cancelAnimationFrame(anim);
+      if (reduce || instant) { cur = target.slice(); draw(cur); return; }
+      const t0 = performance.now();
+      anim = requestAnimationFrame(function f(t) {
+        const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3);
+        cur = from.map((v, i) => v + (target[i] - v) * e);
+        draw(cur);
+        if (k < 1) anim = requestAnimationFrame(f);
+      });
+    }
+    hooks.push(() => { placeKnob(); paintNote(); });
+    addEventListener('resize', placeKnob);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeKnob);
+    btns.forEach(b => b.addEventListener('click', () => { seg.classList.remove('hint'); if (b.dataset.mode !== mode) setMode(b.dataset.mode); }));
+    setMode('raw', true);
+  })();
+
+  /* ---------- Case 3: billing figures arrive by script, then the invoices are checked ---------- */
+  (() => {
+    const box = $('#ot');
+    if (!box) return;
+    const rows = $$('.ot-row[data-v]', box), checks = $$('.ot-m', box);
+    function paintRow(r) {
+      const s = r.dataset.st || 'wait';
+      $('.ot-num', r).textContent = s === 'ok' ? fmt(+r.dataset.v, 2) : '—';
+      $('.ot-st', r).innerHTML = '<span>' + T(s === 'ok' ? 'otOk' : s === 'sync' ? 'otSync' : 'otWait') + '</span>';
+      r.classList.toggle('sync', s === 'sync');
+      r.classList.toggle('ok', s === 'ok');
+    }
+    const paintCheck = m => { $('.ot-v', m).textContent = T(m.classList.contains('ok') ? 'otMatch' : 'otCheck'); };
+    const setRow = (r, s) => { r.dataset.st = s; paintRow(r); };
+    hooks.push(() => { rows.forEach(paintRow); checks.forEach(paintCheck); });
+    if (reduce) { rows.forEach(r => setRow(r, 'ok')); checks.forEach(m => m.classList.add('ok')); return; }
+    function reset() {
+      box.classList.remove('busy');
+      rows.forEach(r => setRow(r, 'wait'));
+      checks.forEach(m => { m.classList.remove('ok'); paintCheck(m); });
+    }
+    reset();
+    const st = exhibit(box, async function play() {
+      const id = ++st.run, live = () => id === st.run;
+      reset();
+      await st.sleep(500); if (!live()) return;
+      box.classList.add('busy');
+      for (const r of rows) {
+        setRow(r, 'sync');
+        await st.sleep(420); if (!live()) return;
+        setRow(r, 'ok');
+        await st.sleep(140); if (!live()) return;
+      }
+      box.classList.remove('busy');
+      await st.sleep(600);
+      for (const m of checks) {
+        if (!live()) return;
+        m.classList.add('ok'); paintCheck(m);
+        await st.sleep(650);
+      }
+    });
+  })();
+
+  /* ---------- Case 4: from the first meeting to a repeatable procedure ---------- */
+  (() => {
+    const box = $('#reft');
+    if (!box) return;
+    const list = $('.rt', box), items = $$('li', list);
+    let n = reduce ? items.length : 0;
+    const mid = li => { const d = $('.rt-n', li); return li.offsetTop + d.offsetTop + d.offsetHeight / 2; };
+    // The line runs from the first dot to the last; its coloured part reaches the current step
+    function layout() {
+      if (!list.offsetHeight) return;
+      const d = $('.rt-n', items[0]), top = mid(items[0]);
+      list.style.setProperty('--x', (items[0].offsetLeft + d.offsetLeft + d.offsetWidth / 2) + 'px');
+      list.style.setProperty('--t', top + 'px');
+      list.style.setProperty('--len', (mid(items[items.length - 1]) - top) + 'px');
+      list.style.setProperty('--fill', (n ? mid(items[n - 1]) - top : 0) + 'px');
+    }
+    function set(k) { n = k; items.forEach((li, i) => li.classList.toggle('on', i < n)); layout(); }
+    hooks.push(layout);
+    addEventListener('resize', layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+    set(n);
+    if (reduce) return;
+    const st = exhibit(box, async function play() {
+      const id = ++st.run;
+      set(0);
+      await st.sleep(500);
+      for (let i = 1; i <= items.length; i++) {
+        if (id !== st.run) return;
+        set(i);
+        await st.sleep(620);
+      }
+    });
+  })();
+
+  /* ---------- Smaller wins: market abuse checks, one stage after another ---------- */
+  (() => {
+    const mar = $('.mar');
+    if (!mar) return;
+    const cs = $$('.mar-c', mar);
+    if (reduce) { cs.forEach(c => c.classList.add('on')); return; }
+    let s = 0, timer = 0;
+    const step = () => { s = (s + 1) % (cs.length + 3); cs.forEach((c, i) => c.classList.toggle('on', i < s)); };
+    onView(mar, v => {
+      if (v && !timer) timer = setInterval(step, 700);
+      else if (!v && timer) { clearInterval(timer); timer = 0; }
+    }, { threshold: 0 });
+  })();
+
+  /* ---------- Smaller wins: live candles with SMA 20 and Bollinger Bands (20, 2) ---------- */
+  (() => {
+    const svg = $('.candles');
+    if (!svg) return;
+    const NS = 'http://www.w3.org/2000/svg', SHOW = 32, P = 20, W = 240, H = 88;
+    let seed = 23, price = 100;
+    const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+    function next() {
+      const o = price, c = Math.max(60, o + (rnd() - 0.48) * 2.4);
+      const h = Math.max(o, c) + rnd() * 1.2, l = Math.min(o, c) - rnd() * 1.2;
+      price = c;
+      return { o, h, l, c };
+    }
+    const series = [];
+    for (let i = 0; i < SHOW + P; i++) series.push(next());
+    function el(tag, a) {
+      const e = document.createElementNS(NS, tag);
+      for (const k in a) e.setAttribute(k, a[k]);
+      return e;
+    }
+    function draw() {
+      const view = series.slice(-SHOW), bands = [];
+      for (let i = series.length - SHOW; i < series.length; i++) {
+        const w = series.slice(i - P + 1, i + 1).map(k => k.c), m = w.reduce((a, b) => a + b, 0) / P;
+        const sd = Math.sqrt(w.reduce((a, b) => a + (b - m) * (b - m), 0) / P);
+        bands.push({ m, up: m + 2 * sd, dn: m - 2 * sd });
+      }
+      let lo = Infinity, hi = -Infinity;
+      view.forEach((k, i) => { lo = Math.min(lo, k.l, bands[i].dn); hi = Math.max(hi, k.h, bands[i].up); });
+      const pad = (hi - lo) * 0.06; lo -= pad; hi += pad;
+      const step = W / SHOW, bw = step * 0.56;
+      const y = v => (H - (v - lo) / (hi - lo) * H).toFixed(2), x = i => (i * step + step / 2).toFixed(2);
+      const up = bands.map((s, i) => x(i) + ' ' + y(s.up)), dn = bands.map((s, i) => x(i) + ' ' + y(s.dn));
+      svg.textContent = '';
+      svg.appendChild(el('path', { class: 'bb-f', d: 'M' + up.join(' L') + ' L' + dn.slice().reverse().join(' L') + ' Z' }));
+      svg.appendChild(el('path', { class: 'bb-l', d: 'M' + up.join(' L') }));
+      svg.appendChild(el('path', { class: 'bb-l', d: 'M' + dn.join(' L') }));
+      view.forEach((k, i) => {
+        const cls = k.c >= k.o ? 'cu' : 'cd', top = Math.min(+y(k.o), +y(k.c));
+        svg.appendChild(el('line', { class: cls, x1: x(i), x2: x(i), y1: y(k.h), y2: y(k.l) }));
+        svg.appendChild(el('rect', { class: cls, x: (i * step + (step - bw) / 2).toFixed(2), y: top.toFixed(2), width: bw.toFixed(2), height: Math.max(1, Math.abs(+y(k.o) - +y(k.c))).toFixed(2), rx: 0.6 }));
+      });
+      svg.appendChild(el('path', { class: 'sma', d: 'M' + bands.map((s, i) => x(i) + ' ' + y(s.m)).join(' L') }));
+    }
+    draw();
+    if (reduce) return;
+    let timer = 0;
+    onView(svg, v => {
+      if (v && !timer) timer = setInterval(() => { series.push(next()); series.shift(); draw(); }, 1100);
+      else if (!v && timer) { clearInterval(timer); timer = 0; }
+    }, { threshold: 0 });
+  })();
+
+  /* ---------- Experience: one role open at a time ---------- */
+  (() => {
+    const tabs = $$('.xp-tab');
+    if (!tabs.length) return;
+    const wide = matchMedia('(min-width: 1024px)');
+    const isOpen = b => b.getAttribute('aria-expanded') === 'true';
+    function show(tab) {
+      tabs.forEach(b => {
+        const on = b === tab, p = document.getElementById(b.getAttribute('aria-controls'));
+        b.setAttribute('aria-expanded', on);
+        b.parentNode.classList.toggle('on', on);
+        if (on && p.hidden) { p.hidden = false; p.classList.remove('show'); void p.offsetWidth; p.classList.add('show'); }
+        else if (!on) p.hidden = true;
+      });
+    }
+    tabs.forEach((b, i) => {
+      // On a phone the open role can be closed again; on a wide screen one always stays open
+      b.addEventListener('click', () => {
+        if (!isOpen(b)) show(b);
+        else if (!wide.matches) show(null);
+      });
+      b.addEventListener('keydown', e => {
+        const k = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
+        if (k) { e.preventDefault(); tabs[(i + k + tabs.length) % tabs.length].focus(); }
+      });
+    });
+    wide.addEventListener('change', e => { if (e.matches && !tabs.some(isOpen)) show(tabs[0]); });
+  })();
+
+  /* ---------- Contact: copy the email address ---------- */
+  (() => {
+    const btn = $('.ct-copy');
+    if (!btn) return;
+    const label = $('span', btn), live = $('#ctLive'), addr = btn.dataset.copy;
+    let t = 0;
+    const paint = () => { label.textContent = T(btn.classList.contains('done') ? 'copied' : 'copy'); };
+    hooks.push(paint);
+    function fallback() {
+      const ta = document.createElement('textarea');
+      ta.value = addr;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove();
+      return ok;
+    }
+    btn.addEventListener('click', async () => {
+      let ok = false;
+      try { await navigator.clipboard.writeText(addr); ok = true; } catch (e) { ok = fallback(); }
+      if (!ok) { location.href = 'mailto:' + addr; return; }
+      btn.classList.add('done'); paint();
+      live.textContent = T('copiedMsg');
+      clearTimeout(t);
+      t = setTimeout(() => { btn.classList.remove('done'); paint(); live.textContent = ''; }, 2400);
+    });
+  })();
+
+  /* ---------- Contact: the shapes lean towards the pointer ---------- */
+  (() => {
+    const ct = $('.ct-main');
+    if (!ct || !fine || reduce) return;
+    ct.addEventListener('pointermove', e => {
+      const r = ct.getBoundingClientRect();
+      ct.style.setProperty('--mx', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+      ct.style.setProperty('--my', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+    });
+    ct.addEventListener('pointerleave', () => { ct.style.setProperty('--mx', 0); ct.style.setProperty('--my', 0); });
+  })();
 
   /* ---------- Layout grid overlay: press G or use the footer switch ---------- */
   const lay = $('#gridlay'), layBtn = $('#gridBtn');
