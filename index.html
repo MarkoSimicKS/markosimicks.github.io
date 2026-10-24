@@ -85,8 +85,7 @@
   .meta span::before { content: "▸ "; color: var(--green); }
 
   .portrait { position: relative; flex: 0 0 290px; width: 290px; height: 290px; }
-  .portrait .ring { position: absolute; inset: -14px; border-radius: 36px; background: conic-gradient(from 0deg, var(--green), transparent 30%, var(--green-2) 55%, transparent 80%, var(--green)); opacity: .55; filter: blur(18px); animation: spin 14s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .portrait .ring { position: absolute; inset: -14px; border-radius: 36px; background: conic-gradient(from 0deg, var(--green), transparent 30%, var(--green-2) 55%, transparent 80%, var(--green)); opacity: .55; filter: blur(18px); }
   .portrait img { position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 30px; border: 1px solid rgba(255,255,255,.18); }
   .portrait-wrap { position: relative; display: flex; align-items: stretch; gap: 20px; justify-self: end; }
   .checklist { position: relative; display: flex; flex-direction: column; flex: 0 0 272px; width: 272px; height: 290px; background: rgba(16,34,48,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line-dark); border-radius: 18px; padding: 14px 16px 14px; box-shadow: 0 30px 60px -24px rgba(0,0,0,.85); }
